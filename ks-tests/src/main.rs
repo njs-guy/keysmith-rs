@@ -1,3 +1,5 @@
+use keysmith;
+
 fn main() {
-    println!("Hello, world!");
+    println!("{}", keysmith::test());
 }
