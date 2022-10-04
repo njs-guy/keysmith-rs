@@ -1,5 +1,5 @@
 use keysmith;
 
 fn main() {
-    println!("{}", keysmith::test());
+    println!("{}", keysmith::gen_key());
 }
