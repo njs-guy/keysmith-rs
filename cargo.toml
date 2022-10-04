@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "keysmith",
+    "ks-tests",
+]
+
+default-members = [
+    "keysmith"
+]
