@@ -1,5 +1,7 @@
 use keysmith;
 
 fn main() {
-    println!("{}", keysmith::gen_key(28));
+    for _n in 1..=50 {
+        println!("{}", keysmith::gen_key(128));
+    }
 }

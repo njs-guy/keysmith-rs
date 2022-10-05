@@ -1,9 +1,5 @@
 use rand::Rng;
 
-pub fn test() -> i32 {
-    8
-}
-
 // Returns a random u8 from 0 to 9
 fn rand_digit() -> u8 {
     let mut rng = rand::thread_rng();
@@ -19,6 +15,7 @@ pub fn gen_key(length: u32) -> String {
     let u_sp_ch = false;
 
     // Usable characters
+    let numbers = "0123456789";
     let eng_alphabet = "abcdefghijklmnopqrstuvwxyz";
     let safe_sp_chars = "-_.()~@";
     let unsafe_sp_chars = r#"#%&*+={}\/<>?!$:'"`|"#;
@@ -29,7 +26,7 @@ pub fn gen_key(length: u32) -> String {
     let mut chars = String::from("");
 
     if nums {
-        chars.push('0');
+        chars.push_str(numbers);
     }
 
     if letters {
@@ -51,18 +48,7 @@ pub fn gen_key(length: u32) -> String {
         let idx = rng.gen_range(0..chars.len());
         let c = chars.chars().nth(idx).unwrap();
 
-        let result:String;
-
-        match c {
-            '0' => {
-                result = rand_digit().to_string();
-            },
-            _=> {
-                result = c.to_string();
-            }
-        }
-
-        output.push_str(&result);
+        output.push(c);
     }
 
     output // Return output as String
