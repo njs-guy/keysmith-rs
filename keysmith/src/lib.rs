@@ -1,11 +1,5 @@
 use rand::Rng;
 
-// Returns a random u8 from 0 to 9
-fn rand_digit() -> u8 {
-    let mut rng = rand::thread_rng();
-    rng.gen_range(0..=9)
-}
-
 // Generates a key string
 pub fn gen_key(length: u32) -> String {
     // Gen options. Will be optional args later.
@@ -56,23 +50,7 @@ pub fn gen_key(length: u32) -> String {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
-    #[test]
-    // Tests that rand_digit does not generate a u8 higher than 9.
-    fn digit_range() {
-        let mut x: u8;
-        let max = 9;
-
-        for _n in 1..=50 {
-            x = rand_digit();
-
-            if x > max {
-                panic!("rand_digit generated a number higher than {}. Got {}.", 
-                max, x);
-            }
-        }
-    }
+    // use super::*;
 
     #[test]
     // Tests for a valid file name
