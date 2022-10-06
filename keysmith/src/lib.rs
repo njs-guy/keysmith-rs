@@ -2,13 +2,13 @@ use rand::Rng;
 
 // Generates a key string
 pub fn gen_key(length: u32) -> String {
-    // Gen options. Will be optional args later.
+    // gen_key options. Will be optional args later.
     let nums = true;
     let letters = true;
     let s_sp_ch = true;
     let u_sp_ch = false;
 
-    // Usable characters
+    // Possible characters
     let numbers = "0123456789";
     let eng_alphabet = "abcdefghijklmnopqrstuvwxyz";
     let safe_sp_chars = "-_.()~@";
@@ -19,6 +19,7 @@ pub fn gen_key(length: u32) -> String {
 
     let mut chars = String::from("");
 
+    // Set allowed characters
     if nums {
         chars.push_str(numbers);
     }
@@ -39,9 +40,14 @@ pub fn gen_key(length: u32) -> String {
 
     for _n in 1..=length {
         let mut rng = rand::thread_rng();
-        let idx = rng.gen_range(0..chars.len());
-        let c = chars.chars().nth(idx).unwrap();
 
+        // get a rand index from chars
+        let idx = rng.gen_range(0..chars.len());
+
+        // get the value of the index
+        let c = chars.chars().nth(idx).unwrap(); 
+
+        // push the char to output
         output.push(c);
     }
 
