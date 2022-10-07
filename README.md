@@ -2,7 +2,7 @@
 
 Create keys/ids for data with Rust.
 
-## NOTICE
+***NOTICE***
 
 Keysmith is currently a WIP and not recommended for production projects yet.
 
@@ -30,6 +30,10 @@ fn main() {
 }
 ```
 The above generates a key with a length of 64 characters as a String.
+
+# Changelog
+
+You can find the [changelog here](CHANGELOG.md).
 
 # Building
 1. Install [rustup](https://www.rust-lang.org/tools/install) if you haven't already.
