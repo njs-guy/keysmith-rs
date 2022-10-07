@@ -17,6 +17,7 @@ pub fn gen_key(length: u32) -> String {
     // gen_key options. Will be optional args later.
     let nums = true;
     let letters = true;
+    let upper = true;
     let s_sp_ch = true;
     let u_sp_ch = false;
 
@@ -29,6 +30,10 @@ pub fn gen_key(length: u32) -> String {
 
     if letters {
         chars.push_str(push_poss_chars("en_alphabet"));
+        
+        if upper {
+            chars.push_str(&push_poss_chars("en_alphabet").to_uppercase());
+        }
     }
 
     if s_sp_ch {
@@ -60,11 +65,14 @@ pub fn gen_key(length: u32) -> String {
 
 #[cfg(test)]
 mod tests {
-    // use super::*;
-
+    use super::*;
+    
+    // Tests that the generated key is the correct length
     #[test]
-    // Tests for a valid file name
-    fn valid_file_name() {
-        println!("valid_file_name");
+    fn test_length() {
+        let length = 32;
+        let key = gen_key(length);
+
+        assert_eq!(key.len(), 32);
     }
 }
