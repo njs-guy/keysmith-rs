@@ -1,3 +1,5 @@
+mod possible_chars;
+use possible_chars::get_poss_chars;
 use rand::Rng;
 
 // Generates a key string
@@ -8,32 +10,37 @@ pub fn gen_key(length: u32) -> String {
     let s_sp_ch = true;
     let u_sp_ch = false;
 
-    // Possible characters
-    let numbers = "0123456789";
-    let eng_alphabet = "abcdefghijklmnopqrstuvwxyz";
-    let safe_sp_chars = "-_.()~@";
-    let unsafe_sp_chars = r#"#%&*+={}\/<>?!$:'"`|"#;
-
-    // See this https://stackoverflow.com/a/40415059
-    // Might want to look more into this later
+    let possible_chars = get_poss_chars();
 
     let mut chars = String::from("");
 
     // Set allowed characters
     if nums {
-        chars.push_str(numbers);
+        chars.push_str(
+            possible_chars.get("numbers")
+            .expect("Could not convert numbers in possible_chars Hashmap.")
+        );
     }
 
     if letters {
-        chars.push_str(eng_alphabet);
+        chars.push_str(
+            possible_chars.get("en_alphabet")
+            .expect("Could not convert en_alphabet in possible_chars Hashmap.")
+        );
     }
 
     if s_sp_ch {
-        chars.push_str(safe_sp_chars);
+        chars.push_str(
+            possible_chars.get("safe_sp_chars")
+            .expect("Could not convert safe_sp_chars in possible_chars Hashmap.")
+        );
     }
 
     if u_sp_ch {
-        chars.push_str(unsafe_sp_chars);
+        chars.push_str(
+            possible_chars.get("unsafe_sp_chars")
+            .expect("Could not convert unsafe_sp_chars in possible_chars Hashmap.")
+        );
     }
 
     let mut output = String::from("");
