@@ -1,6 +1,16 @@
 mod possible_chars;
 use possible_chars::get_poss_chars;
+
 use rand::Rng;
+
+// Gets a character set from possible_chars
+// and then returns that for use in String.push_str()
+fn push_poss_chars(char_set_name: &str) -> &str {
+    let possible_chars = get_poss_chars();
+    let expect_msg = format!("Could not convert {} in possible_chars Hashmap.", char_set_name);
+    
+    return possible_chars.get(char_set_name).expect(&expect_msg);
+}
 
 // Generates a key string
 pub fn gen_key(length: u32) -> String {
@@ -10,37 +20,24 @@ pub fn gen_key(length: u32) -> String {
     let s_sp_ch = true;
     let u_sp_ch = false;
 
-    let possible_chars = get_poss_chars();
-
     let mut chars = String::from("");
 
     // Set allowed characters
     if nums {
-        chars.push_str(
-            possible_chars.get("numbers")
-            .expect("Could not convert numbers in possible_chars Hashmap.")
-        );
+        chars.push_str(push_poss_chars("numbers"));
     }
 
     if letters {
-        chars.push_str(
-            possible_chars.get("en_alphabet")
-            .expect("Could not convert en_alphabet in possible_chars Hashmap.")
-        );
+        chars.push_str(push_poss_chars("en_alphabet"));
     }
 
     if s_sp_ch {
-        chars.push_str(
-            possible_chars.get("safe_sp_chars")
-            .expect("Could not convert safe_sp_chars in possible_chars Hashmap.")
-        );
+        chars.push_str(push_poss_chars("safe_sp_chars"));
     }
 
     if u_sp_ch {
         chars.push_str(
-            possible_chars.get("unsafe_sp_chars")
-            .expect("Could not convert unsafe_sp_chars in possible_chars Hashmap.")
-        );
+            push_poss_chars("unsafe_sp_chars"));
     }
 
     let mut output = String::from("");
