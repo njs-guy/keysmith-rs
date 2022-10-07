@@ -2,6 +2,10 @@
 
 Create keys/ids for data with Rust.
 
+## NOTICE
+
+Keysmith is currently a WIP and not recommended for production projects yet.
+
 Here's some example keys:
 
 ```
@@ -15,12 +19,23 @@ So if you need a lot of entries, you need to reduce the odds of that happening.
 If the odds of two identical id's are astronomically low, you shouldn't even need to check for an existing id in the first place.
 Keysmith does that generation for you and outputs it as a String.
 
+# Usage
+```rs
+use keysmith;
+
+fn main() {
+   let key: String = keysmith::gen_key(64);
+   println!("{}", key);
+   // ex: 9oqopjebm88r(39.)rty1~hseq882hmdvk5767ma434nkm0-6lfr.4d0vr5bs-.q
+}
+```
+The above generates a key with a length of 64 characters as a String.
+
 # Building
 1. Install [rustup](https://www.rust-lang.org/tools/install) if you haven't already.
 2. Clone this repo. Usually with `git clone https://github.com/njshockey/keysmith-rs.git`.
-3. Run `cargo run` at the root of this directory to test changes.
+3. Run `cargo build` or `cargo build --release` to build.
    - To run the test package, run `cargo run -p ks-tests` instead.
-4. Run `cargo build` or `cargo build --release` to build.
 
 # License
 Keysmith uses the Rust standard MIT/Apache 2.0 dual license for best compatibility. See [LICENSE-APACHE.txt](LICENSE-APACHE.txt) and [LICENSE-MIT.txt](LICENSE-MIT.txt) for the full licenses.
