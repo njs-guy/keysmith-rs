@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Nick Shockey"]
 readme = "../README.md"
+description = "Create keys or ids for data"
 repository = "https://github.com/njshockey/keysmith-rs"
 license = "MIT OR Apache-2.0"
 keywords = [""]
