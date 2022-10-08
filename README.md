@@ -1,6 +1,6 @@
 # Keysmith
 
-Create keys/ids for data with Rust.
+Create keys or ids for data with Rust.
 
 ***NOTICE***
 
@@ -9,9 +9,9 @@ Keysmith is currently a WIP and not recommended for production projects yet.
 Here's some example keys:
 
 ```
-w~z69_iv.u@cxbguln_3vvpmk0l(nxje(oteuxe~j6p8xcuer76ump-1rc39(8~q
-7y--i3spd1r0q-a8ahyelv1r8_bcr@zc0zlms@sag29q@.wredx_o~p.p3-_28jy
-u7law0~xu7p@qwpa)@-3(iv3o5t-.di0~ihxj4d47xuq5@yftb_9bdpo2)@8)ry)
+5WdT@KfYRyRDqh0AAVUsyitSXbm4OQwzClX9.XYn5kLmKeObCf8YE3HqzHdU3UTS
+g1Y_Zp9-9rDf7VAaR1KGnH9Uf5klGjSQ6P2rAjK35iK-GnZ@dVXYu.aElzTfTOaK
+M3rkxIbrD0lz-SpUBe704X2)Gd(_WprzRJW7N51O@_58180Gs9esIVBO5.OdFOlY
 ```
 
 This looks like gibberish, but that's the point. Two id's in a database should not overlap. 
@@ -20,20 +20,29 @@ If the odds of two identical id's are astronomically low, you shouldn't even nee
 Keysmith does that generation for you and outputs it as a String.
 
 # Usage
+
+First, add this to your `cargo.toml` dependencies. Check out the [crate page](https://crates.io/crates/keysmith) to make sure you're using the latest version.
+
+```toml
+[dependencies]
+keysmith = "0.1.1"
+```
+Next, in the actual code:
+
 ```rs
 use keysmith;
 
 fn main() {
    let key: String = keysmith::gen_key(64);
    println!("{}", key);
-   // ex: 9oqopjebm88r(39.)rty1~hseq882hmdvk5767ma434nkm0-6lfr.4d0vr5bs-.q
+   // ex: rrPa(Z@~(4zSRj2cqzRd8R6QAxh35f76-Y_S-VvWLgzOCdfGGzYqqGrfxvg94GVU
 }
 ```
 The above generates a key with a length of 64 characters as a String.
 
 # Changelog
 
-You can find the [changelog here](CHANGELOG.md).
+You can find the changelog in [CHANGELOG.md](CHANGELOG.md).
 
 # Building
 1. Install [rustup](https://www.rust-lang.org/tools/install) if you haven't already.
