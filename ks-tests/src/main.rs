@@ -9,10 +9,10 @@ fn main() {
     }
 
     println!("");
-    println!("UUIDs (version 4):");
+    println!("UUIDs (nonstandard):");
     println!("");
     for _n in 1..=10 {
-        let key: String = keysmith::gen_uuid_v4();
+        let key: String = keysmith::gen_nonstandard_uuid();
         println!("{}", key);
     }
 }

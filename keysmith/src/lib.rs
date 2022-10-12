@@ -24,8 +24,9 @@ fn gen_uuid_v4_char() -> char {
     gen_char(true, true, false, false, false)
 }
 
-// Generate a uuid (version 4). Ex: e54h7tmn-b8kp-hykv-kn0o-nl9aypd9kc9e
-pub fn gen_uuid_v4() -> String {
+// Generate a nonstandard uuid. Ex: e54h7tmn-b8kp-hykv-kn0o-nl9aypd9kc9e
+// Not necessarily recommended but could be useful.
+pub fn gen_nonstandard_uuid() -> String {
     let mut output = String::from("");
 
     for _n in 1..=8 {
