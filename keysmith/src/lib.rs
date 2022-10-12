@@ -5,7 +5,15 @@ use gen_char::gen_char;
 pub fn gen_key(length: u32) -> String {
     let mut output = String::from("");
     for _n in 1..length {
-        output.push(gen_char());
+        let c = gen_char(
+            true, // nums
+            true, // letters
+            true, // upper
+            true, // safe_sp_ch
+            false // unsafe_sp_ch
+        );
+
+        output.push(c);
     }
 
     output // Return output as String

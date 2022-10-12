@@ -13,14 +13,13 @@ fn push_poss_chars(char_set_name: &str) -> &str {
 }
 
 // Generates a char for a key
-pub fn gen_char() -> char {
-    // gen_char options. Will be optional args later.
-    let nums = true;
-    let letters = true;
-    let upper = true;
-    let s_sp_ch = true;
-    let u_sp_ch = false;
-
+pub fn gen_char(
+    nums: bool, 
+    letters:bool, 
+    upper: bool, 
+    safe_sp_ch: bool, 
+    unsafe_sp_ch: bool,
+) -> char {
     let mut chars = String::from("");
 
     // Set allowed characters
@@ -36,11 +35,11 @@ pub fn gen_char() -> char {
         }
     }
 
-    if s_sp_ch {
+    if safe_sp_ch {
         chars.push_str(push_poss_chars("safe_sp_chars"));
     }
 
-    if u_sp_ch {
+    if unsafe_sp_ch {
         chars.push_str(
             push_poss_chars("unsafe_sp_chars"));
     }
