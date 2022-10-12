@@ -2,7 +2,7 @@
 
 Create keys or ids for data with Rust.
 
-***NOTICE***
+***WARNING***
 
 Keysmith is currently a WIP and not recommended for production projects yet.
 
@@ -35,7 +35,7 @@ use keysmith;
 fn main() {
    let key: String = keysmith::gen_key(64);
    println!("{}", key);
-   // ex: rrPa(Z@~(4zSRj2cqzRd8R6QAxh35f76-Y_S-VvWLgzOCdfGGzYqqGrfxvg94GVU
+   // ex: aVCkmMFkv3UqLIU2tC52DQOWrIg4RsaH.xvTCTvA_PVHY@MOIWH~y1610KIZ@qM@
 }
 ```
 The above generates a key with a length of 64 characters as a String.

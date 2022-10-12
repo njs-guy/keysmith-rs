@@ -8,9 +8,10 @@ description = "Create keys or ids for data"
 repository = "https://github.com/njshockey/keysmith-rs"
 license = "MIT OR Apache-2.0"
 keywords = ["database", "text", "utility", "string", "sql"]
-categories = ["data-structures"]
+categories = ["cryptography","data-structures"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 rand = "0.8.5"
+# chrono = "0.4.22" # Using this soon-ish
