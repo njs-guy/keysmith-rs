@@ -1,63 +1,11 @@
-mod possible_chars;
-use possible_chars::get_poss_chars;
-
-use rand::Rng;
-
-// Gets a character set from possible_chars
-// and then returns that for use in String.push_str()
-fn push_poss_chars(char_set_name: &str) -> &str {
-    let possible_chars = get_poss_chars();
-    let expect_msg = format!("Could not convert {} in possible_chars Hashmap.", char_set_name);
-    
-    return possible_chars.get(char_set_name).expect(&expect_msg);
-}
+mod gen_char;
+use gen_char::gen_char;
 
 // Generates a key string
 pub fn gen_key(length: u32) -> String {
-    // gen_key options. Will be optional args later.
-    let nums = true;
-    let letters = true;
-    let upper = true;
-    let s_sp_ch = true;
-    let u_sp_ch = false;
-
-    let mut chars = String::from("");
-
-    // Set allowed characters
-    if nums {
-        chars.push_str(push_poss_chars("numbers"));
-    }
-
-    if letters {
-        chars.push_str(push_poss_chars("en_alphabet"));
-        
-        if upper {
-            chars.push_str(&push_poss_chars("en_alphabet").to_uppercase());
-        }
-    }
-
-    if s_sp_ch {
-        chars.push_str(push_poss_chars("safe_sp_chars"));
-    }
-
-    if u_sp_ch {
-        chars.push_str(
-            push_poss_chars("unsafe_sp_chars"));
-    }
-
     let mut output = String::from("");
-
-    for _n in 1..=length {
-        let mut rng = rand::thread_rng();
-
-        // get a rand index from chars
-        let idx = rng.gen_range(0..chars.len());
-
-        // get the value of the index
-        let c = chars.chars().nth(idx).unwrap(); 
-
-        // push the char to output
-        output.push(c);
+    for _n in 1..length {
+        output.push(gen_char());
     }
 
     output // Return output as String
