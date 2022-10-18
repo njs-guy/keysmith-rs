@@ -55,6 +55,7 @@ pub fn gen_char(
     c // Return output as char
 }
 
+// Generates a uuid char for the specified version
 pub fn gen_uuid_char(version: char) -> char {
     let c: char;
 
@@ -72,6 +73,7 @@ fn gen_uuid_nonstandard_char() -> char {
     gen_char(true, true, false, false, false)
 }
 
+// Generate numbers or letters a-f
 fn gen_uuid_v4_char() -> char {
     let mut chars = String::from("");
     let uuid_chars = get_uuid_chars();
