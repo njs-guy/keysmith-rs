@@ -1,5 +1,5 @@
 mod gen_char;
-use gen_char::gen_char;
+use gen_char::{gen_char, gen_uuid_char};
 
 // Generates a key string. Ex: LlyqZk2W-Hm6Eoid~m(A8ymiM0q3ksyJ
 pub fn gen_key(length: u32) -> String {
@@ -19,41 +19,39 @@ pub fn gen_key(length: u32) -> String {
     output // Return output as String
 }
 
-// Generate numbers and letters (no uppercase)
-fn gen_uuid_v4_char() -> char {
-    gen_char(true, true, false, false, false)
-}
-
-// Generate a nonstandard uuid. Ex: e54h7tmn-b8kp-hykv-kn0o-nl9aypd9kc9e
-// Not necessarily recommended but could be useful.
-pub fn gen_nonstandard_uuid() -> String {
+// Generate a uuid. Ex: fc402d52-70be-7f09-caed-8da65db08985
+// Version 'n' is nonstandard which is
+// not necessarily recommended but could be useful.
+pub fn gen_uuid(version: char) -> String {
     let mut output = String::from("");
+    let mut c: char;
 
     for _n in 1..=8 {
-        let c = gen_uuid_v4_char();
+        c = gen_uuid_char(version);
+
         output.push(c);
     }
 
-    output.push('-'); // Current state: e54h7tmn-
+    output.push('-'); // Current state: fc402d52-
 
     for _n in 1..=3 {
         for _x in 1..=4 {
-            let c = gen_uuid_v4_char();
+            c = gen_uuid_char(version);
             output.push(c);
         }
 
         output.push('-');
-        // After one loop: e54h7tmn-b8kp-
+        // After one loop: efc402d52-70be-
     }
 
-    // e54h7tmn-b8kp-hykv-kn0o-
+    // Current state: fc402d52-70be-7f09-caed-
 
     for _n in 1..=12 {
-        let c = gen_uuid_v4_char();
+        c = gen_uuid_char(version);
         output.push(c);
     }
 
-    output // e54h7tmn-b8kp-hykv-kn0o-nl9aypd9kc9e
+    output // fc402d52-70be-7f09-caed-8da65db08985
 }
 
 #[cfg(test)]
