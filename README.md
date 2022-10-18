@@ -44,11 +44,11 @@ fn main() {
    println!("{}", key1);
    // ex: aVCkmMFkv3UqLIU2tC52DQOWrIg4RsaH.xvTCTvA_PVHY@MOIWH~y1610KIZ@qM@
 
-   let key2: String = keysmith::keysmith::gen_uuid('4');
+   let key2: String = keysmith::gen_uuid('4');
    println!("{}", key2);
    // ex: da748b8b-e915-661b-466a-0d6a0480112a
 
-   let key3: String = keysmith::keysmith::gen_uuid('n');
+   let key3: String = keysmith::gen_uuid('n');
    println!("{}", key3);
    // "Nonstandard" UUID
    // ex: eko0c6ph-k2ok-60rr-pj78-mns182t9vurf
