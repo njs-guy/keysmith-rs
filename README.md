@@ -19,13 +19,20 @@ So if you need a lot of entries, you need to reduce the odds of that happening.
 If the odds of two identical id's are astronomically low, you shouldn't even need to check for an existing id in the first place.
 Keysmith does that generation for you and outputs it as a String.
 
+You can also generate version 4 UUID's. Examples:
+```
+be3b5529-931b-6b75-1678-a057bccf71c9
+440146ab-a19a-8a36-2d4b-ba19a79570d4
+0090da40-6ce2-59d3-629d-11b293c9e2d3
+```
+
 # Usage
 
 First, add this to your `cargo.toml` dependencies. Check out the [crate page](https://crates.io/crates/keysmith) to make sure you're using the latest version.
 
 ```toml
 [dependencies]
-keysmith = "0.1.1"
+keysmith = "0.2.0"
 ```
 Next, in the actual code:
 
@@ -33,12 +40,23 @@ Next, in the actual code:
 use keysmith;
 
 fn main() {
-   let key: String = keysmith::gen_key(64);
-   println!("{}", key);
+   let key1: String = keysmith::gen_key(64);
+   println!("{}", key1);
    // ex: aVCkmMFkv3UqLIU2tC52DQOWrIg4RsaH.xvTCTvA_PVHY@MOIWH~y1610KIZ@qM@
+
+   let key2: String = keysmith::keysmith::gen_uuid('4');
+   println!("{}", key2);
+   // ex: da748b8b-e915-661b-466a-0d6a0480112a
+
+   let key3: String = keysmith::keysmith::gen_uuid('n');
+   println!("{}", key3);
+   // "Nonstandard" UUID
+   // ex: eko0c6ph-k2ok-60rr-pj78-mns182t9vurf
 }
 ```
-The above generates a key with a length of 64 characters as a String.
+The first function generates a key with a length of 64 characters as a String. The second generates a version 4 UUID. 
+The third generates a "nonstandard" UUID. It uses the same structure as a version 4, but it can have any letter instead of just a-f.
+The "nonstandard" version is obviously not standard, but may be useful depending on your preferences.
 
 # Changelog
 
