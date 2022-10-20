@@ -36,6 +36,23 @@ pub fn gen_nums(length: u32) -> String {
     output // Return output as String
 }
 
+pub fn gen_letters(length: u32) -> String {
+    let mut output = String::from("");
+    for _n in 1..=length {
+        let c = gen_char(
+            false, // nums
+            true, // letters
+            true, // upper
+            false, // safe_sp_ch
+            false // unsafe_sp_ch
+        );
+
+        output.push(c);
+    }
+
+    output // Return output as String
+}
+
 // Generate a uuid. Ex: fc402d52-70be-7f09-caed-8da65db08985
 // Version 'n' is nonstandard which is
 // not necessarily recommended but could be useful.

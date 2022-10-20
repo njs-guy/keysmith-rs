@@ -1,10 +1,15 @@
 use keysmith;
 
 fn main() {
+    // The length of each key
     let num_of_keys = 10;
 
+    // Turn each individual function test on or off
     let keys = false;
-    let nums = true;
+    let nums = false;
+    let letters = true;
+    // let letters_low = false;
+    // let letters_upper = false;
     let uuid4 = false;
     let uuidn = false;
 
@@ -22,6 +27,15 @@ fn main() {
         println!("");
         for _n in 1..=num_of_keys {
             let key: String = keysmith::gen_nums(32);
+            println!("{}", key);
+        }
+    }
+
+    if letters {
+        println!("Numbers only:");
+        println!("");
+        for _n in 1..=num_of_keys {
+            let key: String = keysmith::gen_letters(32);
             println!("{}", key);
         }
     }
