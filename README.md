@@ -28,11 +28,11 @@ be3b5529-931b-6b75-1678-a057bccf71c9
 
 # Usage
 
-First, add this to your `cargo.toml` dependencies. Check out the [crate page](https://crates.io/crates/keysmith) to make sure you're using the latest version.
+First, add this to your `Cargo.toml` dependencies. Check out the [crate page](https://crates.io/crates/keysmith) to make sure you're using the latest version.
 
 ```toml
 [dependencies]
-keysmith = "0.2.0"
+keysmith = "0.2.1"
 ```
 Next, in the actual code:
 
@@ -57,6 +57,59 @@ fn main() {
 The first function generates a key with a length of 64 characters as a String. The second generates a version 4 UUID. 
 The third generates a "nonstandard" UUID. It uses the same structure as a version 4, but it can have any letter instead of just a-f.
 The "nonstandard" version is obviously not standard, but may be useful depending on your preferences.
+
+You can also generate a key consisting of only a specific kind of character.
+
+```rs
+use keysmith;
+
+fn main() {
+   let key1: String = keysmith::gen_nums(32);
+   println!("{}", key1);
+   // ex: 04356417134317004828941212534445
+
+   let key2: String = keysmith::gen_letters(32);
+   println!("{}", key2);
+   // ex: PBSZWwSTmRalGnzeSbQUKmXRikKUWXvj
+
+   let key3: String = keysmith::gen_special_chars(32);
+   println!("{}", key3);
+   // Special characters generally considered "safe."
+   // Possible characters: -_.()~@
+   // ex: )@-_~@_@._))~)@))@.)(-)@(.@(~((@
+}
+```
+
+If you want only lowercase or uppercase letters, you can do that, too!
+
+```rs
+use keysmith;
+
+fn main() {
+   let key1: String = keysmith::gen_letters_lower(32);
+   println!("{}", key1);
+   // ex: xoewhgvjsqzctfgpaqwnhanbgweflpqc
+
+   let key2: String = keysmith::gen_letters_upper(32);
+   println!("{}", key2);
+   // ex: EVQMPIHKDBPLZJBPCHTXTIBLYRSFFFUY
+}
+```
+
+You can also generate a key using only "unsafe" special characters. Be careful with this, as these characters generally break file structures or URL's which is why they are considered unsafe.
+Generating a key of this type is not recommended, but could be useful to *someone*.
+
+```rs
+use keysmith;
+
+fn main() {
+   let key: String = keysmith::gen_special_chars_unsafe(32);
+   println!("{}", key);
+
+   // Possible characters: #%&*+={}\/<>?!$:'"`|
+   // ex: <#=`=*%{:`*%!<{"|*?'!#\#|?\+{=\}
+}
+```
 
 # Changelog
 
