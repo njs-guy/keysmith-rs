@@ -8,7 +8,7 @@ fn main() {
     let keys = false;
     let nums = false;
     let letters = true;
-    // let letters_low = false;
+    let letters_lower = true;
     // let letters_upper = false;
     let uuid4 = false;
     let uuidn = false;
@@ -32,10 +32,19 @@ fn main() {
     }
 
     if letters {
-        println!("Numbers only:");
+        println!("Letters only:");
         println!("");
         for _n in 1..=num_of_keys {
             let key: String = keysmith::gen_letters(32);
+            println!("{}", key);
+        }
+    }
+
+    if letters_lower {
+        println!("Lowercase letters only:");
+        println!("");
+        for _n in 1..=num_of_keys {
+            let key: String = keysmith::gen_letters_lower(32);
             println!("{}", key);
         }
     }
