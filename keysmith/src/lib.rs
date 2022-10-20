@@ -84,7 +84,24 @@ pub fn gen_letters_upper(length: u32) -> String {
         output.push(c);
     }
 
-    output.to_uppercase() // Return output as String
+    output.to_uppercase() // Return output as an uppercased String
+}
+
+pub fn gen_special_chars(length: u32) -> String {
+    let mut output = String::from("");
+    for _n in 1..=length {
+        let c = gen_char(
+            false, // nums
+            false, // letters
+            false, // upper
+            true, // safe_sp_ch
+            false // unsafe_sp_ch
+        );
+
+        output.push(c);
+    }
+
+    output // Return output as String
 }
 
 // Generate a uuid. Ex: fc402d52-70be-7f09-caed-8da65db08985

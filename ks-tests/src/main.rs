@@ -10,6 +10,9 @@ fn main() {
     let letters = true;
     let letters_lower = true;
     let letters_upper = true;
+    let special_chars = true;
+    let special_chars_unsafe = true;
+
     let uuid4 = false;
     let uuidn = false;
 
@@ -54,6 +57,15 @@ fn main() {
         println!("");
         for _n in 1..=num_of_keys {
             let key: String = keysmith::gen_letters_upper(32);
+            println!("{}", key);
+        }
+    }
+
+    if special_chars {
+        println!("Special characters only:");
+        println!("");
+        for _n in 1..=num_of_keys {
+            let key: String = keysmith::gen_special_chars(32);
             println!("{}", key);
         }
     }
