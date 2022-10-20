@@ -7,9 +7,9 @@ fn main() {
     // Turn each individual function test on or off
     let keys = false;
     let nums = false;
-    let letters = true;
-    let letters_lower = true;
-    let letters_upper = true;
+    let letters = false;
+    let letters_lower = false;
+    let letters_upper = false;
     let special_chars = true;
     let special_chars_unsafe = true;
 
@@ -66,6 +66,15 @@ fn main() {
         println!("");
         for _n in 1..=num_of_keys {
             let key: String = keysmith::gen_special_chars(32);
+            println!("{}", key);
+        }
+    }
+
+    if special_chars_unsafe {
+        println!("Unsafe special characters only:");
+        println!("");
+        for _n in 1..=num_of_keys {
+            let key: String = keysmith::gen_special_chars_unsafe(32);
             println!("{}", key);
         }
     }
