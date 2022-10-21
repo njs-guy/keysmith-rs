@@ -1,6 +1,10 @@
 mod gen_char;
 use gen_char::{gen_char, gen_uuid_char};
 
+// TODO: Make a function to generate keys instead of all this duplicated code
+
+// TODO: Separate into three mods: key, uuid, and timestamp.
+
 // Generates a key string. Ex: LlyqZk2W-Hm6Eoid~m(A8ymiM0q3ksyJ
 pub fn gen_key(length: u32) -> String {
     let mut output = String::from("");
@@ -155,6 +159,8 @@ pub fn gen_uuid(version: char) -> String {
 
     output // fc402d52-70be-7f09-caed-8da65db08985
 }
+
+// TODO: More tests, probably
 
 #[cfg(test)]
 mod tests {
