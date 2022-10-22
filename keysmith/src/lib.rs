@@ -1,8 +1,7 @@
 mod gen_char;
 use gen_char::{gen_char, gen_uuid_char};
 
-// TODO: Make a function to generate keys instead of all this duplicated code
-
+// TODO: Generate a key of just numbers and letters
 // TODO: Separate into three mods: key, uuid, and timestamp.
 
 struct GenCharOpts {
@@ -53,21 +52,6 @@ pub fn gen_nums(length: u32) -> String {
     };
 
     gen_char_from_opts(length, opts)
-
-    // let mut output = String::from("");
-    // for _n in 1..=length {
-    //     let c = gen_char(
-    //         true, // nums
-    //         false, // letters
-    //         false, // upper
-    //         false, // safe_sp_ch
-    //         false // unsafe_sp_ch
-    //     );
-
-    //     output.push(c);
-    // }
-
-    // output // Return output as String
 }
 
 pub fn gen_letters(length: u32) -> String {
@@ -80,21 +64,6 @@ pub fn gen_letters(length: u32) -> String {
     };
 
     gen_char_from_opts(length, opts)
-
-    // let mut output = String::from("");
-    // for _n in 1..=length {
-    //     let c = gen_char(
-    //         false, // nums
-    //         true, // letters
-    //         true, // upper
-    //         false, // safe_sp_ch
-    //         false // unsafe_sp_ch
-    //     );
-
-    //     output.push(c);
-    // }
-
-    // output // Return output as String
 }
 
 pub fn gen_letters_lower(length: u32) -> String {
@@ -107,21 +76,6 @@ pub fn gen_letters_lower(length: u32) -> String {
     };
 
     gen_char_from_opts(length, opts)
-
-    // let mut output = String::from("");
-    // for _n in 1..=length {
-    //     let c = gen_char(
-    //         false, // nums
-    //         true, // letters
-    //         false, // upper
-    //         false, // safe_sp_ch
-    //         false // unsafe_sp_ch
-    //     );
-
-    //     output.push(c);
-    // }
-
-    // output // Return output as String
 }
 
 pub fn gen_letters_upper(length: u32) -> String {
@@ -134,21 +88,6 @@ pub fn gen_letters_upper(length: u32) -> String {
     };
 
     gen_char_from_opts(length, opts).to_uppercase()
-
-    // let mut output = String::from("");
-    // for _n in 1..=length {
-    //     let c = gen_char(
-    //         false, // nums
-    //         true, // letters
-    //         false, // upper
-    //         false, // safe_sp_ch
-    //         false // unsafe_sp_ch
-    //     );
-
-    //     output.push(c);
-    // }
-
-    // output.to_uppercase() // Return output as an uppercased String
 }
 
 pub fn gen_special_chars(length: u32) -> String {
@@ -161,21 +100,6 @@ pub fn gen_special_chars(length: u32) -> String {
     };
 
     gen_char_from_opts(length, opts)
-
-    // let mut output = String::from("");
-    // for _n in 1..=length {
-    //     let c = gen_char(
-    //         false, // nums
-    //         false, // letters
-    //         false, // upper
-    //         true, // safe_sp_ch
-    //         false // unsafe_sp_ch
-    //     );
-
-    //     output.push(c);
-    // }
-
-    // output // Return output as String
 }
 
 pub fn gen_special_chars_unsafe(length: u32) -> String {
@@ -188,21 +112,6 @@ pub fn gen_special_chars_unsafe(length: u32) -> String {
     };
 
     gen_char_from_opts(length, opts)
-
-    // let mut output = String::from("");
-    // for _n in 1..=length {
-    //     let c = gen_char(
-    //         false, // nums
-    //         false, // letters
-    //         false, // upper
-    //         false, // safe_sp_ch
-    //         true // unsafe_sp_ch
-    //     );
-
-    //     output.push(c);
-    // }
-
-    // output // Return output as String
 }
 
 // Generate a uuid. Ex: fc402d52-70be-7f09-caed-8da65db08985
