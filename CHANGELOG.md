@@ -1,5 +1,8 @@
 For the source code of each version, see the [tags page](https://github.com/njshockey/keysmith-rs/tags).
 
+# v0.3.0
+- Cleaned up a lot of code under the hood.
+
 # v0.2.1
 You can now generate keys with only specific kinds of characters. For more details, see [usage](README.md#usage).
 
