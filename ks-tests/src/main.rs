@@ -6,12 +6,12 @@ fn main() {
 
     // Turn each individual function test on or off
     let keys = true;
-    let nums = false;
-    let letters = false;
-    let letters_lower = false;
-    let letters_upper = false;
-    let special_chars = false;
-    let special_chars_unsafe = false;
+    let nums = true;
+    let letters = true;
+    let letters_lower = true;
+    let letters_upper = true;
+    let special_chars = true;
+    let special_chars_unsafe = true;
 
     let uuid4 = false;
     let uuidn = false;

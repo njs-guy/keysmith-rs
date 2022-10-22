@@ -41,13 +41,133 @@ pub fn gen_key(length: u32) -> String {
     };
 
     gen_char_from_opts(length, opts)
+}
+
+pub fn gen_nums(length: u32) -> String {
+    let opts = GenCharOpts { 
+        nums: true, 
+        letters: false, 
+        upper: false, 
+        safe_sp_ch: false, 
+        unsafe_sp_ch: false 
+    };
+
+    gen_char_from_opts(length, opts)
 
     // let mut output = String::from("");
     // for _n in 1..=length {
     //     let c = gen_char(
     //         true, // nums
+    //         false, // letters
+    //         false, // upper
+    //         false, // safe_sp_ch
+    //         false // unsafe_sp_ch
+    //     );
+
+    //     output.push(c);
+    // }
+
+    // output // Return output as String
+}
+
+pub fn gen_letters(length: u32) -> String {
+    let opts = GenCharOpts { 
+        nums: false, 
+        letters: true, 
+        upper: true, 
+        safe_sp_ch: false, 
+        unsafe_sp_ch: false 
+    };
+
+    gen_char_from_opts(length, opts)
+
+    // let mut output = String::from("");
+    // for _n in 1..=length {
+    //     let c = gen_char(
+    //         false, // nums
     //         true, // letters
     //         true, // upper
+    //         false, // safe_sp_ch
+    //         false // unsafe_sp_ch
+    //     );
+
+    //     output.push(c);
+    // }
+
+    // output // Return output as String
+}
+
+pub fn gen_letters_lower(length: u32) -> String {
+    let opts = GenCharOpts { 
+        nums: false,
+        letters: true,
+        upper: false,
+        safe_sp_ch: false,
+        unsafe_sp_ch: false
+    };
+
+    gen_char_from_opts(length, opts)
+
+    // let mut output = String::from("");
+    // for _n in 1..=length {
+    //     let c = gen_char(
+    //         false, // nums
+    //         true, // letters
+    //         false, // upper
+    //         false, // safe_sp_ch
+    //         false // unsafe_sp_ch
+    //     );
+
+    //     output.push(c);
+    // }
+
+    // output // Return output as String
+}
+
+pub fn gen_letters_upper(length: u32) -> String {
+    let opts = GenCharOpts { 
+        nums: false,
+        letters: true,
+        upper: false,
+        safe_sp_ch: false,
+        unsafe_sp_ch: false
+    };
+
+    gen_char_from_opts(length, opts).to_uppercase()
+
+    // let mut output = String::from("");
+    // for _n in 1..=length {
+    //     let c = gen_char(
+    //         false, // nums
+    //         true, // letters
+    //         false, // upper
+    //         false, // safe_sp_ch
+    //         false // unsafe_sp_ch
+    //     );
+
+    //     output.push(c);
+    // }
+
+    // output.to_uppercase() // Return output as an uppercased String
+}
+
+pub fn gen_special_chars(length: u32) -> String {
+    let opts = GenCharOpts { 
+        nums: false, 
+        letters: false, 
+        upper: false, 
+        safe_sp_ch: true, 
+        unsafe_sp_ch: false 
+    };
+
+    gen_char_from_opts(length, opts)
+
+    // let mut output = String::from("");
+    // for _n in 1..=length {
+    //     let c = gen_char(
+    //         false, // nums
+    //         false, // letters
+    //         false, // upper
     //         true, // safe_sp_ch
     //         false // unsafe_sp_ch
     //     );
@@ -58,106 +178,31 @@ pub fn gen_key(length: u32) -> String {
     // output // Return output as String
 }
 
-pub fn gen_nums(length: u32) -> String {
-    let mut output = String::from("");
-    for _n in 1..=length {
-        let c = gen_char(
-            true, // nums
-            false, // letters
-            false, // upper
-            false, // safe_sp_ch
-            false // unsafe_sp_ch
-        );
-
-        output.push(c);
-    }
-
-    output // Return output as String
-}
-
-pub fn gen_letters(length: u32) -> String {
-    let mut output = String::from("");
-    for _n in 1..=length {
-        let c = gen_char(
-            false, // nums
-            true, // letters
-            true, // upper
-            false, // safe_sp_ch
-            false // unsafe_sp_ch
-        );
-
-        output.push(c);
-    }
-
-    output // Return output as String
-}
-
-pub fn gen_letters_lower(length: u32) -> String {
-    let mut output = String::from("");
-    for _n in 1..=length {
-        let c = gen_char(
-            false, // nums
-            true, // letters
-            false, // upper
-            false, // safe_sp_ch
-            false // unsafe_sp_ch
-        );
-
-        output.push(c);
-    }
-
-    output // Return output as String
-}
-
-pub fn gen_letters_upper(length: u32) -> String {
-    let mut output = String::from("");
-    for _n in 1..=length {
-        let c = gen_char(
-            false, // nums
-            true, // letters
-            false, // upper
-            false, // safe_sp_ch
-            false // unsafe_sp_ch
-        );
-
-        output.push(c);
-    }
-
-    output.to_uppercase() // Return output as an uppercased String
-}
-
-pub fn gen_special_chars(length: u32) -> String {
-    let mut output = String::from("");
-    for _n in 1..=length {
-        let c = gen_char(
-            false, // nums
-            false, // letters
-            false, // upper
-            true, // safe_sp_ch
-            false // unsafe_sp_ch
-        );
-
-        output.push(c);
-    }
-
-    output // Return output as String
-}
-
 pub fn gen_special_chars_unsafe(length: u32) -> String {
-    let mut output = String::from("");
-    for _n in 1..=length {
-        let c = gen_char(
-            false, // nums
-            false, // letters
-            false, // upper
-            false, // safe_sp_ch
-            true // unsafe_sp_ch
-        );
+    let opts = GenCharOpts { 
+        nums: false, 
+        letters: false, 
+        upper: false, 
+        safe_sp_ch: false, 
+        unsafe_sp_ch: true 
+    };
 
-        output.push(c);
-    }
+    gen_char_from_opts(length, opts)
 
-    output // Return output as String
+    // let mut output = String::from("");
+    // for _n in 1..=length {
+    //     let c = gen_char(
+    //         false, // nums
+    //         false, // letters
+    //         false, // upper
+    //         false, // safe_sp_ch
+    //         true // unsafe_sp_ch
+    //     );
+
+    //     output.push(c);
+    // }
+
+    // output // Return output as String
 }
 
 // Generate a uuid. Ex: fc402d52-70be-7f09-caed-8da65db08985
