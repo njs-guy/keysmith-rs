@@ -1,5 +1,7 @@
 use keysmith;
 
+// TODO: Separate testing for each module into separate functions
+
 fn main() {
     // The length of each key
     let num_of_keys = 10;
@@ -10,6 +12,9 @@ fn main() {
     let letters = true;
     let letters_lower = true;
     let letters_upper = true;
+    let nums_and_letters = true;
+    let nums_and_letters_lower = true;
+    let nums_and_letters_upper = true;
     let special_chars = true;
     let special_chars_unsafe = true;
 
@@ -69,6 +74,33 @@ fn main() {
         println!("");
         for _n in 1..=num_of_keys {
             let key: String = keysmith::gen_letters_upper(32);
+            println!("{}", key);
+        }
+    }
+
+    if nums_and_letters {
+        println!("Numbers and letters only:");
+        println!("");
+        for _n in 1..=num_of_keys {
+            let key: String = keysmith::gen_nums_and_letters(32);
+            println!("{}", key);
+        }
+    }
+
+    if nums_and_letters_lower {
+        println!("Numbers and lowercase letters only:");
+        println!("");
+        for _n in 1..=num_of_keys {
+            let key: String = keysmith::gen_nums_and_letters_lower(32);
+            println!("{}", key);
+        }
+    }
+
+    if nums_and_letters_upper {
+        println!("Numbers and lowercase letters only:");
+        println!("");
+        for _n in 1..=num_of_keys {
+            let key: String = keysmith::gen_nums_and_letters_upper(32);
             println!("{}", key);
         }
     }

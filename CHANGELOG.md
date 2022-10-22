@@ -1,6 +1,10 @@
 For the source code of each version, see the [tags page](https://github.com/njshockey/keysmith-rs/tags).
 
 # v0.3.0
+- You can now generate keys with only numbers and letters.
+  - Use gen_nums_and_letters() for this.
+  - gen_nums_and_letters_lower() for just lowercase letters.
+  - gen_nums_and_letters_upper() for just uppercase letters.
 - Cleaned up a lot of code under the hood.
 
 # v0.2.1

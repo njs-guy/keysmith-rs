@@ -90,6 +90,42 @@ pub fn gen_letters_upper(length: u32) -> String {
     gen_char_from_opts(length, opts).to_uppercase()
 }
 
+pub fn gen_nums_and_letters(length: u32) -> String {
+    let opts = GenCharOpts {
+        nums: true,
+        letters: true,
+        upper: true,
+        safe_sp_ch: false,
+        unsafe_sp_ch: false
+    };
+
+    gen_char_from_opts(length, opts)
+}
+
+pub fn gen_nums_and_letters_lower(length: u32) -> String {
+    let opts = GenCharOpts { 
+        nums: true,
+        letters: true,
+        upper: false,
+        safe_sp_ch: false,
+        unsafe_sp_ch: false
+    };
+
+    gen_char_from_opts(length, opts)
+}
+
+pub fn gen_nums_and_letters_upper(length: u32) -> String {
+    let opts = GenCharOpts { 
+        nums: true,
+        letters: true,
+        upper: false,
+        safe_sp_ch: false,
+        unsafe_sp_ch: false
+    };
+
+    gen_char_from_opts(length, opts).to_uppercase()
+}
+
 pub fn gen_special_chars(length: u32) -> String {
     let opts = GenCharOpts { 
         nums: false, 
