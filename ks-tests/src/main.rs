@@ -1,27 +1,35 @@
 use keysmith;
 
-// TODO: Separate testing for each module into separate functions
-
 fn main() {
     // The length of each key
     let num_of_keys = 10;
 
-    // Turn each individual function test on or off
-    let keys = true;
-    let nums = true;
-    let letters = true;
-    let letters_lower = true;
-    let letters_upper = true;
-    let nums_and_letters = true;
-    let nums_and_letters_lower = true;
-    let nums_and_letters_upper = true;
-    let special_chars = true;
-    let special_chars_unsafe = true;
-
-    let uuid4 = false;
-    let uuidn = false;
-
+    // test readme code
     let readme_code = false;
+
+    // which gen_key functions to test
+    let gen_key_opts = TestKeyOpts {
+        keys: true,
+        nums: true,
+        letters: true,
+        letters_lower: true,
+        letters_upper: true,
+        nums_and_letters: true,
+        nums_and_letters_lower: true,
+        nums_and_letters_upper: true,
+        special_chars: true,
+        special_chars_unsafe: true
+    };
+
+    test_key_gen(num_of_keys, gen_key_opts);
+
+    // which uuid functions to test
+    let uuid_opts = TestUuidOpts {
+        uuid4: true,
+        uuidn: true
+    };
+
+    test_uuid(num_of_keys, uuid_opts);
 
     if readme_code {
         readme_code1();
@@ -32,8 +40,24 @@ fn main() {
         println!("");
         readme_code4();
     }
+}
 
-    if keys {
+struct TestKeyOpts {
+    keys: bool,
+    nums: bool,
+    letters: bool,
+    letters_lower: bool,
+    letters_upper: bool,
+    nums_and_letters: bool,
+    nums_and_letters_lower: bool,
+    nums_and_letters_upper: bool,
+    special_chars: bool,
+    special_chars_unsafe: bool
+}
+
+fn test_key_gen(num_of_keys: u32, opts: TestKeyOpts) {
+
+    if opts.keys {
         println!("Keys:");
         println!("");
         for _n in 1..=num_of_keys {
@@ -42,7 +66,7 @@ fn main() {
         }
     }
 
-    if nums {
+    if opts.nums {
         println!("Numbers only:");
         println!("");
         for _n in 1..=num_of_keys {
@@ -51,7 +75,7 @@ fn main() {
         }
     }
 
-    if letters {
+    if opts.letters {
         println!("Letters only:");
         println!("");
         for _n in 1..=num_of_keys {
@@ -60,7 +84,7 @@ fn main() {
         }
     }
 
-    if letters_lower {
+    if opts.letters_lower {
         println!("Lowercase letters only:");
         println!("");
         for _n in 1..=num_of_keys {
@@ -69,7 +93,7 @@ fn main() {
         }
     }
 
-    if letters_upper {
+    if opts.letters_upper {
         println!("Uppercase letters only:");
         println!("");
         for _n in 1..=num_of_keys {
@@ -78,7 +102,7 @@ fn main() {
         }
     }
 
-    if nums_and_letters {
+    if opts.nums_and_letters {
         println!("Numbers and letters only:");
         println!("");
         for _n in 1..=num_of_keys {
@@ -87,7 +111,7 @@ fn main() {
         }
     }
 
-    if nums_and_letters_lower {
+    if opts.nums_and_letters_lower {
         println!("Numbers and lowercase letters only:");
         println!("");
         for _n in 1..=num_of_keys {
@@ -96,7 +120,7 @@ fn main() {
         }
     }
 
-    if nums_and_letters_upper {
+    if opts.nums_and_letters_upper {
         println!("Numbers and lowercase letters only:");
         println!("");
         for _n in 1..=num_of_keys {
@@ -105,7 +129,7 @@ fn main() {
         }
     }
 
-    if special_chars {
+    if opts.special_chars {
         println!("Special characters only:");
         println!("");
         for _n in 1..=num_of_keys {
@@ -114,7 +138,7 @@ fn main() {
         }
     }
 
-    if special_chars_unsafe {
+    if opts.special_chars_unsafe {
         println!("Unsafe special characters only:");
         println!("");
         for _n in 1..=num_of_keys {
@@ -122,8 +146,15 @@ fn main() {
             println!("{}", key);
         }
     }
+}
 
-    if uuid4 {
+struct TestUuidOpts {
+    uuid4: bool,
+    uuidn: bool,
+}
+
+fn test_uuid(num_of_keys: u32, opts: TestUuidOpts) {
+    if opts.uuid4 {
         println!("");
         println!("UUIDs (v4):");
         println!("");
@@ -133,7 +164,7 @@ fn main() {
         }
     }
 
-    if uuidn {
+    if opts.uuidn {
         println!("");
         println!("UUIDs (nonstandard):");
         println!("");

@@ -1,7 +1,6 @@
 mod gen_char;
 use gen_char::{gen_char, gen_uuid_char};
 
-// TODO: Generate a key of just numbers and letters
 // TODO: Separate into three mods: key, uuid, and timestamp.
 
 struct GenCharOpts {
