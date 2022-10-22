@@ -6,9 +6,11 @@ fn main() {
     // The length of each key
     let num_of_keys = 10;
 
-    // test readme code
-    let readme_code = true;
-
+    // turn modules on/off
+    let keys = true;
+    let uuid = false;
+    let readme_code = false;
+    
     // which gen_key functions to test
     let gen_key_opts = test_key_gen::TestKeyOpts {
         keys: true,
@@ -22,16 +24,20 @@ fn main() {
         special_chars: true,
         special_chars_unsafe: true
     };
-
-    test_key_gen::test_key_gen(num_of_keys, gen_key_opts);
-
+    
     // which uuid functions to test
     let uuid_opts = test_uuid::TestUuidOpts {
         uuid4: true,
         uuidn: true
     };
 
-    test_uuid::test_uuid(num_of_keys, uuid_opts);
+    if keys {
+        test_key_gen::test_key_gen(num_of_keys, gen_key_opts);
+    }
+
+    if uuid {
+        test_uuid::test_uuid(num_of_keys, uuid_opts);
+    }
 
     if readme_code {
         test_readme::readme_code1();
