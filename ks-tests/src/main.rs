@@ -5,7 +5,7 @@ fn main() {
     let num_of_keys = 10;
 
     // Turn each individual function test on or off
-    let keys = false;
+    let keys = true;
     let nums = false;
     let letters = false;
     let letters_lower = false;
@@ -16,7 +16,7 @@ fn main() {
     let uuid4 = false;
     let uuidn = false;
 
-    let readme_code = true;
+    let readme_code = false;
 
     if readme_code {
         readme_code1();
