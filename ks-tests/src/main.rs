@@ -8,8 +8,8 @@ fn main() {
 
     // turn modules on/off
     let keys = true;
-    let uuid = false;
-    let readme_code = false;
+    let uuid = true;
+    let readme_code = true;
     
     // which gen_key functions to test
     let gen_key_opts = test_key_gen::TestKeyOpts {

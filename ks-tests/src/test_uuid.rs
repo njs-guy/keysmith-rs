@@ -1,4 +1,4 @@
-use keysmith;
+use keysmith::uuid;
 
 pub struct TestUuidOpts {
     pub uuid4: bool,
@@ -11,7 +11,7 @@ pub fn test_uuid(num_of_keys: u32, opts: TestUuidOpts) {
         println!("UUIDs (v4):");
         println!("");
         for _n in 1..=num_of_keys {
-            let key: String = keysmith::gen_uuid('4');
+            let key: String = uuid::gen_uuid('4');
             println!("{}", key);
         }
     }
@@ -21,7 +21,7 @@ pub fn test_uuid(num_of_keys: u32, opts: TestUuidOpts) {
         println!("UUIDs (nonstandard):");
         println!("");
         for _n in 1..=num_of_keys {
-            let key: String = keysmith::gen_uuid('n');
+            let key: String = uuid::gen_uuid('n');
             println!("{}", key);
         }
     }
