@@ -14,4 +14,4 @@ categories = ["cryptography","data-structures"]
 
 [dependencies]
 rand = "0.8.5"
-# chrono = "0.4.22" # Using this soon-ish
+chrono = "0.4.22"

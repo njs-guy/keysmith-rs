@@ -1,5 +1,6 @@
 mod test_key;
 mod test_uuid;
+mod test_timestamp;
 mod test_gen_char;
 mod test_readme;
 
@@ -8,10 +9,11 @@ fn main() {
     let num_of_keys = 10;
 
     // turn modules on/off
-    let keys = true;
-    let uuid = true;
-    let gen_char = true;
-    let readme_code = true;
+    let keys = false;
+    let uuid = false;
+    let timestamp = true;
+    let gen_char = false;
+    let readme_code = false;
     
     // which gen_key functions to test
     let gen_key_opts = test_key::TestKeyOpts {
@@ -33,6 +35,12 @@ fn main() {
         uuidn: true
     };
 
+    let timestamp_opts = test_timestamp::TestTimestampOpts {
+        string: true,
+        i64: true,
+    };
+
+    // which char functions to test
     let char_opts = test_gen_char::TestGenCharOpts {
         char: true,
         uuid_v4: true,
@@ -43,9 +51,12 @@ fn main() {
         test_key::test_key_gen(num_of_keys, gen_key_opts);
     }
 
-    
     if uuid {
         test_uuid::test_uuid(num_of_keys, uuid_opts);
+    }
+
+    if timestamp {
+        test_timestamp::test_timestamp(timestamp_opts);
     }
     
     if gen_char {
