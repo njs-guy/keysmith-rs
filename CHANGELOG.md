@@ -4,7 +4,10 @@ For the source code of each version, see the [tags page](https://github.com/njsh
 ***CAUTION***: v0.3.0 introduces breaking changes. Mainly with importing modules. Be careful when upgrading from an older version.
 
 ## Features
-- You can now generate keys with only numbers and letters.
+- Can now get a timestamp for the current time.
+  - Use get_timestamp() or get_timestamp_i64() for this.
+  - Based on number of seconds since the first second of 2022.
+- Can now generate keys with only numbers and letters.
   - Use gen_nums_and_letters() for this.
   - gen_nums_and_letters_lower() for just lowercase letters.
   - gen_nums_and_letters_upper() for just uppercase letters.
@@ -14,6 +17,10 @@ For the source code of each version, see the [tags page](https://github.com/njsh
 
 ## API
 - Functions have been separated into different modules. Import relevant features with keysmith::{key, gen_char, uuid} where necessary. See [usage](README.md#usage).
+
+## Testing
+- Can now turn toggle individual modules and functions.
+- Cleaned up ks-tests crate.
 
 ## Development
 - gen_char() and gen_uuid_char() are now public and can be used with the keysmith crate.
@@ -37,6 +44,7 @@ You can now generate keys with only specific kinds of characters. For more detai
 
 # v0.1.1
 - gen_key() can now generate uppercase letters.
+- Fixed a build error on Linux.
 
 # v0.1.0
 - First release.
