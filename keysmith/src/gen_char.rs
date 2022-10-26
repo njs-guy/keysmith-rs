@@ -12,8 +12,6 @@ fn push_poss_chars(char_set_name: &str) -> &str {
     return possible_chars.get(char_set_name).expect(&expect_msg);
 }
 
-// TODO: Access gen_char() publicly when importing keysmith
-
 // Generates a char for a key
 pub fn gen_char(
     nums: bool, 
