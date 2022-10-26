@@ -1,4 +1,4 @@
-use keysmith::{key};
+use keysmith::key;
 
 pub struct TestKeyOpts {
     pub keys: bool,

@@ -1,10 +1,22 @@
 For the source code of each version, see the [tags page](https://github.com/njshockey/keysmith-rs/tags).
 
 # v0.3.0
+***CAUTION***: v0.3.0 introduces breaking changes. Mainly with importing modules. Be careful when upgrading from an older version.
+
+## Features
 - You can now generate keys with only numbers and letters.
   - Use gen_nums_and_letters() for this.
   - gen_nums_and_letters_lower() for just lowercase letters.
   - gen_nums_and_letters_upper() for just uppercase letters.
+- Generate a single character with the gen_char module.
+  - gen_char() to generate a character found in gen_key().
+  - gen_uuid_char() to generate a character found in gen_uuid().
+
+## API
+- Functions have been separated into different modules. Import relevant features with keysmith::{key, gen_char, uuid} where necessary. See [usage](README.md#usage).
+
+## Development
+- gen_char() and gen_uuid_char() are now public and can be used with the keysmith crate.
 - Cleaned up a lot of code under the hood.
 
 # v0.2.1
