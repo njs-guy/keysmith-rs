@@ -79,7 +79,7 @@ pub fn test_key_gen(num_of_keys: u32, opts: TestKeyOpts) {
     }
 
     if opts.nums_and_letters_upper {
-        println!("Numbers and lowercase letters only:");
+        println!("Numbers and uppercase letters only:");
         println!("");
         for _n in 1..=num_of_keys {
             let key: String = key::gen_nums_and_letters_upper(32);

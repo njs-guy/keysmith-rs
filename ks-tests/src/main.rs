@@ -9,9 +9,9 @@ fn main() {
     let num_of_keys = 10;
 
     // turn modules on/off
-    let keys = false;
+    let keys = true;
     let uuid = false;
-    let timestamp = true;
+    let timestamp = false;
     let gen_char = false;
     let readme_code = false;
     
