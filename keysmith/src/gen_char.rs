@@ -1,3 +1,10 @@
+//! Generate a single character for use in a key.
+//! 
+//! This is the same module used internally to generate keys.
+//! The other modules are recommended, but this is
+//! for when/if you need more options than what's
+//! here by default.
+
 mod possible_chars;
 use possible_chars::{get_poss_chars, get_uuid_chars};
 
@@ -12,7 +19,9 @@ fn push_poss_chars(char_set_name: &str) -> &str {
     return possible_chars.get(char_set_name).expect(&expect_msg);
 }
 
-// Generates a char for a key
+// TODO: Use a public struct for gen_char arguments
+
+/// Generates a char for a key. Arguments are what kinds of chars can be generated.
 pub fn gen_char(
     nums: bool, 
     letters:bool, 
@@ -55,7 +64,11 @@ pub fn gen_char(
     c // Return output as char
 }
 
-// Generates a uuid char for the specified version
+/// Generates a UUID char for the specified version.
+/// 
+/// Version input should be either '4' or 'n'. 
+/// 
+/// Returns '0' if the input is invalid.
 pub fn gen_uuid_char(version: char) -> char {
     let c: char;
 

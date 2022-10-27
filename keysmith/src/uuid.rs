@@ -1,8 +1,19 @@
+//! Generates a UUID
+//! 
+//! Currently only version 4 or nonstandard using more possible letters.
+
 use crate::gen_char::gen_uuid_char;
 
-// Generate a uuid. Ex: fc402d52-70be-7f09-caed-8da65db08985
-// Version 'n' is nonstandard which is
-// not necessarily recommended but could be useful.
+/// Generate a UUID. 
+/// 
+/// The version input should be either '4' or 'n'.
+/// 
+/// Version 'n' is nonstandard which is
+/// not necessarily recommended but could be useful.
+/// 
+/// v4 Ex: fc402d52-70be-7f09-caed-8da65db08985
+/// 
+/// nonstandard Ex: eko0c6ph-k2ok-60rr-pj78-mns182t9vurf
 pub fn gen_uuid(version: char) -> String {
     let mut output = String::from("");
     let mut c: char;

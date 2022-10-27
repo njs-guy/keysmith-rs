@@ -1,3 +1,5 @@
+//! Generates keys with specific configs
+
 use crate::gen_char::gen_char;
 
 struct GenCharOpts {
