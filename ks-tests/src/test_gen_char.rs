@@ -15,7 +15,16 @@ pub fn test_gen_char(num_of_chars: u32, opts: TestGenCharOpts) {
     
         for _n in 1..=num_of_chars {
             // Generate a char from any character except unsafe_sp_chars.
-            let c: char = gen_char::gen_char(true, true, true, true, false);
+
+            let opts = gen_char::GenCharOpts {
+                nums: true,
+                letters: true,
+                upper: true,
+                safe_sp_chars: true,
+                unsafe_sp_chars: false,
+            };
+
+            let c: char = gen_char::gen_char(opts);
             println!("{}", c);
         }
     }

@@ -10,9 +10,9 @@ fn main() {
 
     // turn modules on/off
     let keys = true;
-    let uuid = false;
+    let uuid = true;
     let timestamp = false;
-    let gen_char = false;
+    let gen_char = true;
     let readme_code = false;
     
     // which gen_key functions to test

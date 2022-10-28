@@ -25,7 +25,6 @@
 //! ```
 //! 
 //! # Usage
-    //TODO: Usage is currently outdated. v0.2.1 is the latest these instructions work with.
 //!
 //! First, add this to your `Cargo.toml` dependencies. Check out the [crate page](https://crates.io/crates/keysmith) to make sure you're using the latest version.
 //!

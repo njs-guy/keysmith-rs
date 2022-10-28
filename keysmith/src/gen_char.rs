@@ -19,36 +19,43 @@ fn push_poss_chars(char_set_name: &str) -> &str {
     return possible_chars.get(char_set_name).expect(&expect_msg);
 }
 
-// TODO: Use a public struct for gen_char arguments
+/// Options for gen_char()
+#[derive(Debug, Copy, Clone)]
+pub struct GenCharOpts {
+    /// Generate numbers?
+    pub nums: bool,
+    /// Generate letters?
+    pub letters: bool,
+    /// Generate uppercase letters?
+    pub upper: bool,
+    /// Generate safe special characters?
+    pub safe_sp_chars: bool,
+    /// Generate unsafe special characters? (false is recommended)
+    pub unsafe_sp_chars: bool,
+}
 
 /// Generates a char for a key. Arguments are what kinds of chars can be generated.
-pub fn gen_char(
-    nums: bool, 
-    letters:bool, 
-    upper: bool, 
-    safe_sp_ch: bool, 
-    unsafe_sp_ch: bool,
-) -> char {
+pub fn gen_char(opts: GenCharOpts) -> char {
     let mut chars = String::from("");
 
     // Set allowed characters
-    if nums {
+    if opts.nums {
         chars.push_str(push_poss_chars("numbers"));
     }
 
-    if letters {
+    if opts.letters {
         chars.push_str(push_poss_chars("en_alphabet"));
         
-        if upper {
+        if opts.upper {
             chars.push_str(&push_poss_chars("en_alphabet").to_uppercase());
         }
     }
 
-    if safe_sp_ch {
+    if opts.safe_sp_chars {
         chars.push_str(push_poss_chars("safe_sp_chars"));
     }
 
-    if unsafe_sp_ch {
+    if opts.unsafe_sp_chars {
         chars.push_str(
             push_poss_chars("unsafe_sp_chars"));
     }
@@ -83,7 +90,15 @@ pub fn gen_uuid_char(version: char) -> char {
 
 // Generate numbers and letters (no uppercase)
 fn gen_uuid_nonstandard_char() -> char {
-    gen_char(true, true, false, false, false)
+    let opts = GenCharOpts {
+        nums: true,
+        letters: true,
+        upper: false,
+        safe_sp_chars: false,
+        unsafe_sp_chars: false,
+    };
+
+    gen_char(opts)
 }
 
 // Generate numbers or letters a-f

@@ -1,25 +1,11 @@
 //! Generates keys with specific configs
 
-use crate::gen_char::gen_char;
-
-struct GenCharOpts {
-    nums: bool,
-    letters: bool,
-    upper: bool,
-    safe_sp_ch: bool,
-    unsafe_sp_ch: bool,
-}
+use crate::gen_char::{gen_char, GenCharOpts};
 
 fn gen_char_from_opts(length: u32, opts: GenCharOpts) -> String {
     let mut output = String::from("");
     for _n in 1..=length {
-        let c = gen_char(
-            opts.nums, // nums
-            opts.letters, // letters
-            opts.upper, // upper
-            opts.safe_sp_ch, // safe_sp_ch
-            opts.unsafe_sp_ch // unsafe_sp_ch
-        );
+        let c = gen_char(opts);
 
         output.push(c);
     }
@@ -35,8 +21,8 @@ pub fn gen_key(length: u32) -> String {
         nums: true, 
         letters: true, 
         upper: true, 
-        safe_sp_ch: true, 
-        unsafe_sp_ch: false 
+        safe_sp_chars: true, 
+        unsafe_sp_chars: false 
     };
 
     gen_char_from_opts(length, opts)
@@ -50,8 +36,8 @@ pub fn gen_nums(length: u32) -> String {
         nums: true, 
         letters: false, 
         upper: false, 
-        safe_sp_ch: false, 
-        unsafe_sp_ch: false 
+        safe_sp_chars: false, 
+        unsafe_sp_chars: false 
     };
 
     gen_char_from_opts(length, opts)
@@ -65,8 +51,8 @@ pub fn gen_letters(length: u32) -> String {
         nums: false, 
         letters: true, 
         upper: true, 
-        safe_sp_ch: false, 
-        unsafe_sp_ch: false 
+        safe_sp_chars: false, 
+        unsafe_sp_chars: false 
     };
 
     gen_char_from_opts(length, opts)
@@ -80,8 +66,8 @@ pub fn gen_letters_lower(length: u32) -> String {
         nums: false,
         letters: true,
         upper: false,
-        safe_sp_ch: false,
-        unsafe_sp_ch: false
+        safe_sp_chars: false,
+        unsafe_sp_chars: false
     };
 
     gen_char_from_opts(length, opts)
@@ -95,8 +81,8 @@ pub fn gen_letters_upper(length: u32) -> String {
         nums: false,
         letters: true,
         upper: false,
-        safe_sp_ch: false,
-        unsafe_sp_ch: false
+        safe_sp_chars: false,
+        unsafe_sp_chars: false
     };
 
     gen_char_from_opts(length, opts).to_uppercase()
@@ -110,8 +96,8 @@ pub fn gen_nums_and_letters(length: u32) -> String {
         nums: true,
         letters: true,
         upper: true,
-        safe_sp_ch: false,
-        unsafe_sp_ch: false
+        safe_sp_chars: false,
+        unsafe_sp_chars: false
     };
 
     gen_char_from_opts(length, opts)
@@ -125,8 +111,8 @@ pub fn gen_nums_and_letters_lower(length: u32) -> String {
         nums: true,
         letters: true,
         upper: false,
-        safe_sp_ch: false,
-        unsafe_sp_ch: false
+        safe_sp_chars: false,
+        unsafe_sp_chars: false
     };
 
     gen_char_from_opts(length, opts)
@@ -140,8 +126,8 @@ pub fn gen_nums_and_letters_upper(length: u32) -> String {
         nums: true,
         letters: true,
         upper: false,
-        safe_sp_ch: false,
-        unsafe_sp_ch: false
+        safe_sp_chars: false,
+        unsafe_sp_chars: false
     };
 
     gen_char_from_opts(length, opts).to_uppercase()
@@ -157,8 +143,8 @@ pub fn gen_special_chars(length: u32) -> String {
         nums: false, 
         letters: false, 
         upper: false, 
-        safe_sp_ch: true, 
-        unsafe_sp_ch: false 
+        safe_sp_chars: true, 
+        unsafe_sp_chars: false 
     };
 
     gen_char_from_opts(length, opts)
@@ -184,8 +170,8 @@ pub fn gen_special_chars_unsafe(length: u32) -> String {
         nums: false, 
         letters: false, 
         upper: false, 
-        safe_sp_ch: false, 
-        unsafe_sp_ch: true 
+        safe_sp_chars: false, 
+        unsafe_sp_chars: true 
     };
 
     gen_char_from_opts(length, opts)
