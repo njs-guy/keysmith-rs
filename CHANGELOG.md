@@ -19,7 +19,7 @@ For the source code of each version, see the [tags page](https://github.com/njsh
 - Functions have been separated into different modules. Import relevant features with keysmith::{key, gen_char, uuid} where necessary. See [usage](README.md#usage).
 
 ## Docs
-- Rust generated auto docs. Link to newest version can be found on the [crate page](https://crates.io/crates/keysmith) under documentation.
+- Rust generated auto docs. Link to newest version can be found on [docs.rs](https://docs.rs/keysmith/latest/keysmith/).
 
 ## Testing
 - Can now turn toggle individual modules and functions.
