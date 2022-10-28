@@ -16,13 +16,13 @@ For the source code of each version, see the [tags page](https://github.com/njsh
   - gen_uuid_char() to generate a character found in gen_uuid().
 
 ## API
-- Functions have been separated into different modules. Import relevant features with keysmith::{key, gen_char, uuid} where necessary. See [usage](README.md#usage).
+- Functions have been separated into different modules. Import relevant features with keysmith::{key, timestamp, uuid, gen_char} where necessary. See [docs](https://docs.rs/keysmith/latest/keysmith/).
 
 ## Docs
 - Rust generated auto docs. Link to newest version can be found on [docs.rs](https://docs.rs/keysmith/latest/keysmith/).
 
 ## Testing
-- Can now turn toggle individual modules and functions.
+- Can now toggle individual modules and functions.
 - Cleaned up ks-tests crate.
 
 ## Development
