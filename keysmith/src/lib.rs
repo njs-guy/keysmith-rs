@@ -109,6 +109,43 @@
 //!    // ex: <#=`=*%{:`*%!<{"|*?'!#\#|?\+{=\}
 //! }
 //! ```
+//! 
+//! If you need something more specific than what's already here by default,
+//! you can generate a single char.
+//! 
+//! ```
+//! use keysmith::gen_char::{gen_char, GenCharOpts};
+//! 
+//! fn main() {
+//!     let opts = GenCharOpts {
+//!            nums: true,
+//!            letters: true,
+//!            upper: true,
+//!            safe_sp_chars: true,
+//!            unsafe_sp_chars: false,
+//!     };
+//! 
+//!     let c: char = gen_char(opts);
+//!     println!("{}", c);
+//!     // ex: H
+//! }
+//! ```
+//! 
+//! Keysmith also lets you get a timestamp.
+//! This is in seconds since the first second of 2022. 
+//! String is the default type for this, but you can also return an i64.
+//! ```
+//! use keysmith::timestamp;
+//! 
+//! fn main() {
+//!     let stamp: String = timestamp::get_timestamp();
+//!     let stamp2: i64 = timestamp::get_timestamp_i64();
+//! 
+//!     println!("{}", stamp);
+//!     println!("{}", stamp2);
+//!     // ex: 25928414
+//! }
+//! ```
 
 pub mod key;
 pub mod timestamp;

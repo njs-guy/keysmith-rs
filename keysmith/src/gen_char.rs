@@ -34,7 +34,7 @@ pub struct GenCharOpts {
     pub unsafe_sp_chars: bool,
 }
 
-/// Generates a char for a key. Arguments are what kinds of chars can be generated.
+/// Generates a char for a key. Use GenCharOpts for options.
 pub fn gen_char(opts: GenCharOpts) -> char {
     let mut chars = String::from("");
 
