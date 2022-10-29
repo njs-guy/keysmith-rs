@@ -1,11 +1,12 @@
 [package]
 name = "keysmith"
-version = "0.2.1"
+version = "0.3.0"
 edition = "2021"
-authors = ["Nick Shockey"]
+authors = ["Nick Shockey <shockeynj@gmail.com>"]
 readme = "../README.md"
 description = "Create keys or ids for data"
 repository = "https://github.com/njshockey/keysmith-rs"
+homepage = "https://github.com/njshockey/keysmith-rs"
 license = "MIT OR Apache-2.0"
 keywords = ["database", "text", "utility", "string", "sql"]
 categories = ["cryptography","data-structures"]
@@ -14,4 +15,4 @@ categories = ["cryptography","data-structures"]
 
 [dependencies]
 rand = "0.8.5"
-# chrono = "0.4.22" # Using this soon-ish
+chrono = "0.4.22"

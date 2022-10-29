@@ -1,3 +1,10 @@
+//! Generate a single character for use in a key.
+//! 
+//! This is the same module used internally to generate keys.
+//! The other modules are recommended, but this is
+//! for when/if you need more options than what's
+//! here by default.
+
 mod possible_chars;
 use possible_chars::{get_poss_chars, get_uuid_chars};
 
@@ -12,34 +19,43 @@ fn push_poss_chars(char_set_name: &str) -> &str {
     return possible_chars.get(char_set_name).expect(&expect_msg);
 }
 
-// Generates a char for a key
-pub fn gen_char(
-    nums: bool, 
-    letters:bool, 
-    upper: bool, 
-    safe_sp_ch: bool, 
-    unsafe_sp_ch: bool,
-) -> char {
+/// Options for gen_char()
+#[derive(Debug, Copy, Clone)]
+pub struct GenCharOpts {
+    /// Generate numbers?
+    pub nums: bool,
+    /// Generate letters?
+    pub letters: bool,
+    /// Generate uppercase letters?
+    pub upper: bool,
+    /// Generate safe special characters?
+    pub safe_sp_chars: bool,
+    /// Generate unsafe special characters? (false is recommended)
+    pub unsafe_sp_chars: bool,
+}
+
+/// Generates a char for a key. Use GenCharOpts for options.
+pub fn gen_char(opts: GenCharOpts) -> char {
     let mut chars = String::from("");
 
     // Set allowed characters
-    if nums {
+    if opts.nums {
         chars.push_str(push_poss_chars("numbers"));
     }
 
-    if letters {
+    if opts.letters {
         chars.push_str(push_poss_chars("en_alphabet"));
         
-        if upper {
+        if opts.upper {
             chars.push_str(&push_poss_chars("en_alphabet").to_uppercase());
         }
     }
 
-    if safe_sp_ch {
+    if opts.safe_sp_chars {
         chars.push_str(push_poss_chars("safe_sp_chars"));
     }
 
-    if unsafe_sp_ch {
+    if opts.unsafe_sp_chars {
         chars.push_str(
             push_poss_chars("unsafe_sp_chars"));
     }
@@ -55,7 +71,11 @@ pub fn gen_char(
     c // Return output as char
 }
 
-// Generates a uuid char for the specified version
+/// Generates a UUID char for the specified version.
+/// 
+/// Version input should be either '4' or 'n'. 
+/// 
+/// Returns '0' if the input is invalid.
 pub fn gen_uuid_char(version: char) -> char {
     let c: char;
 
@@ -70,7 +90,15 @@ pub fn gen_uuid_char(version: char) -> char {
 
 // Generate numbers and letters (no uppercase)
 fn gen_uuid_nonstandard_char() -> char {
-    gen_char(true, true, false, false, false)
+    let opts = GenCharOpts {
+        nums: true,
+        letters: true,
+        upper: false,
+        safe_sp_chars: false,
+        unsafe_sp_chars: false,
+    };
+
+    gen_char(opts)
 }
 
 // Generate numbers or letters a-f
