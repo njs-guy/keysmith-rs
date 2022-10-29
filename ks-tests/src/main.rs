@@ -2,7 +2,6 @@ mod test_key;
 mod test_uuid;
 mod test_timestamp;
 mod test_gen_char;
-mod test_readme;
 
 fn main() {
     // The length of each key
@@ -13,7 +12,6 @@ fn main() {
     let uuid = false;
     let timestamp = true;
     let gen_char = false;
-    let readme_code = false;
     
     // which gen_key functions to test
     let gen_key_opts = test_key::TestKeyOpts {
@@ -61,15 +59,5 @@ fn main() {
     
     if gen_char {
         test_gen_char::test_gen_char(num_of_keys, char_opts)
-    }
-    
-    if readme_code {
-        test_readme::readme_code1();
-        println!("");
-        test_readme::readme_code2();
-        println!("");
-        test_readme::readme_code3();
-        println!("");
-        test_readme::readme_code4();
     }
 }
