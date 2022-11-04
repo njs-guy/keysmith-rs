@@ -1,29 +1,29 @@
 //! Create keys or ids for data with Rust.
-//! 
+//!
 //! ***WARNING***
-//! 
+//!
 //! Keysmith is currently a WIP and not recommended for production projects yet.
-//! 
+//!
 //! Here's some example keys:
-//! 
+//!
 //! ```text
 //! 5WdT@KfYRyRDqh0AAVUsyitSXbm4OQwzClX9.XYn5kLmKeObCf8YE3HqzHdU3UTS
 //! g1Y_Zp9-9rDf7VAaR1KGnH9Uf5klGjSQ6P2rAjK35iK-GnZ@dVXYu.aElzTfTOaK
 //! M3rkxIbrD0lz-SpUBe704X2)Gd(_WprzRJW7N51O@_58180Gs9esIVBO5.OdFOlY
 //! ```
-//! 
-//! This looks like gibberish, but that's the point. Two id's in a database should not overlap. 
-//! So if you need a lot of entries, you need to reduce the odds of that happening. 
+//!
+//! This looks like gibberish, but that's the point. Two id's in a database should not overlap.
+//! So if you need a lot of entries, you need to reduce the odds of that happening.
 //! If the odds of two identical id's are astronomically low, you shouldn't even need to check for an existing id in the first place.
 //! Keysmith does that generation for you and outputs it as a String.
-//! 
+//!
 //! You can also generate version 4 UUID's. Examples:
 //! ```text
 //! be3b5529-931b-6b75-1678-a057bccf71c9
 //! 440146ab-a19a-8a36-2d4b-ba19a79570d4
 //! 0090da40-6ce2-59d3-629d-11b293c9e2d3
 //! ```
-//! 
+//!
 //! # Usage
 //!
 //! First, add this to your `Cargo.toml` dependencies. Check out the [crate page](https://crates.io/crates/keysmith) to make sure you're using the latest version.
@@ -52,11 +52,11 @@
 //!    // ex: eko0c6ph-k2ok-60rr-pj78-mns182t9vurf
 //! }
 //! ```
-//! The first function generates a key with a length of 64 characters as a String. The second generates a version 4 UUID. 
+//! The first function generates a key with a length of 64 characters as a String. The second generates a version 4 UUID.
 //! The third generates a "nonstandard" UUID. It uses the same structure as a version 4, but it can have any letter instead of just a-f.
 //! The "nonstandard" version is obviously not standard, but may be useful depending on your preferences.
 //!
-//! 
+//!
 //! You can also generate a key consisting of only a specific kind of character.
 //!
 //! ```
@@ -109,13 +109,13 @@
 //!    // ex: <#=`=*%{:`*%!<{"|*?'!#\#|?\+{=\}
 //! }
 //! ```
-//! 
+//!
 //! If you need something more specific than what's already here by default,
 //! you can generate a single char.
-//! 
+//!
 //! ```
 //! use keysmith::gen_char::{gen_char, GenCharOpts};
-//! 
+//!
 //! fn main() {
 //!     let opts = GenCharOpts {
 //!            nums: true,
@@ -124,23 +124,23 @@
 //!            safe_sp_chars: true,
 //!            unsafe_sp_chars: false,
 //!     };
-//! 
+//!
 //!     let c: char = gen_char(opts);
 //!     println!("{}", c);
 //!     // ex: H
 //! }
 //! ```
-//! 
+//!
 //! Keysmith also lets you get a timestamp.
-//! This is in seconds since the first second of 2022. 
+//! This is in seconds since the first second of 2022.
 //! String is the default type for this, but you can also return an i64.
 //! ```
 //! use keysmith::timestamp;
-//! 
+//!
 //! fn main() {
 //!     let stamp: String = timestamp::get_timestamp();
 //!     let stamp2: i64 = timestamp::get_timestamp_i64();
-//! 
+//!
 //!     println!("{}", stamp);
 //!     println!("{}", stamp2);
 //!     // ex: 25928414
