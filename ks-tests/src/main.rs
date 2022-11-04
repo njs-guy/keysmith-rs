@@ -4,60 +4,60 @@ mod test_timestamp;
 mod test_gen_char;
 
 fn main() {
-    // The length of each key
-    let num_of_keys = 10;
+	// The length of each key
+	let num_of_keys = 10;
 
-    // turn modules on/off
-    let keys = false;
-    let uuid = false;
-    let timestamp = true;
-    let gen_char = false;
-    
-    // which gen_key functions to test
-    let gen_key_opts = test_key::TestKeyOpts {
-        keys: true,
-        nums: true,
-        letters: true,
-        letters_lower: true,
-        letters_upper: true,
-        nums_and_letters: true,
-        nums_and_letters_lower: true,
-        nums_and_letters_upper: true,
-        special_chars: true,
-        special_chars_unsafe: true
-    };
-    
-    // which uuid functions to test
-    let uuid_opts = test_uuid::TestUuidOpts {
-        uuid4: true,
-        uuidn: true
-    };
+	// turn modules on/off
+	let keys = false;
+	let uuid = false;
+	let timestamp = true;
+	let gen_char = false;
 
-    let timestamp_opts = test_timestamp::TestTimestampOpts {
-        string: true,
-        i64: true,
-    };
+	// which gen_key functions to test
+	let gen_key_opts = test_key::TestKeyOpts {
+		keys: true,
+		nums: true,
+		letters: true,
+		letters_lower: true,
+		letters_upper: true,
+		nums_and_letters: true,
+		nums_and_letters_lower: true,
+		nums_and_letters_upper: true,
+		special_chars: true,
+		special_chars_unsafe: true,
+	};
 
-    // which char functions to test
-    let char_opts = test_gen_char::TestGenCharOpts {
-        char: true,
-        uuid_v4: true,
-        uuid_n: true,
-    };
+	// which uuid functions to test
+	let uuid_opts = test_uuid::TestUuidOpts {
+		uuid4: true,
+		uuidn: true,
+	};
 
-    if keys {
-        test_key::test_key_gen(num_of_keys, gen_key_opts);
-    }
+	let timestamp_opts = test_timestamp::TestTimestampOpts {
+		string: true,
+		i64: true,
+	};
 
-    if uuid {
-        test_uuid::test_uuid(num_of_keys, uuid_opts);
-    }
+	// which char functions to test
+	let char_opts = test_gen_char::TestGenCharOpts {
+		char: true,
+		uuid_v4: true,
+		uuid_n: true,
+	};
 
-    if timestamp {
-        test_timestamp::test_timestamp(timestamp_opts);
-    }
-    
-    if gen_char {
-        test_gen_char::test_gen_char(num_of_keys, char_opts)
-    }
+	if keys {
+		test_key::test_key_gen(num_of_keys, gen_key_opts);
+	}
+
+	if uuid {
+		test_uuid::test_uuid(num_of_keys, uuid_opts);
+	}
+
+	if timestamp {
+		test_timestamp::test_timestamp(timestamp_opts);
+	}
+
+	if gen_char {
+		test_gen_char::test_gen_char(num_of_keys, char_opts)
+	}
 }
