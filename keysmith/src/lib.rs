@@ -26,7 +26,8 @@
 //!
 //! # Usage
 //!
-//! First, add this to your `Cargo.toml` dependencies. Check out the [crate page](https://crates.io/crates/keysmith) to make sure you're using the latest version.
+//! First, add this to your `Cargo.toml` dependencies.
+//! Check out the [crate page](https://crates.io/crates/keysmith) to make sure you're using the latest version.
 //!
 //! ```toml
 //! [dependencies]
@@ -52,9 +53,12 @@
 //!    // ex: eko0c6ph-k2ok-60rr-pj78-mns182t9vurf
 //! }
 //! ```
-//! The first function generates a key with a length of 64 characters as a String. The second generates a version 4 UUID.
-//! The third generates a "nonstandard" UUID. It uses the same structure as a version 4, but it can have any letter instead of just a-f.
-//! The "nonstandard" version is obviously not standard, but may be useful depending on your preferences.
+//! The first function generates a key with a length of 64 characters as a String.
+//! The second generates a version 4 UUID.
+//! The third generates a "nonstandard" UUID.
+//! It uses the same structure as a version 4, but it can have any letter instead of just a-f.
+//! The "nonstandard" version is obviously not standard,
+//! but may be useful depending on your preferences.
 //!
 //!
 //! You can also generate a key consisting of only a specific kind of character.
@@ -95,7 +99,8 @@
 //! }
 //! ```
 //!
-//! You can also generate a key using only "unsafe" special characters. Be careful with this, as these characters generally break file structures or URL's which is why they are considered unsafe.
+//! You can also generate a key using only "unsafe" special characters.
+//! Be careful with this, as these characters generally break file structures or URL's which is why they are considered unsafe.
 //! Generating a key of this type is not recommended, but could be useful to *someone*.
 //!
 //! ```
