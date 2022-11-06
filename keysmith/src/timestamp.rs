@@ -4,11 +4,12 @@ use chrono::{ DateTime, Utc };
 
 const DEF_EPOCH: &str = "Sat, 1 Jan 2022 00:00:00 +0000";
 
-// Generates a timestamp from the seconds since 00:00:00 Jan 1, 2022
+// Generates a timestamp from the input epoch
+// Format = "Sat, 1 Jan 2022 00:00:00 +0000"
 fn gen_timestamp(epoch_str: &str) -> i64 {
-	let epoch = DateTime::parse_from_rfc2822(
-		epoch_str
-	).expect("ERROR: Could not get timestamp epoch.");
+	let epoch = DateTime::parse_from_rfc2822(epoch_str).expect(
+		"ERROR: Could not get timestamp epoch."
+	);
 
 	let utc = Utc::now();
 	let stamp = utc.timestamp() - epoch.timestamp();
@@ -26,6 +27,24 @@ pub fn get_timestamp() -> String {
 /// Gets a timestamp from the seconds since 00:00:00 Jan 1, 2022 as an i64
 pub fn get_timestamp_i64() -> i64 {
 	gen_timestamp(DEF_EPOCH)
+}
+
+/// Gets a timestamp from a custom epoch as a String
+///
+/// Format = "Sat, 1 Jan 2022 00:00:00 +0000"
+pub fn get_timestamp_custom(epoch: &str) -> String {
+	let stamp = gen_timestamp(epoch).to_string();
+
+	stamp
+}
+
+/// Gets a timestamp from a custom epoch as an i64
+///
+/// Format = "Sat, 1 Jan 2022 00:00:00 +0000"
+pub fn get_timestamp_i64_custom(epoch: &str) -> i64 {
+	let stamp = gen_timestamp(epoch);
+
+	stamp
 }
 
 // TODO: More tests to make sure that the format is correct. Need to allow custom epochs first.

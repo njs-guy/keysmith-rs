@@ -36,6 +36,8 @@ fn main() {
 	let timestamp_opts = test_timestamp::TestTimestampOpts {
 		string: true,
 		i64: true,
+		custom: true,
+		i64_custom: true,
 	};
 
 	// which char functions to test
