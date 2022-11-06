@@ -1,4 +1,6 @@
-//! Gets a timestamp in seconds since the first second of 2022
+//! Gets a timestamp.
+//! This is in seconds since the first second of 2022,
+//! a custom epoch, or from plain UTC.
 
 use chrono::{ DateTime, Utc };
 
@@ -17,30 +19,30 @@ fn gen_timestamp(epoch_str: &str) -> i64 {
 	stamp
 }
 
-/// Gets a timestamp from the seconds since 00:00:00 Jan 1, 2022 as a String
+/// Gets a timestamp from the seconds since 00:00:00 Jan 1, 2022 as a String.
 pub fn get_timestamp() -> String {
 	let stamp = gen_timestamp(DEF_EPOCH).to_string();
 
 	stamp
 }
 
-/// Gets a timestamp from the seconds since 00:00:00 Jan 1, 2022 as an i64
+/// Gets a timestamp from the seconds since 00:00:00 Jan 1, 2022 as an i64.
 pub fn get_timestamp_i64() -> i64 {
 	gen_timestamp(DEF_EPOCH)
 }
 
-/// Gets a timestamp from a custom epoch as a String
+/// Gets a timestamp from a custom epoch as a String.
 ///
-/// Format = "Sat, 1 Jan 2022 00:00:00 +0000"
+/// Format = "Sat, 1 Jan 2022 00:00:00 +0000".
 pub fn get_timestamp_custom(epoch: &str) -> String {
 	let stamp = gen_timestamp(epoch).to_string();
 
 	stamp
 }
 
-/// Gets a timestamp from a custom epoch as an i64
+/// Gets a timestamp from a custom epoch as an i64.
 ///
-/// Format = "Sat, 1 Jan 2022 00:00:00 +0000"
+/// Format = "Sat, 1 Jan 2022 00:00:00 +0000".
 pub fn get_timestamp_i64_custom(epoch: &str) -> i64 {
 	let stamp = gen_timestamp(epoch);
 
