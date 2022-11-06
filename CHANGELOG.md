@@ -5,6 +5,7 @@ For the source code of each version, see the [tags page](https://github.com/njsh
 ## Features
 
 -   Can now generate timestamps with custom epochs.
+-   Can now generate timestamps from the first second of 1970 (utc).
 
 ## Development
 
