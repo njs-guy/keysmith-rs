@@ -38,6 +38,8 @@ fn main() {
 		i64: true,
 		custom: true,
 		i64_custom: true,
+		utc: true,
+		utc_i64: true,
 	};
 
 	// which char functions to test

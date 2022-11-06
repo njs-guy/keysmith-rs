@@ -49,4 +49,20 @@ pub fn get_timestamp_i64_custom(epoch: &str) -> i64 {
 	stamp
 }
 
+/// Gets a timestamp since the first second of 1970 as a String.
+pub fn get_timestamp_utc() -> String {
+	let epoch = "Thu, 1 Jan 1970 00:00:00 +0000";
+	let stamp = gen_timestamp(epoch).to_string();
+
+	stamp
+}
+
+/// Gets a timestamp since the first second of 1970 as an i64.
+pub fn get_timestamp_utc_i64() -> i64 {
+	let epoch = "Thu, 1 Jan 1970 00:00:00 +0000";
+	let stamp = gen_timestamp(epoch);
+
+	stamp
+}
+
 // TODO: More tests to make sure that the format is correct. Need to allow custom epochs first.

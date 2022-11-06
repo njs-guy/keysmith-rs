@@ -5,6 +5,8 @@ pub struct TestTimestampOpts {
 	pub i64: bool,
 	pub custom: bool,
 	pub i64_custom: bool,
+	pub utc: bool,
+	pub utc_i64: bool,
 }
 
 pub fn test_timestamp(opts: TestTimestampOpts) {
@@ -35,6 +37,20 @@ pub fn test_timestamp(opts: TestTimestampOpts) {
 		println!("");
 		let epoch: &str = "Mon, 1 Jan 2018 00:00:00 +0000";
 		let stamp: i64 = timestamp::get_timestamp_i64_custom(epoch);
+		println!("{}", stamp);
+	}
+
+	if opts.utc {
+		println!("Timestamp with no epoch as String:");
+		println!("");
+		let stamp: String = timestamp::get_timestamp_utc();
+		println!("{}", stamp);
+	}
+
+	if opts.utc_i64 {
+		println!("Timestamp with no epoch as i64:");
+		println!("");
+		let stamp: i64 = timestamp::get_timestamp_utc_i64();
 		println!("{}", stamp);
 	}
 }
