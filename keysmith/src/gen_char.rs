@@ -77,21 +77,12 @@ pub fn gen_char(opts: GenCharOpts) -> char {
 ///
 /// Returns '0' if the input is invalid.
 pub fn gen_uuid_char(version: char) -> char {
-	let c;
-
 	match version {
-		'4' => {
-			c = gen_uuid_v4_char();
-		}
-		'n' => {
-			c = gen_uuid_nonstandard_char();
-		}
-		_ => {
-			c = '0';
-		}
-	};
-
-	c // return c as a char
+		'4' => gen_uuid_v4_char(),
+		'n' => gen_uuid_nonstandard_char(),
+		_ => '0',
+	}
+	// Returns result of match version
 }
 
 // Generate numbers and letters (no uppercase)

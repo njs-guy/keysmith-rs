@@ -2,16 +2,17 @@ mod test_key;
 mod test_uuid;
 mod test_timestamp;
 mod test_gen_char;
+mod print_msg;
 
 fn main() {
 	// The length of each key
 	let num_of_keys = 10;
 
 	// turn modules on/off
-	let keys = false;
-	let uuid = false;
+	let keys = true;
+	let uuid = true;
 	let timestamp = true;
-	let gen_char = false;
+	let gen_char = true;
 
 	// which gen_key functions to test
 	let gen_key_opts = test_key::TestKeyOpts {
