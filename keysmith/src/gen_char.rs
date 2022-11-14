@@ -77,7 +77,7 @@ pub fn gen_char(opts: GenCharOpts) -> char {
 ///
 /// Returns '0' if the input is invalid.
 pub fn gen_uuid_char(version: char) -> char {
-	let c: char;
+	let c;
 
 	match version {
 		'4' => {
@@ -89,7 +89,7 @@ pub fn gen_uuid_char(version: char) -> char {
 		_ => {
 			c = '0';
 		}
-	}
+	};
 
 	c // return c as a char
 }
@@ -111,10 +111,10 @@ fn gen_uuid_nonstandard_char() -> char {
 fn gen_uuid_v4_char() -> char {
 	let mut chars = String::from("");
 	let uuid_chars = get_uuid_chars();
-	let expect_msg = format!("Could not convert uuid chars in Hashmap.");
+	let expect_msg = "Could not convert uuid chars in Hashmap.";
 
-	chars.push_str(uuid_chars.get("numbers").expect(&expect_msg));
-	chars.push_str(uuid_chars.get("letters").expect(&expect_msg));
+	chars.push_str(uuid_chars.get("numbers").expect(expect_msg));
+	chars.push_str(uuid_chars.get("letters").expect(expect_msg));
 
 	let mut rng = rand::thread_rng();
 

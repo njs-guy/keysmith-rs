@@ -31,27 +31,25 @@
 //!
 //! ```toml
 //! [dependencies]
-//! keysmith = "0.3.0"
+//! keysmith = "0.3.1"
 //! ```
 //! Next, in the actual code:
 //!
 //! ```
 //! use keysmith::{key, uuid};
 //!
-//! fn main() {
-//!    let key1: String = key::gen_key(64);
-//!    println!("{}", key1);
-//!    // ex: aVCkmMFkv3UqLIU2tC52DQOWrIg4RsaH.xvTCTvA_PVHY@MOIWH~y1610KIZ@qM@
+//! let key1: String = key::gen_key(64);
+//! println!("{}", key1);
+//! // ex: aVCkmMFkv3UqLIU2tC52DQOWrIg4RsaH.xvTCTvA_PVHY@MOIWH~y1610KIZ@qM@
 //!
-//!    let key2: String = uuid::gen_uuid('4');
-//!    println!("{}", key2);
-//!    // ex: da748b8b-e915-661b-466a-0d6a0480112a
+//! let key2: String = uuid::gen_uuid('4');
+//! println!("{}", key2);
+//! // ex: da748b8b-e915-661b-466a-0d6a0480112a
 //!
-//!    let key3: String = uuid::gen_uuid('n');
-//!    println!("{}", key3);
-//!    // "Nonstandard" UUID
-//!    // ex: eko0c6ph-k2ok-60rr-pj78-mns182t9vurf
-//! }
+//! let key3: String = uuid::gen_uuid('n');
+//! println!("{}", key3);
+//! // "Nonstandard" UUID
+//! // ex: eko0c6ph-k2ok-60rr-pj78-mns182t9vurf
 //! ```
 //! The first function generates a key with a length of 64 characters as a String.
 //! The second generates a version 4 UUID.
@@ -66,21 +64,19 @@
 //! ```
 //! use keysmith::key;
 //!
-//! fn main() {
-//!    let key1: String = key::gen_nums(32);
-//!    println!("{}", key1);
-//!    // ex: 04356417134317004828941212534445
+//! let key1: String = key::gen_nums(32);
+//! println!("{}", key1);
+//! // ex: 04356417134317004828941212534445
 //!
-//!    let key2: String = key::gen_letters(32);
-//!    println!("{}", key2);
-//!    // ex: PBSZWwSTmRalGnzeSbQUKmXRikKUWXvj
+//! let key2: String = key::gen_letters(32);
+//! println!("{}", key2);
+//! // ex: PBSZWwSTmRalGnzeSbQUKmXRikKUWXvj
 //!
-//!    let key3: String = key::gen_special_chars(32);
-//!    println!("{}", key3);
-//!    // Special characters generally considered "safe."
-//!    // Possible characters: -_.()~@
-//!    // ex: )@-_~@_@._))~)@))@.)(-)@(.@(~((@
-//! }
+//! let key3: String = key::gen_special_chars(32);
+//! println!("{}", key3);
+//! // Special characters generally considered "safe."
+//! // Possible characters: -_.()~@
+//! // ex: )@-_~@_@._))~)@))@.)(-)@(.@(~((@
 //! ```
 //!
 //! If you want only lowercase or uppercase letters, you can do that, too!
@@ -88,15 +84,13 @@
 //! ```
 //! use keysmith::key;
 //!
-//! fn main() {
-//!    let key1: String = key::gen_letters_lower(32);
-//!    println!("{}", key1);
-//!    // ex: xoewhgvjsqzctfgpaqwnhanbgweflpqc
+//! let key1: String = key::gen_letters_lower(32);
+//! println!("{}", key1);
+//! // ex: xoewhgvjsqzctfgpaqwnhanbgweflpqc
 //!
-//!    let key2: String = key::gen_letters_upper(32);
-//!    println!("{}", key2);
-//!    // ex: EVQMPIHKDBPLZJBPCHTXTIBLYRSFFFUY
-//! }
+//! let key2: String = key::gen_letters_upper(32);
+//! println!("{}", key2);
+//! // ex: EVQMPIHKDBPLZJBPCHTXTIBLYRSFFFUY
 //! ```
 //!
 //! You can also generate a key using only "unsafe" special characters.
@@ -106,13 +100,11 @@
 //! ```
 //! use keysmith::key;
 //!
-//! fn main() {
-//!    let key: String = key::gen_special_chars_unsafe(32);
-//!    println!("{}", key);
+//! let key: String = key::gen_special_chars_unsafe(32);
+//! println!("{}", key);
 //!
-//!    // Possible characters: #%&*+={}\/<>?!$:'"`|
-//!    // ex: <#=`=*%{:`*%!<{"|*?'!#\#|?\+{=\}
-//! }
+//! // Possible characters: #%&*+={}\/<>?!$:'"`|
+//! // ex: <#=`=*%{:`*%!<{"|*?'!#\#|?\+{=\}
 //! ```
 //!
 //! If you need something more specific than what's already here by default,
@@ -121,19 +113,17 @@
 //! ```
 //! use keysmith::gen_char::{gen_char, GenCharOpts};
 //!
-//! fn main() {
-//!     let opts = GenCharOpts {
-//!            nums: true,
-//!            letters: true,
-//!            upper: true,
-//!            safe_sp_chars: true,
-//!            unsafe_sp_chars: false,
-//!     };
+//! let opts = GenCharOpts {
+//!     nums: true,
+//!     letters: true,
+//!     upper: true,
+//!     safe_sp_chars: true,
+//!     unsafe_sp_chars: false,
+//! };
 //!
-//!     let c: char = gen_char(opts);
-//!     println!("{}", c);
-//!     // ex: H
-//! }
+//! let c: char = gen_char(opts);
+//! println!("{}", c);
+//! // ex: H
 //! ```
 //!
 //! Keysmith also lets you get a timestamp.
@@ -142,14 +132,12 @@
 //! ```
 //! use keysmith::timestamp;
 //!
-//! fn main() {
-//!     let stamp: String = timestamp::get_timestamp();
-//!     let stamp2: i64 = timestamp::get_timestamp_i64();
+//! let stamp: String = timestamp::get_timestamp();
+//! let stamp2: i64 = timestamp::get_timestamp_i64();
 //!
-//!     println!("{}", stamp);
-//!     println!("{}", stamp2);
-//!     // ex: 25928414
-//! }
+//! println!("{}", stamp);
+//! println!("{}", stamp2);
+//! // ex: 25928414
 //! ```
 
 pub mod key;
