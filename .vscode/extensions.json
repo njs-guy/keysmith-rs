@@ -1,7 +1,5 @@
 {
   "recommendations": [
     "rust-lang.rust-analyzer",
-    "jinxdash.prettier-rust",
-    "bungcip.better-toml",
   ]
 }
