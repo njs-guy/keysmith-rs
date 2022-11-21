@@ -15,33 +15,33 @@ use crate::gen_char::gen_uuid_char;
 ///
 /// nonstandard Ex: eko0c6ph-k2ok-60rr-pj78-mns182t9vurf
 pub fn gen_uuid(version: char) -> String {
-	let mut output = String::from("");
-	let mut c: char;
+    let mut output = String::from("");
+    let mut c: char;
 
-	for _n in 1..=8 {
-		c = gen_uuid_char(version);
+    for _n in 1..=8 {
+        c = gen_uuid_char(version);
 
-		output.push(c);
-	}
+        output.push(c);
+    }
 
-	output.push('-'); // Current state: fc402d52-
+    output.push('-'); // Current state: fc402d52-
 
-	for _n in 1..=3 {
-		for _x in 1..=4 {
-			c = gen_uuid_char(version);
-			output.push(c);
-		}
+    for _n in 1..=3 {
+        for _x in 1..=4 {
+            c = gen_uuid_char(version);
+            output.push(c);
+        }
 
-		output.push('-');
-		// After one loop: efc402d52-70be-
-	}
+        output.push('-');
+        // After one loop: efc402d52-70be-
+    }
 
-	// Current state: fc402d52-70be-7f09-caed-
+    // Current state: fc402d52-70be-7f09-caed-
 
-	for _n in 1..=12 {
-		c = gen_uuid_char(version);
-		output.push(c);
-	}
+    for _n in 1..=12 {
+        c = gen_uuid_char(version);
+        output.push(c);
+    }
 
-	output // fc402d52-70be-7f09-caed-8da65db08985
+    output // fc402d52-70be-7f09-caed-8da65db08985
 }
