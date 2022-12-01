@@ -2,12 +2,12 @@ For the source code of each version, see the [tags page](https://github.com/njsh
 
 # v0.3.1
 
-## Features
+Features
 
 - Can now generate timestamps with custom epochs.
 - Can now generate timestamps from the first second of 1970 (utc).
 
-## Development
+Development
 
 - Nicer formatting thanks to [Rustfmt](https://rust-lang.github.io/rustfmt/).
 
@@ -15,7 +15,7 @@ For the source code of each version, see the [tags page](https://github.com/njsh
 
 **_CAUTION_**: v0.3.0 introduces breaking changes. Mainly with importing modules. Be careful when upgrading from an older version.
 
-## Features
+Features
 
 - Can now get a timestamp for the current time.
   - Use get_timestamp() or get_timestamp_i64() for this.
@@ -28,20 +28,20 @@ For the source code of each version, see the [tags page](https://github.com/njsh
   - gen_char() to generate a character found in gen_key().
   - gen_uuid_char() to generate a character found in gen_uuid().
 
-## API
+API
 
 - Functions have been separated into different modules. Import relevant features with keysmith::{key, timestamp, uuid, gen_char} where necessary. See [docs](https://docs.rs/keysmith/latest/keysmith/).
 
-## Docs
+Docs
 
 - Rust generated auto docs. Link to newest version can be found on [docs.rs](https://docs.rs/keysmith/latest/keysmith/).
 
-## Testing
+Testing
 
 - Can now toggle individual modules and functions.
 - Cleaned up ks-tests crate.
 
-## Development
+Development
 
 - gen_char() and gen_uuid_char() are now public and can be used with the keysmith crate.
 - Cleaned up a lot of code under the hood.
