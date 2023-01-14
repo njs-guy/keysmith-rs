@@ -1,6 +1,8 @@
+# Changelog
+
 For the source code of each version, see the [tags page](https://github.com/njshockey/keysmith-rs/tags).
 
-# v0.3.1
+## v0.3.1
 
 Features
 
@@ -11,7 +13,7 @@ Development
 
 - Nicer formatting thanks to [Rustfmt](https://rust-lang.github.io/rustfmt/).
 
-# v0.3.0
+## v0.3.0
 
 **_CAUTION_**: v0.3.0 introduces breaking changes. Mainly with importing modules. Be careful when upgrading from an older version.
 
@@ -46,7 +48,7 @@ Development
 - gen_char() and gen_uuid_char() are now public and can be used with the keysmith crate.
 - Cleaned up a lot of code under the hood.
 
-# v0.2.1
+## v0.2.1
 
 You can now generate keys with only specific kinds of characters. For more details, see [usage](README.md#usage).
 
@@ -59,17 +61,17 @@ You can now generate keys with only specific kinds of characters. For more detai
   - WARNING: These are unsafe because they tend to break file structures and URL's and the like.
   - This is not recommended but might be useful to _someone_.
 
-# v0.2.0
+## v0.2.0
 
 - Can now generate version 4 UUID's with gen_uuid('4'). See [usage](README.md#usage).
 - "Nonstandard" UUID's can also be generated with gen_uuid('n'). See [usage](README.md#usage).
 
-# v0.1.1
+## v0.1.1
 
 - gen_key() can now generate uppercase letters.
 - Fixed a build error on Linux.
 
-# v0.1.0
+## v0.1.0
 
 - First release.
 - Generate a key with gen_key(). See [usage](README.md#usage).
