@@ -1,4 +1,6 @@
-max_width = 80
-hard_tabs = true
 edition = "2021"
+hard_tabs = true
+max_width = 80
+newline_style = "Unix"
+
 # group_imports = "StdExternalCrate"
