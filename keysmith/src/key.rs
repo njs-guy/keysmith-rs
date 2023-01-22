@@ -13,6 +13,9 @@ fn gen_char_from_opts(length: u32, opts: GenCharOpts) -> String {
 	output // Return output as String
 }
 
+// Public API
+// TODO: 0.4 - API changes: gen_key() -> key()
+
 /// Generates a key string.
 ///
 /// Ex: LlyqZk2W-Hm6Eoid~m(A8ymiM0q3ksyJ

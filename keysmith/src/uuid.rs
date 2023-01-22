@@ -45,3 +45,9 @@ pub fn gen_uuid(version: char) -> String {
 
 	output // fc402d52-70be-7f09-caed-8da65db08985
 }
+
+// Public API
+// TODO: 0.4 - API changes: gen_uuid('4') -> uuid4()
+
+// uuid4()
+// uuidn()

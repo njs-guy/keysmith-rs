@@ -4,6 +4,11 @@ For the source code of each version, see the [tags page](https://github.com/njsh
 
 ## v0.3.1
 
+**_WARNING_**: v0.4.0 will have breaking API changes.
+Functions will have their gen or get prefixes removed.
+So gen_key() will become key().
+This should make the API much easier to use but keep it in mind for existing projects.
+
 Features
 
 - Can now generate timestamps with custom epochs.

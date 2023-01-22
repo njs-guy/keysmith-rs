@@ -8,4 +8,4 @@ publish = false
 
 [dependencies]
 keysmith = { path = "../keysmith"}
-# rusqlite = { version = "0.28.0", features = ["bundled"] }
+# TODO: v0.4 - env_logger and logger for nicer output

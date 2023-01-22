@@ -2,7 +2,7 @@
 //!
 //! ***WARNING***
 //!
-//! Keysmith is currently a WIP and not recommended for production projects yet.
+//! Keysmith is currently a WIP, so breaking changes may occur in between major versions.
 //!
 //! Here's some example keys:
 //!

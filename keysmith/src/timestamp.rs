@@ -16,6 +16,9 @@ fn gen_timestamp(epoch_str: &str) -> i64 {
 	utc.timestamp() - epoch.timestamp()
 }
 
+// Public API
+// TODO: 0.4 - API changes: gen_uuid('4') -> uuid4()
+
 /// Gets a timestamp from the seconds since 00:00:00 Jan 1, 2022 as a String.
 pub fn get_timestamp() -> String {
 	gen_timestamp(DEF_EPOCH).to_string()

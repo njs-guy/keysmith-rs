@@ -22,6 +22,7 @@ fn push_poss_chars(char_set_name: &str) -> &str {
 	return possible_chars.get(char_set_name).expect(&expect_msg);
 }
 
+// TODO: 0.4 - change doc comment to char()
 /// Options for gen_char()
 #[derive(Debug, Copy, Clone)]
 pub struct GenCharOpts {
@@ -36,6 +37,45 @@ pub struct GenCharOpts {
 	/// Generate unsafe special characters? (false is recommended)
 	pub unsafe_sp_chars: bool,
 }
+
+// Generate numbers and letters (no uppercase)
+fn gen_uuid_nonstandard_char() -> char {
+	let opts = GenCharOpts {
+		nums: true,
+		letters: true,
+		upper: false,
+		safe_sp_chars: false,
+		unsafe_sp_chars: false,
+	};
+
+	gen_char(opts)
+}
+
+// Generate numbers or letters a-f
+fn gen_uuid_v4_char() -> char {
+	let mut chars = String::from("");
+	let uuid_chars = get_uuid_chars();
+	let expect_msg = "Could not convert uuid chars in Hashmap.";
+
+	chars.push_str(uuid_chars.get("numbers").expect(expect_msg));
+	chars.push_str(uuid_chars.get("letters").expect(expect_msg));
+
+	let mut rng = rand::thread_rng();
+
+	// Get a rand index from chars
+	let idx = rng.gen_range(0..chars.len());
+
+	// Get value of the index
+	let c = chars
+		.chars()
+		.nth(idx)
+		.expect("Could not get the value of the char.");
+
+	c // return output as char
+}
+
+// Public API
+// TODO: 0.4 - API changes: gen_char() -> char()
 
 /// Generates a char for a key. Use GenCharOpts for options.
 pub fn gen_char(opts: GenCharOpts) -> char {
@@ -88,40 +128,4 @@ pub fn gen_uuid_char(version: char) -> char {
 		_ => '0',
 	}
 	// Returns result of match version
-}
-
-// Generate numbers and letters (no uppercase)
-fn gen_uuid_nonstandard_char() -> char {
-	let opts = GenCharOpts {
-		nums: true,
-		letters: true,
-		upper: false,
-		safe_sp_chars: false,
-		unsafe_sp_chars: false,
-	};
-
-	gen_char(opts)
-}
-
-// Generate numbers or letters a-f
-fn gen_uuid_v4_char() -> char {
-	let mut chars = String::from("");
-	let uuid_chars = get_uuid_chars();
-	let expect_msg = "Could not convert uuid chars in Hashmap.";
-
-	chars.push_str(uuid_chars.get("numbers").expect(expect_msg));
-	chars.push_str(uuid_chars.get("letters").expect(expect_msg));
-
-	let mut rng = rand::thread_rng();
-
-	// Get a rand index from chars
-	let idx = rng.gen_range(0..chars.len());
-
-	// Get value of the index
-	let c = chars
-		.chars()
-		.nth(idx)
-		.expect("Could not get the value of the char.");
-
-	c // return output as char
 }
