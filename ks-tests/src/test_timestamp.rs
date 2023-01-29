@@ -33,7 +33,7 @@ pub fn test_timestamp(opts: TestTimestampOpts) {
 	if opts.i64_custom {
 		print_msg("Timestamp with custom epoch as i64:");
 		let epoch: &str = "Mon, 1 Jan 2018 00:00:00 +0000";
-		let stamp: i64 = timestamp::get_timestamp_i64_custom(epoch);
+		let stamp: i64 = timestamp::get_timestamp_custom_i64(epoch);
 		println!("{}", stamp);
 	}
 

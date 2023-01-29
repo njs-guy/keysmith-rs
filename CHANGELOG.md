@@ -8,11 +8,15 @@ For the source code of each version, see the [tags page](https://github.com/njsh
 Functions will have their gen or get prefixes removed.
 So gen_key() will become key().
 This should make the API much easier to use but keep it in mind for existing projects.
+v0.3.1 has not made this change yet.
 
 Features
 
 - Can now generate timestamps with custom epochs.
+    - Use get_timestamp_custom(epoch: &str)
+    - Epoch format = "Sat, 1 Jan 2022 00:00:00 +0000".
 - Can now generate timestamps from the first second of 1970 (utc).
+    - Use get_timestamp_utc()
 
 Development
 

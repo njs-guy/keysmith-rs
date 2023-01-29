@@ -17,6 +17,8 @@ fn gen_timestamp(epoch_str: &str) -> i64 {
 }
 
 // Public API
+// TODO: 0.3.2 - millisecond and nanosecond timestamps
+// TODO: 0.3.2 - Date time timestamps (YYYYMMDDHHMM or YYYYMMDDHHMMSS)
 // TODO: 0.4 - API changes: gen_uuid('4') -> uuid4()
 
 /// Gets a timestamp from the seconds since 00:00:00 Jan 1, 2022 as a String.
@@ -39,7 +41,7 @@ pub fn get_timestamp_custom(epoch: &str) -> String {
 /// Gets a timestamp from a custom epoch as an i64.
 ///
 /// Format = "Sat, 1 Jan 2022 00:00:00 +0000".
-pub fn get_timestamp_i64_custom(epoch: &str) -> i64 {
+pub fn get_timestamp_custom_i64(epoch: &str) -> i64 {
 	gen_timestamp(epoch)
 }
 
