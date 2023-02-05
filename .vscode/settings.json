@@ -3,5 +3,8 @@
         "chrono",
         "keysmith",
         "nums"
-    ]
+    ],
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.cargo.features": "all"
+
 }
