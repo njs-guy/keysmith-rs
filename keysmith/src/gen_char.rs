@@ -14,6 +14,7 @@ use rand::Rng;
 // and then returns that for use in String.push_str()
 fn push_poss_chars(char_set_name: &str) -> &str {
 	let possible_chars = get_poss_chars();
+	// TODO: Change this error message once the hashmaps have changed to pub consts.
 	let expect_msg = format!(
 		"Could not convert {} in possible_chars Hashmap.",
 		char_set_name
@@ -116,6 +117,8 @@ pub fn gen_char(opts: GenCharOpts) -> char {
 	c // Return output as char
 }
 
+// TODO: possibly use an enum for this instead.
+
 /// Generates a UUID char for the specified version.
 ///
 /// Version input should be either '4' or 'n'.
@@ -129,3 +132,9 @@ pub fn gen_uuid_char(version: char) -> char {
 	}
 	// Returns result of match version
 }
+
+// Tests
+// TODO: Ensure that push_poss_chars() returns the expected set of characters.
+// TODO: Ensure that char() generates valid characters based on the options provided.
+// TODO: Ensure that uuid_v4_char() generates the correct characters.
+// TODO: Ensure that uuid_nonstandard_char() generates the correct characters.

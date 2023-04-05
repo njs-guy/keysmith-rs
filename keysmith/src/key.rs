@@ -180,7 +180,7 @@ pub fn gen_special_chars_unsafe(length: u32) -> String {
 	gen_char_from_opts(length, opts)
 }
 
-// TODO: More tests, probably
+// TODO: Test that the generated output is the correct length and contains only the expected characters
 
 #[cfg(test)]
 mod tests {

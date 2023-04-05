@@ -48,7 +48,12 @@ pub fn gen_uuid(version: char) -> String {
 
 // Public API
 // TODO: 0.4 - API changes: gen_uuid('4') -> uuid4()
-// TODO: 0.4.1 - UUID v1 and v2
+// TODO: 0.5 - UUID v1 and v2
+// TODO: 0.5.1 - UUID v3 and v5
 
 // uuid4()
 // uuidn()
+
+// Tests
+// TODO: Ensuring that valid UUID characters are generated.
+// TODO: Ensuring that uuid4() and uuidn() generate a valid uuid.

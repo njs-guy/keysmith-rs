@@ -145,5 +145,5 @@ pub mod key;
 pub mod timestamp;
 pub mod uuid;
 
-// TODO: 0.4 - Better logging with log
+// TODO: 0.4 - Performance logging
 // TODO: 0.4 - More tests. Timestamp formatting, UUID lengths, possible chars use the correct chars.
