@@ -13,39 +13,39 @@ pub struct TestTimestampOpts {
 pub fn test_timestamp(opts: TestTimestampOpts) {
 	if opts.string {
 		print_msg("Timestamp as String:");
-		let stamp: String = timestamp::get_timestamp();
+		let stamp: String = timestamp::timestamp();
 		println!("{}", stamp);
 	}
 
 	if opts.i64 {
 		print_msg("Timestamp as i64:");
-		let stamp: i64 = timestamp::get_timestamp_i64();
+		let stamp: i64 = timestamp::timestamp_i64();
 		println!("{}", stamp);
 	}
 
 	if opts.custom {
 		print_msg("Timestamp with custom epoch as String:");
 		let epoch: &str = "Mon, 1 Jan 2018 00:00:00 +0000";
-		let stamp: String = timestamp::get_timestamp_custom(epoch);
+		let stamp: String = timestamp::timestamp_custom(epoch);
 		println!("{}", stamp);
 	}
 
 	if opts.i64_custom {
 		print_msg("Timestamp with custom epoch as i64:");
 		let epoch: &str = "Mon, 1 Jan 2018 00:00:00 +0000";
-		let stamp: i64 = timestamp::get_timestamp_custom_i64(epoch);
+		let stamp: i64 = timestamp::timestamp_custom_i64(epoch);
 		println!("{}", stamp);
 	}
 
 	if opts.utc {
 		print_msg("Timestamp with no epoch as String:");
-		let stamp: String = timestamp::get_timestamp_utc();
+		let stamp: String = timestamp::timestamp_utc();
 		println!("{}", stamp);
 	}
 
 	if opts.utc_i64 {
 		print_msg("Timestamp with no epoch as i64:");
-		let stamp: i64 = timestamp::get_timestamp_utc_i64();
+		let stamp: i64 = timestamp::timestamp_utc_i64();
 		println!("{}", stamp);
 	}
 }
