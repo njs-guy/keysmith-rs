@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+// TODO: 0.4 - move into char.rs file
 // TODO: 0.4 - replace hashmaps with pub constants
 
 // Returns a hash map for the possible characters

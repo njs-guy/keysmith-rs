@@ -2,6 +2,7 @@
 
 use crate::char::{char, GenCharOpts};
 
+/// Generates a key from config opts
 fn gen_char_from_opts(length: u32, opts: GenCharOpts) -> String {
 	let mut output = String::from("");
 	for _n in 1..=length {
@@ -14,12 +15,11 @@ fn gen_char_from_opts(length: u32, opts: GenCharOpts) -> String {
 }
 
 // Public API
-// TODO: 0.4 - API changes: gen_key() -> key()
 
 /// Generates a key string.
 ///
 /// Ex: LlyqZk2W-Hm6Eoid~m(A8ymiM0q3ksyJ
-pub fn gen_key(length: u32) -> String {
+pub fn key(length: u32) -> String {
 	let opts = GenCharOpts {
 		nums: true,
 		letters: true,
@@ -34,7 +34,7 @@ pub fn gen_key(length: u32) -> String {
 /// Generates a key string using only numbers.
 ///
 /// Ex: 04356417134317004828941212534445
-pub fn gen_nums(length: u32) -> String {
+pub fn nums(length: u32) -> String {
 	let opts = GenCharOpts {
 		nums: true,
 		letters: false,
@@ -49,7 +49,7 @@ pub fn gen_nums(length: u32) -> String {
 /// Generates a key string using only letters
 ///
 /// Ex: PBSZWwSTmRalGnzeSbQUKmXRikKUWXvj
-pub fn gen_letters(length: u32) -> String {
+pub fn letters(length: u32) -> String {
 	let opts = GenCharOpts {
 		nums: false,
 		letters: true,
@@ -64,7 +64,7 @@ pub fn gen_letters(length: u32) -> String {
 /// Generates a key string using only lowercase letters
 ///
 /// Ex: xoewhgvjsqzctfgpaqwnhanbgweflpqc
-pub fn gen_letters_lower(length: u32) -> String {
+pub fn letters_lower(length: u32) -> String {
 	let opts = GenCharOpts {
 		nums: false,
 		letters: true,
@@ -79,7 +79,7 @@ pub fn gen_letters_lower(length: u32) -> String {
 /// Generates a key string using only uppercase letters
 ///
 /// Ex: EVQMPIHKDBPLZJBPCHTXTIBLYRSFFFUY
-pub fn gen_letters_upper(length: u32) -> String {
+pub fn letters_upper(length: u32) -> String {
 	let opts = GenCharOpts {
 		nums: false,
 		letters: true,
@@ -94,7 +94,7 @@ pub fn gen_letters_upper(length: u32) -> String {
 /// Generates a key string using only numbers and letters
 ///
 /// ex: 2N1txo5sayvfaXIxreZMMpdKymewSHGL
-pub fn gen_nums_and_letters(length: u32) -> String {
+pub fn nums_and_letters(length: u32) -> String {
 	let opts = GenCharOpts {
 		nums: true,
 		letters: true,
@@ -109,7 +109,7 @@ pub fn gen_nums_and_letters(length: u32) -> String {
 /// Generates a key string using only numbers and lowercase letters
 ///
 /// ex: ikmoc3lknebthl1xnb3crgu3qaav3f3f
-pub fn gen_nums_and_letters_lower(length: u32) -> String {
+pub fn nums_and_letters_lower(length: u32) -> String {
 	let opts = GenCharOpts {
 		nums: true,
 		letters: true,
@@ -124,7 +124,7 @@ pub fn gen_nums_and_letters_lower(length: u32) -> String {
 /// Generates a key string using only numbers and uppercase letters
 ///
 /// ex: NMJMTS1YOFQSL3CXHT23CVSIYM9FRLMN
-pub fn gen_nums_and_letters_upper(length: u32) -> String {
+pub fn nums_and_letters_upper(length: u32) -> String {
 	let opts = GenCharOpts {
 		nums: true,
 		letters: true,
@@ -141,7 +141,7 @@ pub fn gen_nums_and_letters_upper(length: u32) -> String {
 /// Possible characters: -_.()~@
 ///
 /// ex: )@-_~@_@._))~)@))@.)(-)@(.@(~((@
-pub fn gen_special_chars(length: u32) -> String {
+pub fn special_chars(length: u32) -> String {
 	let opts = GenCharOpts {
 		nums: false,
 		letters: false,
@@ -168,7 +168,7 @@ pub fn gen_special_chars(length: u32) -> String {
 /// ```text
 /// <#=`=*%{:`*%!<{"|*?'!#\#|?\+{=\}
 /// ```
-pub fn gen_special_chars_unsafe(length: u32) -> String {
+pub fn special_chars_unsafe(length: u32) -> String {
 	let opts = GenCharOpts {
 		nums: false,
 		letters: false,
@@ -190,7 +190,7 @@ mod tests {
 	#[test]
 	fn test_length() {
 		let length = 32;
-		let key = gen_key(length);
+		let key = key(length);
 
 		assert_eq!(key.len(), 32);
 	}

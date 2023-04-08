@@ -1,3 +1,6 @@
+// TODO: Update docs with new API.
+// TODO: Add timestamps as examples.
+
 //! Create keys or ids for data with Rust.
 //!
 //! ***WARNING***
