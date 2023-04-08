@@ -10,7 +10,7 @@ pub fn test_uuid(num_of_keys: u32, opts: TestUuidOpts) {
 	if opts.uuid4 {
 		print_msg("UUIDs (v4):");
 		for _n in 1..=num_of_keys {
-			let key: String = uuid::gen_uuid('4');
+			let key: String = uuid::uuid4();
 			println!("{}", key);
 		}
 	}
@@ -18,7 +18,7 @@ pub fn test_uuid(num_of_keys: u32, opts: TestUuidOpts) {
 	if opts.uuidn {
 		print_msg("UUIDs (nonstandard):");
 		for _n in 1..=num_of_keys {
-			let key: String = uuid::gen_uuid('n');
+			let key: String = uuid::uuidn();
 			println!("{}", key);
 		}
 	}

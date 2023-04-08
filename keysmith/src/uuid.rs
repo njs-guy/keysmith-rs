@@ -1,6 +1,8 @@
-//! Generates a UUID
+//! Generates a UUID.
 //!
-//! Currently only version 4 or nonstandard using more possible letters.
+//! Currently only version 4 or "nonstandard".
+//!
+//! Nonstandard is the same as v4 but uses a-z instead of just a-f.
 
 use crate::char::uuid_char;
 
@@ -8,16 +10,14 @@ use crate::char::uuid_char;
 ///
 /// The version input should be either '4' or 'n'.
 ///
-/// Version 'n' is nonstandard which is
-/// not necessarily recommended but could be useful.
-///
 /// v4 Ex: fc402d52-70be-7f09-caed-8da65db08985
 ///
 /// nonstandard Ex: eko0c6ph-k2ok-60rr-pj78-mns182t9vurf
-pub fn gen_uuid(version: char) -> String {
+fn gen_uuid(version: char) -> String {
 	let mut output = String::from("");
 	let mut c: char;
 
+	// first set of digits
 	for _n in 1..=8 {
 		c = uuid_char(version);
 
@@ -26,6 +26,7 @@ pub fn gen_uuid(version: char) -> String {
 
 	output.push('-'); // Current state: fc402d52-
 
+	// second through fourth sets of digits
 	for _n in 1..=3 {
 		for _x in 1..=4 {
 			c = uuid_char(version);
@@ -38,6 +39,7 @@ pub fn gen_uuid(version: char) -> String {
 
 	// Current state: fc402d52-70be-7f09-caed-
 
+	// final set of digits
 	for _n in 1..=12 {
 		c = uuid_char(version);
 		output.push(c);
@@ -47,12 +49,24 @@ pub fn gen_uuid(version: char) -> String {
 }
 
 // Public API
-// TODO: 0.4 - API changes: gen_uuid('4') -> uuid4()
 // TODO: 0.5 - UUID v1 and v2
 // TODO: 0.5.1 - UUID v3 and v5
 
-// uuid4()
-// uuidn()
+/// Generate a UUID (version 4).
+///
+/// ex: fc402d52-70be-7f09-caed-8da65db08985
+pub fn uuid4() -> String {
+	gen_uuid('4')
+}
+
+/// Generate a UUID (nonstandard).
+/// This is the same as a v4, but letters can be
+/// a-z instead of just a-f.
+///
+/// ex: l8fx3px5-9lyk-gzrb-iu75-d4gp63chor9z
+pub fn uuidn() -> String {
+	gen_uuid('n')
+}
 
 // Tests
 // TODO: Ensuring that valid UUID characters are generated.
