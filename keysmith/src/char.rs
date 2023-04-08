@@ -10,8 +10,8 @@ use possible_chars::{get_poss_chars, get_uuid_chars};
 
 use rand::Rng;
 
-// Gets a character set from possible_chars
-// and then returns that for use in String.push_str()
+/// Gets a character set from possible_chars
+/// and then returns that for use in String.push_str()
 fn push_poss_chars(char_set_name: &str) -> &str {
 	let possible_chars = get_poss_chars();
 	// TODO: Change this error message once the hashmaps have changed to pub consts.
@@ -23,8 +23,7 @@ fn push_poss_chars(char_set_name: &str) -> &str {
 	return possible_chars.get(char_set_name).expect(&expect_msg);
 }
 
-// TODO: 0.4 - change doc comment to char()
-/// Options for gen_char()
+/// Options for char()
 #[derive(Debug, Copy, Clone)]
 pub struct GenCharOpts {
 	/// Generate numbers?
@@ -39,7 +38,7 @@ pub struct GenCharOpts {
 	pub unsafe_sp_chars: bool,
 }
 
-// Generate numbers and letters (no uppercase)
+/// Generate numbers and letters (no uppercase)
 fn gen_uuid_nonstandard_char() -> char {
 	let opts = GenCharOpts {
 		nums: true,
@@ -49,10 +48,10 @@ fn gen_uuid_nonstandard_char() -> char {
 		unsafe_sp_chars: false,
 	};
 
-	gen_char(opts)
+	char(opts)
 }
 
-// Generate numbers or letters a-f
+/// Generate numbers or letters a-f
 fn gen_uuid_v4_char() -> char {
 	let mut chars = String::from("");
 	let uuid_chars = get_uuid_chars();
@@ -76,10 +75,9 @@ fn gen_uuid_v4_char() -> char {
 }
 
 // Public API
-// TODO: 0.4 - API changes: gen_char() -> char()
 
 /// Generates a char for a key. Use GenCharOpts for options.
-pub fn gen_char(opts: GenCharOpts) -> char {
+pub fn char(opts: GenCharOpts) -> char {
 	let mut chars = String::from("");
 
 	// Set allowed characters
@@ -124,7 +122,7 @@ pub fn gen_char(opts: GenCharOpts) -> char {
 /// Version input should be either '4' or 'n'.
 ///
 /// Returns '0' if the input is invalid.
-pub fn gen_uuid_char(version: char) -> char {
+pub fn uuid_char(version: char) -> char {
 	match version {
 		'4' => gen_uuid_v4_char(),
 		'n' => gen_uuid_nonstandard_char(),

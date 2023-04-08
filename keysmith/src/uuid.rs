@@ -2,7 +2,7 @@
 //!
 //! Currently only version 4 or nonstandard using more possible letters.
 
-use crate::gen_char::gen_uuid_char;
+use crate::char::uuid_char;
 
 /// Generate a UUID.
 ///
@@ -19,7 +19,7 @@ pub fn gen_uuid(version: char) -> String {
 	let mut c: char;
 
 	for _n in 1..=8 {
-		c = gen_uuid_char(version);
+		c = uuid_char(version);
 
 		output.push(c);
 	}
@@ -28,7 +28,7 @@ pub fn gen_uuid(version: char) -> String {
 
 	for _n in 1..=3 {
 		for _x in 1..=4 {
-			c = gen_uuid_char(version);
+			c = uuid_char(version);
 			output.push(c);
 		}
 
@@ -39,7 +39,7 @@ pub fn gen_uuid(version: char) -> String {
 	// Current state: fc402d52-70be-7f09-caed-
 
 	for _n in 1..=12 {
-		c = gen_uuid_char(version);
+		c = uuid_char(version);
 		output.push(c);
 	}
 

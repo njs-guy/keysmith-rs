@@ -1,11 +1,11 @@
 //! Generates keys with specific configs
 
-use crate::gen_char::{gen_char, GenCharOpts};
+use crate::char::{char, GenCharOpts};
 
 fn gen_char_from_opts(length: u32, opts: GenCharOpts) -> String {
 	let mut output = String::from("");
 	for _n in 1..=length {
-		let c = gen_char(opts);
+		let c = char(opts);
 
 		output.push(c);
 	}

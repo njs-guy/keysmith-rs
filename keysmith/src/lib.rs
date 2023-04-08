@@ -140,7 +140,7 @@
 //! // ex: 25928414
 //! ```
 
-pub mod gen_char;
+pub mod char;
 pub mod key;
 pub mod timestamp;
 pub mod uuid;
