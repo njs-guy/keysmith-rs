@@ -10,6 +10,15 @@ use possible_chars::{get_poss_chars, get_uuid_chars};
 
 use rand::Rng;
 
+pub const NUMBERS: &str = "0123456789";
+pub const LETTERS: &str = "abcdefghijklmnopqrstuvwxyz";
+pub const HEX_LETTERS: &str = "abcdef";
+pub const SAFE_SP_CHARS: &str = "-_.()~@";
+pub const UNSAFE_SP_CHARS: &str = r#"#%&*+={}\/<>?!$:'"`|"#;
+
+// See this https://stackoverflow.com/a/40415059 for special chars
+// Might want to look more into this later
+
 /// Gets a character set from possible_chars
 /// and then returns that for use in String.push_str()
 fn push_poss_chars(char_set_name: &str) -> &str {
