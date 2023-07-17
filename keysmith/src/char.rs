@@ -107,8 +107,6 @@ pub fn char(opts: GenCharOpts) -> char {
 	c // Return output as char
 }
 
-// TODO: possibly use an enum for this instead.
-
 /// Generates a UUID char for the specified version.
 ///
 /// Version input should be either '4' or 'n'.

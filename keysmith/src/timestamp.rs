@@ -6,8 +6,9 @@ use chrono::{DateTime, Utc};
 
 const DEF_EPOCH: &str = "Sat, 1 Jan 2022 00:00:00 +0000";
 
-// Generates a timestamp from the input epoch
-// Format = "Sat, 1 Jan 2022 00:00:00 +0000"
+/// Generates a timestamp from the input epoch
+///
+/// Format = "Sat, 1 Jan 2022 00:00:00 +0000"
 fn gen_timestamp(epoch_str: &str) -> i64 {
 	let epoch = DateTime::parse_from_rfc2822(epoch_str)
 		.expect("ERROR: Could not get timestamp epoch.");
