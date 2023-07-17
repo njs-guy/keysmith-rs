@@ -5,9 +5,6 @@
 //! for when/if you need more options than what's
 //! here by default.
 
-mod possible_chars;
-use possible_chars::{get_poss_chars, get_uuid_chars};
-
 use rand::Rng;
 
 pub const NUMBERS: &str = "0123456789";
@@ -18,19 +15,6 @@ pub const UNSAFE_SP_CHARS: &str = r#"#%&*+={}\/<>?!$:'"`|"#;
 
 // See this https://stackoverflow.com/a/40415059 for special chars
 // Might want to look more into this later
-
-/// Gets a character set from possible_chars
-/// and then returns that for use in String.push_str()
-fn push_poss_chars(char_set_name: &str) -> &str {
-	let possible_chars = get_poss_chars();
-	// TODO: Change this error message once the hashmaps have changed to pub consts.
-	let expect_msg = format!(
-		"Could not convert {} in possible_chars Hashmap.",
-		char_set_name
-	);
-
-	return possible_chars.get(char_set_name).expect(&expect_msg);
-}
 
 /// Options for char()
 #[derive(Debug, Copy, Clone)]
@@ -63,11 +47,9 @@ fn gen_uuid_nonstandard_char() -> char {
 /// Generate numbers or letters a-f
 fn gen_uuid_v4_char() -> char {
 	let mut chars = String::from("");
-	let uuid_chars = get_uuid_chars();
-	let expect_msg = "Could not convert uuid chars in Hashmap.";
 
-	chars.push_str(uuid_chars.get("numbers").expect(expect_msg));
-	chars.push_str(uuid_chars.get("letters").expect(expect_msg));
+	chars.push_str(NUMBERS);
+	chars.push_str(HEX_LETTERS);
 
 	let mut rng = rand::thread_rng();
 
@@ -91,23 +73,23 @@ pub fn char(opts: GenCharOpts) -> char {
 
 	// Set allowed characters
 	if opts.nums {
-		chars.push_str(push_poss_chars("numbers"));
+		chars.push_str(NUMBERS);
 	}
 
 	if opts.letters {
-		chars.push_str(push_poss_chars("en_alphabet"));
+		chars.push_str(LETTERS);
 
 		if opts.upper {
-			chars.push_str(&push_poss_chars("en_alphabet").to_uppercase());
+			chars.push_str(&LETTERS.to_uppercase());
 		}
 	}
 
 	if opts.safe_sp_chars {
-		chars.push_str(push_poss_chars("safe_sp_chars"));
+		chars.push_str(SAFE_SP_CHARS);
 	}
 
 	if opts.unsafe_sp_chars {
-		chars.push_str(push_poss_chars("unsafe_sp_chars"));
+		chars.push_str(UNSAFE_SP_CHARS);
 	}
 
 	let mut rng = rand::thread_rng();
