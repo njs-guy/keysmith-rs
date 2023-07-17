@@ -2,6 +2,17 @@
 
 For the source code of each version, see the [tags page](https://github.com/njshockey/keysmith-rs/tags).
 
+## v0.4.0
+**_CAUTION_**: v0.4.0 introduces many breaking API changes. It's a change for the better as the API is much simpler now, but be careful before upgrading.
+
+API
+- Publically accessed functions have had their gen_ or get_ prefixes removed, which looks like gen_key() => key().
+
+Development
+- Private functions are not effected by new API. (Like key::gen_char_from_opts().)
+- Chars are now generated using pub consts instead of a hashmap.
+
+
 ## v0.3.1
 
 **_WARNING_**: v0.4.0 will have breaking API changes.
