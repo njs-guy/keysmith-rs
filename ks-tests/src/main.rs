@@ -41,6 +41,8 @@ fn main() {
 		i64_custom: true,
 		utc: true,
 		utc_i64: true,
+		datetime: true,
+		datetime_no_seps: true,
 	};
 
 	// which char functions to test

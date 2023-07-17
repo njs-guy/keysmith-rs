@@ -2,7 +2,7 @@
 //! This is in seconds since the first second of 2022,
 //! a custom epoch, or from plain UTC.
 
-use chrono::{DateTime, Utc};
+use chrono::{DateTime, Local, Utc};
 
 const DEF_EPOCH: &str = "Sat, 1 Jan 2022 00:00:00 +0000";
 
@@ -17,9 +17,34 @@ fn gen_timestamp(epoch_str: &str) -> i64 {
 	utc.timestamp() - epoch.timestamp()
 }
 
+/// Generates a datetime timestamp from the
+/// current local time.
+///
+/// Format = YY-mm-dd--HH-MM-SS
+///
+/// ex: 2023-07-17--19-34-07
+fn gen_datetime() -> String {
+	let dt = Local::now();
+	let timestamp = dt.format("%Y-%m-%d--%H-%M-%S");
+
+	format!("{}", timestamp)
+}
+
+/// Generates a datetime timestamp from the
+/// current local time without separators.
+///
+/// Format = YYmmddHHMMSS
+///
+/// ex: 20230717193407
+fn gen_datetime_no_seps() -> String {
+	let dt = Local::now();
+	let timestamp = dt.format("%Y%m%d%H%M%S");
+
+	format!("{}", timestamp)
+}
+
 // Public API
 // TODO: 0.4 - millisecond timestamps
-// TODO: 0.4 - Date time timestamps (YYYYMMDDHHMM or YYYYMMDDHHMMSS)
 
 /// Gets a timestamp from the first second of 2022 as a String.
 ///
@@ -67,6 +92,26 @@ pub fn timestamp_utc() -> String {
 pub fn timestamp_utc_i64() -> i64 {
 	let epoch = "Thu, 1 Jan 1970 00:00:00 +0000";
 	gen_timestamp(epoch)
+}
+
+/// Generates a datetime timestamp from the
+/// current local time.
+///
+/// Format = YY-mm-dd--HH-MM-SS
+///
+/// ex: 2023-07-17--19-34-07
+pub fn datetime() -> String {
+	gen_datetime()
+}
+
+/// Generates a datetime timestamp from the
+/// current local time without separators.
+///
+/// Format = YYmmddHHMMSS
+///
+/// ex: 20230717193407
+pub fn datetime_no_seps() -> String {
+	gen_datetime_no_seps()
 }
 
 // Tests
