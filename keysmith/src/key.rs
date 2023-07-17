@@ -140,7 +140,10 @@ pub fn nums_and_letters_upper(length: u32) -> String {
 ///
 /// Possible characters: -_.()~@
 ///
-/// ex: )@-_~@_@._))~)@))@.)(-)@(.@(~((@
+/// ex:
+/// ```text
+/// )@-_~@_@._))~)@))@.)(-)@(.@(~((@
+/// ```
 pub fn special_chars(length: u32) -> String {
 	let opts = GenCharOpts {
 		nums: false,
@@ -157,6 +160,7 @@ pub fn special_chars(length: u32) -> String {
 ///
 /// ***WARNING:*** these characters often break file structures
 /// and URL's which is why they are considered unsafe.
+///
 /// This kind of key is not recommended but may be useful to *someone.*
 ///
 /// Possible characters:

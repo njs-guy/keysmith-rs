@@ -5,6 +5,7 @@
 //! for when/if you need more options than what's
 //! here by default.
 
+use crate::uuid::UUID;
 use rand::Rng;
 
 pub const NUMBERS: &str = "0123456789";
@@ -113,11 +114,10 @@ pub fn char(opts: GenCharOpts) -> char {
 /// Version input should be either '4' or 'n'.
 ///
 /// Returns '0' if the input is invalid.
-pub fn uuid_char(version: char) -> char {
+pub fn uuid_char(version: UUID) -> char {
 	match version {
-		'4' => gen_uuid_v4_char(),
-		'n' => gen_uuid_nonstandard_char(),
-		_ => '0',
+		UUID::V4 => gen_uuid_v4_char(),
+		UUID::Nonstandard => gen_uuid_nonstandard_char(),
 	}
 	// Returns result of match version
 }

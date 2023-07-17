@@ -6,14 +6,21 @@
 
 use crate::char::uuid_char;
 
+/// UUID version
+#[derive(Debug, Clone, Copy)]
+pub enum UUID {
+	V4,
+	Nonstandard,
+}
+
 /// Generate a UUID.
 ///
-/// The version input should be either '4' or 'n'.
+/// The version input should be a UUID enum.
 ///
 /// v4 Ex: fc402d52-70be-7f09-caed-8da65db08985
 ///
 /// nonstandard Ex: eko0c6ph-k2ok-60rr-pj78-mns182t9vurf
-fn gen_uuid(version: char) -> String {
+fn gen_uuid(version: UUID) -> String {
 	let mut output = String::from("");
 	let mut c: char;
 
@@ -56,7 +63,7 @@ fn gen_uuid(version: char) -> String {
 ///
 /// ex: fc402d52-70be-7f09-caed-8da65db08985
 pub fn uuid4() -> String {
-	gen_uuid('4')
+	gen_uuid(UUID::V4)
 }
 
 /// Generate a UUID (nonstandard).
@@ -65,7 +72,7 @@ pub fn uuid4() -> String {
 ///
 /// ex: l8fx3px5-9lyk-gzrb-iu75-d4gp63chor9z
 pub fn uuidn() -> String {
-	gen_uuid('n')
+	gen_uuid(UUID::Nonstandard)
 }
 
 // Tests

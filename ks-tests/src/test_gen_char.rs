@@ -1,5 +1,6 @@
 use crate::print_msg::print_msg;
 use keysmith::char;
+use keysmith::uuid::UUID;
 
 pub struct TestGenCharOpts {
 	pub char: bool,
@@ -32,7 +33,7 @@ pub fn test_gen_char(num_of_chars: u32, opts: TestGenCharOpts) {
 
 		for _n in 1..=num_of_chars {
 			// Generate a char for uuid v4.
-			let c: char = char::uuid_char('4');
+			let c: char = char::uuid_char(UUID::V4);
 			println!("{}", c);
 		}
 	}
@@ -42,7 +43,7 @@ pub fn test_gen_char(num_of_chars: u32, opts: TestGenCharOpts) {
 
 		for _n in 1..=num_of_chars {
 			// Generate a char for nonstandard uuid.
-			let c: char = char::uuid_char('n');
+			let c: char = char::uuid_char(UUID::Nonstandard);
 			println!("{}", c);
 		}
 	}
