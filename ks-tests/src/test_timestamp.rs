@@ -8,8 +8,6 @@ pub struct TestTimestampOpts {
 	pub i64_custom: bool,
 	pub utc: bool,
 	pub utc_i64: bool,
-	pub datetime: bool,
-	pub datetime_no_seps: bool,
 }
 
 pub fn test_timestamp(opts: TestTimestampOpts) {
@@ -49,17 +47,5 @@ pub fn test_timestamp(opts: TestTimestampOpts) {
 		print_msg("Timestamp with no epoch as i64:");
 		let stamp: i64 = timestamp::timestamp_utc_i64();
 		println!("{}", stamp);
-	}
-
-	if opts.datetime {
-		print_msg("Datetime:");
-		let dt = timestamp::datetime();
-		println!("{}", dt);
-	}
-
-	if opts.datetime_no_seps {
-		print_msg("Datetime without separators:");
-		let dt = timestamp::datetime_no_seps();
-		println!("{}", dt);
 	}
 }

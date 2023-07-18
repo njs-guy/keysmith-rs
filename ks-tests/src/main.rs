@@ -1,4 +1,5 @@
 mod print_msg;
+mod test_date;
 mod test_gen_char;
 mod test_key;
 mod test_timestamp;
@@ -9,10 +10,28 @@ fn main() {
 	let num_of_keys = 10;
 
 	// turn modules on/off
-	let keys = true;
-	let uuid = true;
-	let timestamp = true;
-	let gen_char = true;
+	let gen_char = false;
+	let date = true;
+	let keys = false;
+	let timestamp = false;
+	let uuid = false;
+
+	// Options
+
+	// which char functions to test
+	let char_opts = test_gen_char::TestGenCharOpts {
+		char: true,
+		uuid_v4: true,
+		uuid_n: true,
+	};
+
+	// which date functions to test
+	let date_opts = test_date::TestDateOpts {
+		datetime: true,
+		datetime_no_seps: true,
+		datetime_abbr_month: true,
+		datetime_full_month: true,
+	};
 
 	// which gen_key functions to test
 	let gen_key_opts = test_key::TestKeyOpts {
@@ -28,12 +47,7 @@ fn main() {
 		special_chars_unsafe: true,
 	};
 
-	// which uuid functions to test
-	let uuid_opts = test_uuid::TestUuidOpts {
-		uuid4: true,
-		uuidn: true,
-	};
-
+	// which timestamp functions to test
 	let timestamp_opts = test_timestamp::TestTimestampOpts {
 		string: true,
 		i64: true,
@@ -41,30 +55,31 @@ fn main() {
 		i64_custom: true,
 		utc: true,
 		utc_i64: true,
-		datetime: true,
-		datetime_no_seps: true,
 	};
 
-	// which char functions to test
-	let char_opts = test_gen_char::TestGenCharOpts {
-		char: true,
-		uuid_v4: true,
-		uuid_n: true,
+	// which uuid functions to test
+	let uuid_opts = test_uuid::TestUuidOpts {
+		uuid4: true,
+		uuidn: true,
 	};
+
+	if gen_char {
+		test_gen_char::test_gen_char(num_of_keys, char_opts);
+	}
+
+	if date {
+		test_date::test_date(date_opts);
+	}
 
 	if keys {
 		test_key::test_key_gen(num_of_keys, gen_key_opts);
-	}
-
-	if uuid {
-		test_uuid::test_uuid(num_of_keys, uuid_opts);
 	}
 
 	if timestamp {
 		test_timestamp::test_timestamp(timestamp_opts);
 	}
 
-	if gen_char {
-		test_gen_char::test_gen_char(num_of_keys, char_opts)
+	if uuid {
+		test_uuid::test_uuid(num_of_keys, uuid_opts);
 	}
 }

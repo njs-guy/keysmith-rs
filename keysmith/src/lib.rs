@@ -144,6 +144,7 @@
 //! ```
 
 pub mod char;
+pub mod date;
 pub mod key;
 pub mod timestamp;
 pub mod uuid;
