@@ -1,5 +1,6 @@
 //! Generates a date. Either written or as a number (returned as a String).
 
+/// Generate a date or time timestamp from the fmt provided.
 fn gen_date(fmt: &str) -> String {
 	let dt = chrono::Local::now();
 	let timestamp = dt.format(fmt);
@@ -7,7 +8,6 @@ fn gen_date(fmt: &str) -> String {
 	format!("{}", timestamp)
 }
 
-// TODO: Dates separated by forward slashes (date_cal)
 // TODO: Times without a date
 
 /// Generates a date from the
@@ -164,4 +164,13 @@ pub fn datetime_abbr_month() -> String {
 /// ex: 2023-July-17--18-20-15
 pub fn datetime_full_month() -> String {
 	gen_date("%Y-%B-%d--%H-%M-%S")
+}
+
+/// Generate a datetime timestamp with custom formatting.
+///
+/// ex: "%Y-%m-%d--%H-%M-%S" -> 2023-07-17--19-34-07
+///
+/// For formatting reference, check out the [chrono docs](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).
+pub fn datetime_custom(fmt: &str) -> String {
+	gen_date(fmt)
 }

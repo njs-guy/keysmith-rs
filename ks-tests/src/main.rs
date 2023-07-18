@@ -36,6 +36,7 @@ fn main() {
 		datetime_no_seps: true,
 		datetime_abbr_month: true,
 		datetime_full_month: true,
+		custom: true,
 	};
 
 	// which gen_key functions to test

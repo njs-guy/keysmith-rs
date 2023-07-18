@@ -10,6 +10,7 @@ pub struct TestDateOpts {
 	pub datetime_no_seps: bool,
 	pub datetime_abbr_month: bool,
 	pub datetime_full_month: bool,
+	pub custom: bool,
 }
 
 pub fn test_date(opts: TestDateOpts) {
@@ -71,5 +72,12 @@ pub fn test_date(opts: TestDateOpts) {
 		print_msg("Datetime with a full month name:");
 		let date: String = date::datetime_full_month();
 		println!("{date}");
+	}
+
+	if opts.custom {
+		print_msg("Datetime with custom formatting:");
+		let fmt = "%Y %Y %Y";
+		let date: String = date::datetime_custom(fmt);
+		print!("{date}");
 	}
 }
