@@ -27,6 +27,10 @@ fn main() {
 
 	// which date functions to test
 	let date_opts = test_date::TestDateOpts {
+		date: true,
+		date_no_seps: true,
+		date_abbr_month: true,
+		date_full_month: true,
 		datetime: true,
 		datetime_no_seps: true,
 		datetime_abbr_month: true,
