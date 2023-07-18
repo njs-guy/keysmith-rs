@@ -4,7 +4,7 @@
 //!
 //! Nonstandard is the same as v4 but uses a-z instead of just a-f.
 
-use crate::char::uuid_char;
+use crate::char::char_uuid;
 
 /// UUID version
 #[derive(Debug, Clone, Copy)]
@@ -26,7 +26,7 @@ fn gen_uuid(version: UUID) -> String {
 
 	// first set of digits
 	for _n in 1..=8 {
-		c = uuid_char(version);
+		c = char_uuid(version);
 
 		output.push(c);
 	}
@@ -36,7 +36,7 @@ fn gen_uuid(version: UUID) -> String {
 	// second through fourth sets of digits
 	for _n in 1..=3 {
 		for _x in 1..=4 {
-			c = uuid_char(version);
+			c = char_uuid(version);
 			output.push(c);
 		}
 
@@ -48,7 +48,7 @@ fn gen_uuid(version: UUID) -> String {
 
 	// final set of digits
 	for _n in 1..=12 {
-		c = uuid_char(version);
+		c = char_uuid(version);
 		output.push(c);
 	}
 

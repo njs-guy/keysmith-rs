@@ -1,17 +1,22 @@
 //! Generates keys with specific configs
 
-use crate::char::{char, GenCharOpts};
+use crate::char::{char_custom, get_charset_from_opts, GenCharOpts};
 
 /// Generates a key from config opts
 fn gen_char_from_opts(length: u32, opts: GenCharOpts) -> String {
+	let charset = get_charset_from_opts(opts);
+	gen_key(length, &charset) // Return generated key
+}
+
+fn gen_key(length: u32, charset: &str) -> String {
 	let mut output = String::from("");
 	for _n in 1..=length {
-		let c = char(opts);
+		let c = char_custom(charset);
 
 		output.push(c);
 	}
 
-	output // Return output as String
+	output
 }
 
 // Public API
@@ -29,6 +34,11 @@ pub fn key(length: u32) -> String {
 	};
 
 	gen_char_from_opts(length, opts)
+}
+
+/// Generates a key string from a custom character set.
+pub fn key_custom(length: u32, charset: String) -> String {
+	gen_key(length, &charset)
 }
 
 /// Generates a key string using only numbers.

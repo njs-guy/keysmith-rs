@@ -47,64 +47,66 @@ fn gen_uuid_nonstandard_char() -> char {
 
 /// Generate numbers or letters a-f
 fn gen_uuid_v4_char() -> char {
-	let mut chars = String::from("");
+	let mut charset = String::from("");
 
-	chars.push_str(NUMBERS);
-	chars.push_str(HEX_LETTERS);
+	charset.push_str(NUMBERS);
+	charset.push_str(HEX_LETTERS);
 
-	let mut rng = rand::thread_rng();
-
-	// Get a rand index from chars
-	let idx = rng.gen_range(0..chars.len());
-
-	// Get value of the index
-	let c = chars
-		.chars()
-		.nth(idx)
-		.expect("Could not get the value of the char.");
-
-	c // return output as char
+	get_char_from_set(&charset)
 }
 
-// Public API
-
-/// Generates a char for a key. Use GenCharOpts for options.
-pub fn char(opts: GenCharOpts) -> char {
-	let mut chars = String::from("");
-
-	// Set allowed characters
-	if opts.nums {
-		chars.push_str(NUMBERS);
-	}
-
-	if opts.letters {
-		chars.push_str(LETTERS);
-
-		if opts.upper {
-			chars.push_str(&LETTERS.to_uppercase());
-		}
-	}
-
-	if opts.safe_sp_chars {
-		chars.push_str(SAFE_SP_CHARS);
-	}
-
-	if opts.unsafe_sp_chars {
-		chars.push_str(UNSAFE_SP_CHARS);
-	}
-
+/// Returns a random character from the given character set
+fn get_char_from_set(charset: &str) -> char {
 	let mut rng = rand::thread_rng();
 
 	// get a rand index from chars
-	let idx = rng.gen_range(0..chars.len());
+	let idx = rng.gen_range(0..charset.len());
 
 	// get the value of the index
-	let c = chars
+	let c = charset
 		.chars()
 		.nth(idx)
 		.expect("Could not get value of char.");
 
-	c // Return output as char
+	c
+}
+
+// Public API
+
+pub fn get_charset_from_opts(opts: GenCharOpts) -> String {
+	let mut charset = String::from("");
+
+	// Set allowed characters
+	if opts.nums {
+		charset.push_str(NUMBERS);
+	}
+
+	if opts.letters {
+		charset.push_str(LETTERS);
+
+		// This is nested because if letters aren't allowed,
+		// uppercase letters obviously aren't allowed either.
+		if opts.upper {
+			charset.push_str(&LETTERS.to_uppercase());
+		}
+	}
+
+	if opts.safe_sp_chars {
+		charset.push_str(SAFE_SP_CHARS);
+	}
+
+	if opts.unsafe_sp_chars {
+		charset.push_str(UNSAFE_SP_CHARS);
+	}
+
+	charset
+}
+
+/// Generates a char for a key. Use GenCharOpts for options.
+pub fn char(opts: GenCharOpts) -> char {
+	let charset = get_charset_from_opts(opts);
+
+	get_char_from_set(&charset)
 }
 
 /// Generates a UUID char for the specified version.
@@ -112,12 +114,17 @@ pub fn char(opts: GenCharOpts) -> char {
 /// Version input should be either '4' or 'n'.
 ///
 /// Returns '0' if the input is invalid.
-pub fn uuid_char(version: UUID) -> char {
+pub fn char_uuid(version: UUID) -> char {
 	match version {
 		UUID::V4 => gen_uuid_v4_char(),
 		UUID::Nonstandard => gen_uuid_nonstandard_char(),
 	}
 	// Returns result of match version
+}
+
+/// Returns a random character from a custom character set
+pub fn char_custom(charset: &str) -> char {
+	get_char_from_set(charset)
 }
 
 // Tests

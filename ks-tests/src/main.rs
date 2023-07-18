@@ -10,11 +10,11 @@ fn main() {
 	let num_of_keys = 10;
 
 	// turn modules on/off
-	let gen_char = false;
+	let gen_char = true;
 	let date = true;
-	let keys = false;
-	let timestamp = false;
-	let uuid = false;
+	let keys = true;
+	let timestamp = true;
+	let uuid = true;
 
 	// Options
 
@@ -23,6 +23,7 @@ fn main() {
 		char: true,
 		uuid_v4: true,
 		uuid_n: true,
+		custom: true,
 	};
 
 	// which date functions to test
@@ -49,6 +50,7 @@ fn main() {
 		nums_and_letters_upper: true,
 		special_chars: true,
 		special_chars_unsafe: true,
+		custom: true,
 	};
 
 	// which timestamp functions to test

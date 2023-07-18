@@ -6,12 +6,15 @@ For the source code of each version, see the [tags page](https://github.com/njsh
 **_CAUTION_**: v0.4.0 introduces many breaking API changes. It's a change for the better as the API is much simpler now, but be careful before upgrading.
 
 API
-- Publicly accessed functions have had their gen_ or get_ prefixes removed, which looks like gen_key() => key().
+- Publicly accessed functions have had their gen_ or get_ prefixes removed. This looks like gen_key() => key().
 
 Features
 - Generate datetime time stamps.
   - timestamp::datetime() => 2023-07-17--19-34-07
   - timestamp::datetime_no_seps() => 20230717193407
+- Generate keys from custom character sets.
+  - key::key_custom(length, charset)
+  - char::char_custom(length, charset)
 
 Development
 - Private functions are not effected by new API. (Like key::gen_char_from_opts().)

@@ -12,6 +12,7 @@ pub struct TestKeyOpts {
 	pub nums_and_letters_upper: bool,
 	pub special_chars: bool,
 	pub special_chars_unsafe: bool,
+	pub custom: bool,
 }
 
 pub fn test_key_gen(num_of_keys: u32, opts: TestKeyOpts) {
@@ -91,6 +92,15 @@ pub fn test_key_gen(num_of_keys: u32, opts: TestKeyOpts) {
 		print_msg("Unsafe special characters only:");
 		for _n in 1..=num_of_keys {
 			let key: String = key::special_chars_unsafe(32);
+			println!("{}", key);
+		}
+	}
+
+	if opts.custom {
+		print_msg("Key from custom character set:");
+		for _n in 1..=num_of_keys {
+			let charset = String::from("among_us");
+			let key: String = key::key_custom(32, charset);
 			println!("{}", key);
 		}
 	}

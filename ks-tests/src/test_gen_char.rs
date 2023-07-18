@@ -6,6 +6,7 @@ pub struct TestGenCharOpts {
 	pub char: bool,
 	pub uuid_v4: bool,
 	pub uuid_n: bool,
+	pub custom: bool,
 }
 
 pub fn test_gen_char(num_of_chars: u32, opts: TestGenCharOpts) {
@@ -33,7 +34,7 @@ pub fn test_gen_char(num_of_chars: u32, opts: TestGenCharOpts) {
 
 		for _n in 1..=num_of_chars {
 			// Generate a char for uuid v4.
-			let c: char = char::uuid_char(UUID::V4);
+			let c: char = char::char_uuid(UUID::V4);
 			println!("{}", c);
 		}
 	}
@@ -43,7 +44,18 @@ pub fn test_gen_char(num_of_chars: u32, opts: TestGenCharOpts) {
 
 		for _n in 1..=num_of_chars {
 			// Generate a char for nonstandard uuid.
-			let c: char = char::uuid_char(UUID::Nonstandard);
+			let c: char = char::char_uuid(UUID::Nonstandard);
+			println!("{}", c);
+		}
+	}
+
+	if opts.custom {
+		print_msg("Char from custom character set:");
+
+		for _n in 1..=num_of_chars {
+			// Generate a char from a custom character set.
+			let charset = String::from("among_us");
+			let c: char = char::char_custom(&charset);
 			println!("{}", c);
 		}
 	}
