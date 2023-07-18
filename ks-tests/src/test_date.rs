@@ -15,8 +15,12 @@ pub struct TestDateOpts {
 pub fn test_date(opts: TestDateOpts) {
 	if opts.date {
 		print_msg("Date:");
-		let date: String = date::date();
+		let date: String = date::date(false);
 		println!("{date}");
+
+		print_msg("Date (with slashes):");
+		let date2: String = date::date(true);
+		println!("{date2}");
 	}
 
 	if opts.date_no_seps {
@@ -27,14 +31,22 @@ pub fn test_date(opts: TestDateOpts) {
 
 	if opts.date_abbr_month {
 		print_msg("Date with an abbreviated month:");
-		let date: String = date::date_abbr_month();
+		let date: String = date::date_abbr_month(false);
 		println!("{date}");
+
+		print_msg("Date with an abbreviated month (with slashes):");
+		let date2: String = date::date_abbr_month(true);
+		println!("{date2}");
 	}
 
 	if opts.date_full_month {
 		print_msg("Date with a full month name:");
-		let date: String = date::date_full_month();
+		let date: String = date::date_full_month(false);
 		println!("{date}");
+
+		print_msg("Date with a full month name(with slashes):");
+		let date2: String = date::date_full_month(true);
+		println!("{date2}");
 	}
 
 	if opts.datetime {

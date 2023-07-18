@@ -16,8 +16,14 @@ fn gen_date(fmt: &str) -> String {
 /// Format = YY-mm-dd
 ///
 /// ex: 2023-07-17
-pub fn date() -> String {
-	gen_date("%Y-%m-%d")
+///
+/// *WARNING:* Don't use slashes when creating file names.
+pub fn date(slashes: bool) -> String {
+	if slashes {
+		gen_date("%Y/%m/%d")
+	} else {
+		gen_date("%Y-%m-%d")
+	}
 }
 
 /// Generates a date from the
@@ -25,7 +31,7 @@ pub fn date() -> String {
 ///
 /// Format = YYmmdd
 ///
-/// ex:
+/// ex: 20230717
 pub fn date_no_seps() -> String {
 	gen_date("%Y%m%d")
 }
@@ -36,8 +42,12 @@ pub fn date_no_seps() -> String {
 /// Format = YY-Mon-dd
 ///
 /// ex: 2023-Jul-17
-pub fn date_abbr_month() -> String {
-	gen_date("%Y-%b-%d")
+pub fn date_abbr_month(slashes: bool) -> String {
+	if slashes {
+		gen_date("%Y/%b/%d")
+	} else {
+		gen_date("%Y-%b-%d")
+	}
 }
 
 /// Generates a date from the
@@ -46,8 +56,74 @@ pub fn date_abbr_month() -> String {
 /// Format = YY-Month-dd
 ///
 /// ex: 2023-July-17
-pub fn date_full_month() -> String {
-	gen_date("%Y-%B-%d")
+pub fn date_full_month(slashes: bool) -> String {
+	if slashes {
+		gen_date("%Y/%B/%d")
+	} else {
+		gen_date("%Y-%B-%d")
+	}
+}
+
+// TODO: date_cal(slashes: true) => date_cal_slashes()
+
+/// Generates a calendar date from the
+/// current local time in dd/mm/YY format.
+///
+/// ex:
+///
+/// Use date::date_cal_mdy() if you're insane.
+pub fn date_cal(slashes: bool) -> String {
+	if slashes {
+		gen_date("%d/%m/%Y")
+	} else {
+		gen_date("%d-%m-%Y")
+	}
+}
+
+/// Generates a calendar date from the
+/// current local time in year/day/month format.
+///
+/// ex:
+pub fn date_cal_ydm(slashes: bool) -> String {
+	if slashes {
+		gen_date("%Y/%d/%m")
+	} else {
+		gen_date("%Y-%d-%m")
+	}
+}
+
+/// Generates a calendar date from the
+/// current local time in year/month/day format.
+///
+/// ex: 2023-07-17
+pub fn date_cal_ymd(slashes: bool) -> String {
+	if slashes {
+		gen_date("%Y/%m/%d")
+	} else {
+		gen_date("%Y-%m-%d")
+	}
+}
+
+/// Generates a calendar date from the
+/// current local time in dd/mm/YY format.
+///
+/// ex:
+///
+/// Exactly the same as date::date_cal(), but here for code readability.
+pub fn date_cal_dmy(slashes: bool) -> String {
+	date_cal(slashes)
+}
+
+/// Generates a calendar date from the
+/// current local time in mm/dd/YY format.
+///
+/// ex:
+pub fn date_cal_mdy(slashes: bool) -> String {
+	if slashes {
+		gen_date("%m/%d/%Y")
+	} else {
+		gen_date("%m-%d-%Y")
+	}
 }
 
 /// Generates a datetime from the
