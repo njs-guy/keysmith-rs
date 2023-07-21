@@ -5,6 +5,8 @@ mod test_key;
 mod test_timestamp;
 mod test_uuid;
 
+// TODO: Rename this crate to examples
+
 fn main() {
 	// The length of each key
 	let num_of_keys = 10;
