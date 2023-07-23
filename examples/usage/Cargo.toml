@@ -1,5 +1,5 @@
 [package]
-name = "ks-tests"
+name = "usage"
 version = "0.1.0"
 edition = "2021"
 publish = false
@@ -7,5 +7,5 @@ publish = false
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-keysmith = { path = "../keysmith"}
+keysmith = { path = "../../keysmith"}
 # TODO: v0.4 - env_logger and logger for nicer output
