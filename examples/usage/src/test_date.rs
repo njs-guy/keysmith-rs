@@ -11,6 +11,11 @@ pub struct TestDateOpts {
 	pub datetime_abbr_month: bool,
 	pub datetime_full_month: bool,
 	pub custom: bool,
+	pub time: bool,
+	pub time_no_secs: bool,
+	pub secs: bool,
+	pub min: bool,
+	pub hour: bool,
 }
 
 pub fn test_date(opts: TestDateOpts) {
@@ -79,5 +84,35 @@ pub fn test_date(opts: TestDateOpts) {
 		let fmt = "%Y %Y %Y";
 		let date: String = date::datetime_custom(fmt);
 		print!("{date}");
+	}
+
+	if opts.time {
+		print_msg("Local time:");
+		let date: String = date::time();
+		println!("{date}");
+	}
+
+	if opts.time_no_secs {
+		print_msg("Local time without seconds:");
+		let date: String = date::time_no_secs();
+		println!("{date}");
+	}
+
+	if opts.secs {
+		print_msg("Current seconds from local time:");
+		let date: String = date::secs();
+		println!("{date}");
+	}
+
+	if opts.min {
+		print_msg("Current minutes from local time:");
+		let date: String = date::min();
+		println!("{date}");
+	}
+
+	if opts.hour {
+		print_msg("Current hour from local time:");
+		let date: String = date::hour();
+		println!("{date}");
 	}
 }

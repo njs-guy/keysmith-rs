@@ -8,8 +8,6 @@ fn gen_date(fmt: &str) -> String {
 	format!("{}", timestamp)
 }
 
-// TODO: Times without a date
-
 /// Generates a date from the
 /// current local time.
 ///
@@ -173,4 +171,39 @@ pub fn datetime_full_month() -> String {
 /// For formatting reference, check out the [chrono docs](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).
 pub fn datetime_custom(fmt: &str) -> String {
 	gen_date(fmt)
+}
+
+/// Gets the current local time in 24 hour format
+///
+/// ex: 19:34:07
+pub fn time() -> String {
+	gen_date("%H:%M:%S")
+}
+
+/// Gets the current local time in 24 hour format without seconds.
+///
+/// ex: 19:34
+pub fn time_no_secs() -> String {
+	gen_date("%H:%M")
+}
+
+/// Gets the current seconds from local time
+///
+/// ex: 07
+pub fn secs() -> String {
+	gen_date("%S")
+}
+
+/// Gets the current minutes from local time
+///
+/// ex: 34
+pub fn min() -> String {
+	gen_date("%M")
+}
+
+/// Gets the current hour from local time in 24 hour format
+///
+/// ex: 12
+pub fn hour() -> String {
+	gen_date("%H")
 }
