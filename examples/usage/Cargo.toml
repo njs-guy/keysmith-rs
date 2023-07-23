@@ -8,4 +8,5 @@ publish = false
 
 [dependencies]
 keysmith = { path = "../../keysmith"}
+tokio = { version = "1.29.1", features = ["rt-multi-thread", "macros", "time"] }
 # TODO: v0.4 - env_logger and logger for nicer output

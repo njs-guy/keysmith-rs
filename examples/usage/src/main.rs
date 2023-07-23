@@ -5,9 +5,8 @@ mod test_key;
 mod test_timestamp;
 mod test_uuid;
 
-// TODO: Rename this crate to examples
-
-fn main() {
+#[tokio::main]
+async fn main() {
 	// The length of each key
 	let num_of_keys = 10;
 
@@ -19,6 +18,8 @@ fn main() {
 	let uuid = true;
 
 	// Options
+
+	let start = tokio::time::Instant::now(); // Start timer
 
 	// which char functions to test
 	let char_opts = test_gen_char::TestGenCharOpts {
@@ -91,4 +92,12 @@ fn main() {
 	if uuid {
 		test_uuid::test_uuid(num_of_keys, uuid_opts);
 	}
+
+	let end = tokio::time::Instant::now(); // End timer
+
+	let time = (end - start).as_millis();
+
+	let seconds: f64 = (time as f64) / 1000.00;
+
+	print_msg::print_msg(&format!("Ran operations in {} seconds.", seconds));
 }
