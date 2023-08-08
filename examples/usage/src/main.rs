@@ -33,18 +33,11 @@ async fn main() {
 	let date_opts = test_date::TestDateOpts {
 		date: true,
 		date_no_seps: true,
-		date_abbr_month: true,
-		date_full_month: true,
 		datetime: true,
 		datetime_no_seps: true,
-		datetime_abbr_month: true,
-		datetime_full_month: true,
 		custom: true,
 		time: true,
 		time_no_secs: true,
-		secs: true,
-		min: true,
-		hour: true,
 	};
 
 	// which gen_key functions to test
