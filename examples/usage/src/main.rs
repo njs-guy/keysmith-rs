@@ -71,6 +71,8 @@ async fn main() {
 		ms_i64: true,
 		custom: true,
 		custom_i64: true,
+		ms_custom: true,
+		ms_custom_i64: true,
 	};
 
 	// which uuid functions to test

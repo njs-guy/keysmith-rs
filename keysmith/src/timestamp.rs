@@ -31,36 +31,44 @@ fn gen_timestamp_ms(epoch_str: &str) -> i64 {
 
 /// Gets a timestamp from the first second of 2022 as a String.
 ///
-/// ex: 48627921
+/// ex: 50546851
 pub fn timestamp() -> String {
 	timestamp_i64().to_string()
 }
 
 /// Gets a timestamp from the the first second of 2022 as an i64.
 ///
-/// ex: 48627921
+/// ex: 50546851
 pub fn timestamp_i64() -> i64 {
 	gen_timestamp(DEFAULT_EPOCH)
 }
 
 /// Gets a timestamp since the first second of 1970 as a String.
 ///
-/// ex: 1689623121
+/// ex: 1691542051
 pub fn timestamp_utc() -> String {
 	timestamp_utc_i64().to_string()
 }
 
 /// Gets a timestamp since the first second of 1970 as an i64.
 ///
-/// ex: 1689623121
+/// ex: 1691542051
 pub fn timestamp_utc_i64() -> i64 {
 	gen_timestamp(UTC_EPOCH)
 }
 
+/// Gets a timestamp from the first second of 2022 as a String
+/// using milliseconds.
+///
+/// ex: 50546851978
 pub fn timestamp_ms() -> String {
 	timestamp_ms_i64().to_string()
 }
 
+/// Gets a timestamp from the first second of 2022 as an i64
+/// using milliseconds.
+///
+/// ex: 50546851978
 pub fn timestamp_ms_i64() -> i64 {
 	gen_timestamp_ms(DEFAULT_EPOCH)
 }
@@ -69,23 +77,40 @@ pub fn timestamp_ms_i64() -> i64 {
 ///
 /// Format = "Sat, 1 Jan 2022 00:00:00 +0000".
 ///
-/// ex: 174858321
+/// ex: 176777251
 pub fn timestamp_custom(epoch: &str) -> String {
-	gen_timestamp(epoch).to_string()
+	timestamp_custom_i64(epoch).to_string()
 }
 
 /// Gets a timestamp from a custom epoch as an i64.
 ///
 /// Format = "Sat, 1 Jan 2022 00:00:00 +0000".
 ///
-/// ex: 174858321
+/// ex: 176777251
 pub fn timestamp_custom_i64(epoch: &str) -> i64 {
 	gen_timestamp(epoch)
 }
 
-// TODO: Custom ms timestamps
+/// Gets a timestamp from a custom epoch as a String
+/// using milliseconds.
+///
+/// Format = "Sat, 1 Jan 2022 00:00:00 +0000".
+///
+/// ex: 176777251981
+pub fn timestamp_ms_custom(epoch: &str) -> String {
+	timestamp_ms_custom_i64(epoch).to_string()
+}
+
+/// Gets a timestamp from a custom epoch as an i64
+/// using milliseconds.
+///
+/// Format = "Sat, 1 Jan 2022 00:00:00 +0000".
+///
+/// ex: 176777251981
+pub fn timestamp_ms_custom_i64(epoch: &str) -> i64 {
+	gen_timestamp_ms(epoch)
+}
 
 // Tests
 
 // TODO: Ensure that timestamp() returns the correct unix timestamp.
-// TODO: Ensure that each function returns the correct type
