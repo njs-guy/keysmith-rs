@@ -56,8 +56,6 @@ fn gen_uuid(version: UUID) -> String {
 }
 
 // Public API
-// TODO: 0.5 - UUID v1 and v2
-// TODO: 0.5.1 - UUID v3 and v5
 
 /// Generate a UUID (version 4).
 ///

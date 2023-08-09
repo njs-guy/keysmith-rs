@@ -14,8 +14,16 @@ fn gen_timestamp(epoch_str: &str) -> i64 {
 	let epoch = DateTime::parse_from_rfc2822(epoch_str)
 		.expect("ERROR: Could not get timestamp epoch.");
 
-	let utc = Utc::now();
-	utc.timestamp() - epoch.timestamp()
+	let now = Utc::now();
+	now.timestamp() - epoch.timestamp()
+}
+
+fn gen_timestamp_ms(epoch_str: &str) -> i64 {
+	let epoch = DateTime::parse_from_rfc2822(epoch_str)
+		.expect("ERROR: Could not get timestamp epoch.");
+	let now = Utc::now();
+
+	now.timestamp_millis() - epoch.timestamp_millis()
 }
 
 // Public API
@@ -25,7 +33,7 @@ fn gen_timestamp(epoch_str: &str) -> i64 {
 ///
 /// ex: 48627921
 pub fn timestamp() -> String {
-	gen_timestamp(DEFAULT_EPOCH).to_string()
+	timestamp_i64().to_string()
 }
 
 /// Gets a timestamp from the the first second of 2022 as an i64.
@@ -33,6 +41,28 @@ pub fn timestamp() -> String {
 /// ex: 48627921
 pub fn timestamp_i64() -> i64 {
 	gen_timestamp(DEFAULT_EPOCH)
+}
+
+/// Gets a timestamp since the first second of 1970 as a String.
+///
+/// ex: 1689623121
+pub fn timestamp_utc() -> String {
+	timestamp_utc_i64().to_string()
+}
+
+/// Gets a timestamp since the first second of 1970 as an i64.
+///
+/// ex: 1689623121
+pub fn timestamp_utc_i64() -> i64 {
+	gen_timestamp(UTC_EPOCH)
+}
+
+pub fn timestamp_ms() -> String {
+	timestamp_ms_i64().to_string()
+}
+
+pub fn timestamp_ms_i64() -> i64 {
+	gen_timestamp_ms(DEFAULT_EPOCH)
 }
 
 /// Gets a timestamp from a custom epoch as a String.
@@ -53,19 +83,7 @@ pub fn timestamp_custom_i64(epoch: &str) -> i64 {
 	gen_timestamp(epoch)
 }
 
-/// Gets a timestamp since the first second of 1970 as a String.
-///
-/// ex: 1689623121
-pub fn timestamp_utc() -> String {
-	gen_timestamp(UTC_EPOCH).to_string()
-}
-
-/// Gets a timestamp since the first second of 1970 as an i64.
-///
-/// ex: 1689623121
-pub fn timestamp_utc_i64() -> i64 {
-	gen_timestamp(UTC_EPOCH)
-}
+// TODO: Custom ms timestamps
 
 // Tests
 

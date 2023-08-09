@@ -11,11 +11,11 @@ async fn main() {
 	let num_of_keys = 10;
 
 	// turn modules on/off
-	let gen_char = true;
-	let date = true;
-	let keys = true;
+	let gen_char = false;
+	let date = false;
+	let keys = false;
 	let timestamp = true;
-	let uuid = true;
+	let uuid = false;
 
 	// Options
 
@@ -65,10 +65,12 @@ async fn main() {
 	let timestamp_opts = test_timestamp::TestTimestampOpts {
 		string: true,
 		i64: true,
-		custom: true,
-		i64_custom: true,
 		utc: true,
 		utc_i64: true,
+		ms: true,
+		ms_i64: true,
+		custom: true,
+		custom_i64: true,
 	};
 
 	// which uuid functions to test
