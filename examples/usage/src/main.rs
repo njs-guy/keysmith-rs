@@ -5,21 +5,20 @@ mod test_key;
 mod test_timestamp;
 mod test_uuid;
 
-#[tokio::main]
-async fn main() {
+fn main() {
 	// The length of each key
 	let num_of_keys = 10;
 
 	// turn modules on/off
-	let gen_char = false;
-	let date = false;
-	let keys = false;
+	let gen_char = true;
+	let date = true;
+	let keys = true;
 	let timestamp = true;
-	let uuid = false;
+	let uuid = true;
 
 	// Options
 
-	let start = tokio::time::Instant::now(); // Start timer
+	let start = std::time::Instant::now(); // Start timer
 
 	// which char functions to test
 	let char_opts = test_gen_char::TestGenCharOpts {
@@ -101,7 +100,7 @@ async fn main() {
 		test_uuid::test_uuid(num_of_keys, uuid_opts);
 	}
 
-	let end = tokio::time::Instant::now(); // End timer
+	let end = std::time::Instant::now(); // End timer
 
 	let time = (end - start).as_millis();
 

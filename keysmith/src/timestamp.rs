@@ -27,7 +27,6 @@ fn gen_timestamp_ms(epoch_str: &str) -> i64 {
 }
 
 // Public API
-// TODO: 0.4 - millisecond timestamps
 
 /// Gets a timestamp from the first second of 2022 as a String.
 ///
