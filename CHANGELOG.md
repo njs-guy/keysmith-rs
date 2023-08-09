@@ -10,8 +10,12 @@ API
 
 Features
 - Generate datetime time stamps.
-  - timestamp::datetime() => 2023-07-17--19-34-07
-  - timestamp::datetime_no_seps() => 20230717193407
+  - date::datetime() -> 2023-07-17--19-34-07
+  - date::datetime_pretty() -> 2023/07/17 19:34:07
+  - date::datetime_no_seps() -> 20230717193407
+  - See date module for more.
+- Generate timestamps using milliseconds.
+  - timestamp::timestamp_ms() -> 50546851978
 - Generate keys from custom character sets.
   - key::key_custom(length, charset)
   - char::char_custom(length, charset)
@@ -19,6 +23,7 @@ Features
 Development
 - Private functions are not effected by new API. (Like key::gen_char_from_opts().)
 - Chars are now generated using pub consts instead of a hashmap.
+- Lots of code cleanup.
 
 
 ## v0.3.1
