@@ -112,4 +112,27 @@ pub fn timestamp_ms_custom_i64(epoch: &str) -> i64 {
 
 // Tests
 
-// TODO: Ensure that timestamp() returns the correct unix timestamp.
+#[cfg(test)]
+mod tests {
+	use super::*;
+
+	/// Ensure gen_timestamp() returns the correct timestamp:
+	#[test]
+	fn test_gen_timestamp() {
+		// Define an example epoch string
+
+		// Parse the epoch string into a DateTime object
+		let epoch = DateTime::parse_from_rfc2822(DEFAULT_EPOCH)
+			.expect("Failed to parse epoch string");
+
+		// Call the function with the example epoch string
+		let result = gen_timestamp(DEFAULT_EPOCH);
+
+		// Calculate the expected result
+		let now = Utc::now();
+		let expected = now.timestamp() - epoch.timestamp();
+
+		// Compare the actual result with the expected result
+		assert_eq!(result, expected);
+	}
+}
