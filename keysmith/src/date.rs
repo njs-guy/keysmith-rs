@@ -45,9 +45,9 @@ pub fn date_no_seps() -> String {
 ///
 /// Format = YY-mm-dd--HH-MM-SS
 ///
-/// ex: 2023-07-17--19-34-07
+/// ex: 2023-07-17T19:34:07
 pub fn datetime() -> String {
-	gen_date("%Y-%m-%d--%H-%M-%S")
+	gen_date("%Y-%m-%dT%H:%M:%S")
 }
 
 /// Generates a datetime from the
