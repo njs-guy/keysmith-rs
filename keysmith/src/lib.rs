@@ -92,20 +92,6 @@
 //! // ex: EVQMPIHKDBPLZJBPCHTXTIBLYRSFFFUY
 //! ```
 //!
-//! You can also generate a key using only "unsafe" special characters.
-//! Be careful with this, as these characters generally break file structures or URL's which is why they are considered unsafe.
-//! Generating a key of this type is not recommended, but could be useful to *someone*.
-//!
-//! ```
-//! use keysmith::key;
-//!
-//! let key: String = key::special_chars_unsafe(32);
-//! println!("{}", key);
-//!
-//! // Possible characters: #%&*+={}\/<>?!$:'"`|
-//! // ex: <#=`=*%{:`*%!<{"|*?'!#\#|?\+{=\}
-//! ```
-//!
 //! If you need something more specific than what's already here by default,
 //! you can generate a single char.
 //!
@@ -128,7 +114,13 @@
 //! Or just use your own character set.
 //!
 //! ```
-//! // TODO: CODE HERE
+//! use keysmith::key;
+//!
+//! let charset = String::from("among_us");
+//! let key: String = key::key_custom(32, charset);
+//! println!("{}", key);
+//!
+//! // ex: unnusgnggauogoauusu__msguo_gmomg
 //! ```
 //!
 //! Keysmith also lets you get a timestamp.
@@ -148,14 +140,31 @@
 //! Timestamps can also be in milliseconds.
 //!
 //! ```
-//! // TODO: CODE HERE
+//! use keysmith::timestamp;
+//!
+//! let stamp: String = timestamp::timestamp();
+//! let stamp2: i64 = timestamp::timestamp_i64();
+//!
+//! println!("{}", stamp);
+//! println!("{}", stamp2);
+//! // ex: 25928414
 //! ```
 //!
 //! Finally, you can get the current date or time.
 //!
 //! ```
-//! // TODO: CODE HERE
+//! use keysmith::date;
+//!
+//! let date: String = date::date();
+//! let time: String = date::time();
+//! let datetime: String = date::datetime();
+//!
+//! println!("{}", date); // ex: 2023-08-16
+//! println!("{}", time); // ex: 19:29:10
+//! println!("{}", datetime); // ex: 2023-08-16T19:29:10
 //! ```
+//!
+//! Those were just the basics. For more functionality, see the modules below.
 
 pub mod char;
 pub mod date;
