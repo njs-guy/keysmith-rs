@@ -1,5 +1,5 @@
 //! Gets a timestamp.
-//! This is in seconds since the first second of 2022,
+//! This is in seconds or milliseconds since the first second of 2022,
 //! a custom epoch, or from plain UTC.
 
 use chrono::{DateTime, Utc};

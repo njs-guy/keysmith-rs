@@ -3,7 +3,7 @@
 For the source code of each version, see the [tags page](https://github.com/njshockey/keysmith-rs/tags).
 
 ## v0.4.0
-**_CAUTION_**: v0.4.0 introduces many breaking API changes. It's a change for the better as the API is much simpler now, but be careful before upgrading.
+**_CAUTION_**: v0.4.0 introduces many breaking API changes. It's a change for the better as the API is much simpler now, but be careful before upgrading. This should be the last major api change.
 
 API
 - Publicly accessed functions have had their gen_ or get_ prefixes removed. This looks like gen_key() => key().

@@ -1,4 +1,4 @@
-//! Generates a date. Either written or as a number (returned as a String).
+//! Generates a written date or time.
 
 /// Generate a date or time timestamp from the fmt provided.
 fn gen_date(fmt: &str) -> String {
@@ -71,6 +71,9 @@ pub fn datetime_pretty() -> String {
 pub fn datetime_no_seps() -> String {
 	gen_date("%Y%m%d%H%M%S")
 }
+
+// TODO: change time_colon() to time()
+// TODO: make time_hyphen()
 
 /// Gets the current local time in 24 hour format.
 ///

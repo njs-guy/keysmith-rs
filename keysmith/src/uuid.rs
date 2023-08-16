@@ -64,6 +64,16 @@ pub fn uuid4() -> String {
 	gen_uuid(UUID::V4)
 }
 
+/// Generate a UUID (version 4).
+///
+/// This is exactly the same as uuid4(),
+/// but here for simplicity.
+///
+/// ex: fc402d52-70be-7f09-caed-8da65db08985
+pub fn uuid() -> String {
+	uuid4()
+}
+
 /// Generate a UUID (nonstandard).
 /// This is the same as a v4, but letters can be
 /// a-z instead of just a-f.

@@ -1,4 +1,4 @@
-//! Generates keys with specific configs
+//! Generates keys with specific configs.
 
 use crate::char::{char_custom, get_charset_from_opts, GenCharOpts};
 
