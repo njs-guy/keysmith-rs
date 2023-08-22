@@ -78,6 +78,8 @@ fn main() {
 	let uuid_opts = test_uuid::TestUuidOpts {
 		uuid4: true,
 		uuidn: true,
+		uuid4_no_seps: true,
+		uuidn_no_seps: true,
 	};
 
 	if gen_char {
