@@ -72,22 +72,19 @@ pub fn datetime_no_seps() -> String {
 	gen_date("%Y%m%d%H%M%S")
 }
 
-// TODO: change time_colon() to time()
-// TODO: make time_hyphen()
-
-/// Gets the current local time in 24 hour format.
-///
-/// ex: 19-34-07
-pub fn time() -> String {
-	gen_date("%H-%M-%S")
-}
-
 /// Gets the current local time in 24 hour format.
 /// Separated by colons.
 ///
 /// ex: 19:34:07
-pub fn time_colon() -> String {
+pub fn time() -> String {
 	gen_date("%H:%M:%S")
+}
+
+/// Gets the current local time in 24 hour format.
+///
+/// ex: 19-34-07
+pub fn time_hyphen() -> String {
+	gen_date("%H-%M-%S")
 }
 
 /// Gets the current local time in 24 hour format

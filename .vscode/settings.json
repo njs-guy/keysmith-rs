@@ -1,5 +1,13 @@
 {
-  "cSpell.words": ["chrono", "consts", "datetime", "keysmith", "nums", "uuidn"],
-  "rust-analyzer.check.command": "clippy",
-  "rust-analyzer.cargo.features": "all"
+	"cSpell.words": [
+		"chrono",
+		"consts",
+		"datetime",
+		"keysmith",
+		"nums",
+		"seps",
+		"uuidn"
+	],
+	"rust-analyzer.check.command": "clippy",
+	"rust-analyzer.cargo.features": "all"
 }

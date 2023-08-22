@@ -36,7 +36,7 @@ fn main() {
 		datetime_pretty: true,
 		datetime_no_seps: true,
 		time: true,
-		time_colon: true,
+		time_hyphen: true,
 		time_no_seps: true,
 		time_no_secs: true,
 		time_no_secs_colon: true,

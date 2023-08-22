@@ -1,5 +1,3 @@
-// TODO: Add dates as examples.
-
 //! Create keys or ids for data with Rust.
 //!
 //!
