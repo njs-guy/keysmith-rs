@@ -209,6 +209,17 @@ mod tests {
 		assert_eq!(key.len(), 32);
 	}
 
+	enum FunctionType {
+		Key,
+		Nums,
+		Letters,
+		LettersLower,
+		NumsAndLetters,
+		NumsAndLettersLower,
+		SpecialChars,
+		SpecialCharsUnsafe,
+	}
+
 	// Returns false if the key contains a character that
 	// is not in the charset.
 	fn test_correct_chars(key: String, charset: &str) -> bool {
@@ -223,7 +234,26 @@ mod tests {
 		result
 	}
 
+	fn test_key_from_opts(opts: GenCharOpts, fn_type: FunctionType) -> bool {
+		let charset = get_charset_from_opts(opts);
+		let length = 32;
+
+		let key: String = match fn_type {
+			FunctionType::Key => key(length),
+			FunctionType::Nums => nums(length),
+			FunctionType::Letters => letters(length),
+			FunctionType::LettersLower => letters_lower(length),
+			FunctionType::NumsAndLetters => nums_and_letters(length),
+			FunctionType::NumsAndLettersLower => nums_and_letters_lower(length),
+			FunctionType::SpecialChars => special_chars(length),
+			FunctionType::SpecialCharsUnsafe => special_chars_unsafe(length),
+		};
+
+		test_correct_chars(key, &charset)
+	}
+
 	// Tests that the generated key uses the correct characters.
+
 	#[test]
 	fn test_correct_characters_key() {
 		let opts = GenCharOpts {
@@ -234,15 +264,164 @@ mod tests {
 			unsafe_sp_chars: false,
 		};
 
-		let charset = get_charset_from_opts(opts);
-
-		let length = 32;
-		let key = key(length);
-
-		let result = test_correct_chars(key, &charset);
+		let result = test_key_from_opts(opts, FunctionType::Key);
 
 		if !result {
 			panic!("Key contained an invalid character.");
+		}
+	}
+
+	#[test]
+	fn test_correct_characters_nums() {
+		let opts = GenCharOpts {
+			nums: true,
+			letters: false,
+			upper: false,
+			safe_sp_chars: false,
+			unsafe_sp_chars: false,
+		};
+
+		let result = test_key_from_opts(opts, FunctionType::Nums);
+
+		if !result {
+			panic!("Nums contained an invalid character.");
+		}
+	}
+
+	#[test]
+	fn test_correct_characters_letters() {
+		let opts = GenCharOpts {
+			nums: false,
+			letters: true,
+			upper: true,
+			safe_sp_chars: false,
+			unsafe_sp_chars: false,
+		};
+
+		let result = test_key_from_opts(opts, FunctionType::Letters);
+
+		if !result {
+			panic!("Letters contained an invalid character.");
+		}
+	}
+
+	#[test]
+	fn test_correct_characters_letters_lower() {
+		let opts = GenCharOpts {
+			nums: false,
+			letters: true,
+			upper: false,
+			safe_sp_chars: false,
+			unsafe_sp_chars: false,
+		};
+
+		let result = test_key_from_opts(opts, FunctionType::LettersLower);
+
+		if !result {
+			panic!("LettersLower contained an invalid character.");
+		}
+	}
+
+	#[test]
+	fn test_correct_characters_letters_upper() {
+		// Using a custom charset is set to ensure that uppercase
+		// letters are generated and not lowercase letters.
+
+		let upper_case = crate::char::LETTERS.to_uppercase();
+
+		let result = test_correct_chars(letters_upper(32), &upper_case);
+
+		if !result {
+			panic!("LettersUpper contained an invalid character.");
+		}
+	}
+
+	#[test]
+	fn test_correct_characters_nums_and_letters() {
+		let opts = GenCharOpts {
+			nums: true,
+			letters: true,
+			upper: true,
+			safe_sp_chars: false,
+			unsafe_sp_chars: false,
+		};
+
+		let result = test_key_from_opts(opts, FunctionType::NumsAndLetters);
+
+		if !result {
+			panic!("NumsAndLetters contained an invalid character.");
+		}
+	}
+
+	#[test]
+	fn test_correct_characters_nums_and_letters_lower() {
+		let opts = GenCharOpts {
+			nums: true,
+			letters: true,
+			upper: false,
+			safe_sp_chars: false,
+			unsafe_sp_chars: false,
+		};
+
+		let result =
+			test_key_from_opts(opts, FunctionType::NumsAndLettersLower);
+
+		if !result {
+			panic!("NumsAndLettersLower contained an invalid character.");
+		}
+	}
+
+	#[test]
+	fn test_correct_characters_nums_and_letters_upper() {
+		// Using a custom charset is set to ensure that uppercase
+		// letters are generated and not lowercase letters.
+
+		let upper_case = crate::char::LETTERS.to_uppercase();
+		let nums = crate::char::NUMBERS;
+
+		// let charset = upper_case + nums;
+		let mut charset = String::from("");
+		charset.push_str(&upper_case);
+		charset.push_str(nums);
+
+		let result = test_correct_chars(nums_and_letters_upper(32), &charset);
+
+		if !result {
+			panic!("LettersUpper contained an invalid character.");
+		}
+	}
+
+	#[test]
+	fn test_correct_characters_special_chars() {
+		let opts = GenCharOpts {
+			nums: false,
+			letters: false,
+			upper: false,
+			safe_sp_chars: true,
+			unsafe_sp_chars: false,
+		};
+
+		let result = test_key_from_opts(opts, FunctionType::SpecialChars);
+
+		if !result {
+			panic!("SpecialChars contained an invalid character.");
+		}
+	}
+
+	#[test]
+	fn test_correct_characters_special_chars_unsafe() {
+		let opts = GenCharOpts {
+			nums: false,
+			letters: false,
+			upper: false,
+			safe_sp_chars: false,
+			unsafe_sp_chars: true,
+		};
+
+		let result = test_key_from_opts(opts, FunctionType::SpecialCharsUnsafe);
+
+		if !result {
+			panic!("SpecialCharsUnsafe contained an invalid character.");
 		}
 	}
 }
