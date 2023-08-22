@@ -135,6 +135,8 @@ pub fn char_custom(charset: &str) -> char {
 mod tests {
 	use super::*;
 
+	// TODO: reuse this function
+
 	// Returns false if the key contains a character that
 	// is not in the charset.
 	fn test_correct_chars(key: String, charset: &str) -> bool {
@@ -157,6 +159,8 @@ mod tests {
 
 		for _i in 1..=10 {
 			let char = get_char_from_set(charset);
+
+			// TODO: Only check this if success is true
 			success = test_correct_chars(String::from(char), charset)
 		}
 
