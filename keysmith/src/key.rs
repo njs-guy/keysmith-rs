@@ -200,12 +200,49 @@ pub fn special_chars_unsafe(length: u32) -> String {
 mod tests {
 	use super::*;
 
-	// Tests that the generated key is the correct length
+	// Tests that the generated key is the correct length.
 	#[test]
 	fn test_length() {
 		let length = 32;
 		let key = key(length);
 
 		assert_eq!(key.len(), 32);
+	}
+
+	// Returns false if the key contains a character that
+	// is not in the charset.
+	fn test_correct_chars(key: String, charset: &str) -> bool {
+		let mut result = true;
+
+		for key_c in key.chars() {
+			if !&charset.contains(key_c) {
+				result = false;
+			}
+		}
+
+		result
+	}
+
+	// Tests that the generated key uses the correct characters.
+	#[test]
+	fn test_correct_characters_key() {
+		let opts = GenCharOpts {
+			nums: true,
+			letters: true,
+			upper: true,
+			safe_sp_chars: true,
+			unsafe_sp_chars: false,
+		};
+
+		let charset = get_charset_from_opts(opts);
+
+		let length = 32;
+		let key = key(length);
+
+		let result = test_correct_chars(key, &charset);
+
+		if !result {
+			panic!("Key contained an invalid character.");
+		}
 	}
 }
