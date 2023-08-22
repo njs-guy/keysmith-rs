@@ -194,8 +194,6 @@ pub fn special_chars_unsafe(length: u32) -> String {
 	gen_char_from_opts(length, opts)
 }
 
-// TODO: Test that the generated output is the correct length and contains only the expected characters
-
 #[cfg(test)]
 mod tests {
 	use super::*;

@@ -128,7 +128,64 @@ pub fn char_custom(charset: &str) -> char {
 }
 
 // Tests
-// TODO: Ensure that push_poss_chars() returns the expected set of characters.
-// TODO: Ensure that char() generates valid characters based on the options provided.
 // TODO: Ensure that uuid_v4_char() generates the correct characters.
 // TODO: Ensure that uuid_nonstandard_char() generates the correct characters.
+
+#[cfg(test)]
+mod tests {
+	use super::*;
+
+	// Returns false if the key contains a character that
+	// is not in the charset.
+	fn test_correct_chars(key: String, charset: &str) -> bool {
+		let mut result = true;
+
+		for key_c in key.chars() {
+			if !&charset.contains(key_c) {
+				result = false;
+			}
+		}
+
+		result
+	}
+
+	#[test]
+	fn test_get_char_from_set() {
+		let charset = "abc123";
+
+		let mut success = true;
+
+		for _i in 1..=10 {
+			let char = get_char_from_set(charset);
+			success = test_correct_chars(String::from(char), charset)
+		}
+
+		if !success {
+			panic!("get_char_from_set() generated an invalid character.");
+		}
+	}
+
+	#[test]
+	fn test_char() {
+		let opts = GenCharOpts {
+			nums: true,
+			letters: true,
+			upper: true,
+			safe_sp_chars: false,
+			unsafe_sp_chars: false,
+		};
+
+		let charset = get_charset_from_opts(opts);
+
+		let mut success = true;
+
+		for _i in 1..=10 {
+			let char = char(opts);
+			success = test_correct_chars(String::from(char), &charset)
+		}
+
+		if !success {
+			panic!("char() generated an invalid character.");
+		}
+	}
+}
