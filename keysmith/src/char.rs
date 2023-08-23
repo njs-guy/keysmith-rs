@@ -128,13 +128,11 @@ pub fn char_custom(charset: &str) -> char {
 }
 
 // Tests
-// TODO: Ensure that uuid_v4_char() generates the correct characters.
-// TODO: Ensure that uuid_nonstandard_char() generates the correct characters.
 
 #[cfg(test)]
 mod tests {
 	use super::*;
-	use crate::test_utils::test_correct_chars;
+	use crate::test_utils::{test_correct_chars, test_correct_uuid_chars};
 
 	#[test]
 	fn test_get_char_from_set() {
@@ -183,6 +181,47 @@ mod tests {
 
 		if !success {
 			panic!("char() generated an invalid character.");
+		}
+	}
+
+	fn test_uuid_char(version: UUID) -> bool {
+		let mut success = true;
+
+		for _i in 1..=10 {
+			// Stop checking if the test has failed
+			if !success {
+				break;
+			}
+
+			let chunk = match version {
+				UUID::V4 => String::from(gen_uuid_v4_char()),
+				UUID::Nonstandard => String::from(gen_uuid_nonstandard_char()),
+			};
+			success = test_correct_uuid_chars(version, chunk);
+		}
+
+		success
+	}
+
+	#[test]
+	fn test_uuid4_char() {
+		let version = UUID::V4;
+		let success = test_uuid_char(version);
+
+		if !success {
+			panic!("gen_uuid_v4_char() generated an invalid character.");
+		}
+	}
+
+	#[test]
+	fn test_uuidn_char() {
+		let version = UUID::Nonstandard;
+		let success = test_uuid_char(version);
+
+		if !success {
+			panic!(
+				"gen_uuid_nonstandard_char() generated an invalid character."
+			);
 		}
 	}
 }

@@ -43,14 +43,9 @@ pub fn split_uuid(key: &str) -> Vec<String> {
 	result
 }
 
-/// Returns false if the key contains a character that
+/// Returns false if the chunk contains a character that
 /// is not in the charset.
-#[allow(dead_code)]
-pub fn test_valid_uuid(version: UUID) -> bool {
-	use crate::uuid::{uuid4, uuidn};
-
-	let mut success = true;
-
+pub fn test_correct_uuid_chars(version: UUID, chunk: String) -> bool {
 	let charset: String = match version {
 		UUID::V4 => {
 			let mut cs = String::from("");
@@ -69,6 +64,18 @@ pub fn test_valid_uuid(version: UUID) -> bool {
 		}
 	};
 
+	// Return result of test_correct_chars
+	test_correct_chars(chunk, &charset)
+}
+
+/// Returns false if the key contains a character that
+/// is not in the charset.
+#[allow(dead_code)]
+pub fn test_valid_uuid(version: UUID) -> bool {
+	use crate::uuid::{uuid4, uuidn};
+
+	let mut success = true;
+
 	let key: String = match version {
 		UUID::V4 => uuid4(),
 		UUID::Nonstandard => uuidn(),
@@ -84,7 +91,7 @@ pub fn test_valid_uuid(version: UUID) -> bool {
 			break;
 		}
 
-		success = test_correct_chars(String::from(chunk), &charset);
+		success = test_correct_uuid_chars(version, String::from(chunk));
 
 		// Number set 1 must be 8 characters.
 		if current_set == 1 && chunk.len() != 8 {
