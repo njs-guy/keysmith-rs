@@ -4,14 +4,22 @@
 //! The other modules are recommended, but this is
 //! for when/if you need more options than what's
 //! here by default.
+//!
+//! Public constants are the character sets
+//! typically used to generate keys.
 
 use crate::uuid::UUID;
 use rand::Rng;
 
+/// 123456789
 pub const NUMBERS: &str = "0123456789";
+/// abcdefghijklmnopqrstuvwxyz
 pub const LETTERS: &str = "abcdefghijklmnopqrstuvwxyz";
+/// abcdef
 pub const HEX_LETTERS: &str = "abcdef";
+/// -_.()~@
 pub const SAFE_SP_CHARS: &str = "-_.()~@";
+/// #%&*+={}\/<>?!$:'"`|
 pub const UNSAFE_SP_CHARS: &str = r#"#%&*+={}\/<>?!$:'"`|"#;
 
 // See this https://stackoverflow.com/a/40415059 for special chars
@@ -73,6 +81,20 @@ fn get_char_from_set(charset: &str) -> char {
 
 // Public API
 
+/// Use a GenCharOpts to create a character set.
+///
+/// Ex:
+/// ```
+/// let opts = GenCharOpts {
+///     nums: true,
+///     letters: true,
+///     upper: true,
+///     safe_sp_chars: false,
+///     unsafe_sp_chars: false,
+/// };
+/// ```
+///
+/// Will return -> `0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`
 pub fn get_charset_from_opts(opts: GenCharOpts) -> String {
 	let mut charset = String::from("");
 
