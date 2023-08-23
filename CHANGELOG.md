@@ -2,20 +2,22 @@
 
 For the source code of each version, see the [tags page](https://github.com/njshockey/keysmith-rs/tags).
 
-## v0.4.0
-**_CAUTION_**: v0.4.0 introduces many breaking API changes. It's a change for the better as the API is much simpler now, but be careful before upgrading. This should be the last major api change.
+## v0.4.0 (August 23, 2023)
+**_CAUTION_**: v0.4.0 introduces many breaking API changes. It's a change for the better as the API is much simpler now, but be careful before upgrading. This should be the last major API change.
 
 API
 - Publicly accessed functions have had their gen_ or get_ prefixes removed. This looks like gen_key() => key().
 
 Features
 - Generate datetime time stamps.
-  - date::datetime() -> 2023-07-17--19-34-07
+  - date::datetime() -> 2023-07-17T19:34:07
   - date::datetime_pretty() -> 2023/07/17 19:34:07
   - date::datetime_no_seps() -> 20230717193407
   - See date module for more.
 - Generate timestamps using milliseconds.
   - timestamp::timestamp_ms() -> 50546851978
+- Generate UUID's without separators.
+  - uuid::uuid4_no_seps() -> fc402d5270be7f09caed8da65db08985
 - Generate keys from custom character sets.
   - key::key_custom(length, charset)
   - char::char_custom(length, charset)
@@ -24,9 +26,10 @@ Development
 - Private functions are not effected by new API. (Like key::gen_char_from_opts().)
 - Chars are now generated using pub consts instead of a hashmap.
 - Lots of code cleanup.
+- Unit tests.
 
 
-## v0.3.1
+## v0.3.1 (January 29, 2022)
 
 **_WARNING_**: v0.4.0 will have breaking API changes.
 Functions will have their gen or get prefixes removed.
@@ -46,7 +49,7 @@ Development
 
 - Nicer formatting thanks to [Rustfmt](https://rust-lang.github.io/rustfmt/).
 
-## v0.3.0
+## v0.3.0 (October 28, 2022)
 
 **_CAUTION_**: v0.3.0 introduces breaking changes. Mainly with importing modules.
 Be careful when upgrading from an older version.
@@ -85,7 +88,7 @@ Development
 and can be used with the keysmith crate.
 - Cleaned up a lot of code under the hood.
 
-## v0.2.1
+## v0.2.1 (October 20, 2022)
 
 You can now generate keys with only specific kinds of characters.
 For more details, see [usage](README.md#usage).
@@ -100,17 +103,17 @@ For more details, see [usage](README.md#usage).
       file structures and URL's and the like.
     - This is not recommended but might be useful to _someone_.
 
-## v0.2.0
+## v0.2.0 (October 18, 2022)
 
 - Can now generate version 4 UUID's with gen_uuid('4'). See [usage](README.md#usage).
 - "Nonstandard" UUID's can also be generated with gen_uuid('n'). See [usage](README.md#usage).
 
-## v0.1.1
+## v0.1.1 (October 7, 2022)
 
 - gen_key() can now generate uppercase letters.
 - Fixed a build error on Linux.
 
-## v0.1.0
+## v0.1.0 (October 6, 2022)
 
 - First release.
 - Generate a key with gen_key(). See [usage](README.md#usage).
