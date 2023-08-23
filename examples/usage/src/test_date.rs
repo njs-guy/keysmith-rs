@@ -12,7 +12,7 @@ pub struct TestDateOpts {
 	pub time_hyphen: bool,
 	pub time_no_seps: bool,
 	pub time_no_secs: bool,
-	pub time_no_secs_colon: bool,
+	pub time_no_secs_hyphen: bool,
 	pub time_no_secs_no_seps: bool,
 	pub custom: bool,
 }
@@ -77,9 +77,9 @@ pub fn test_date(opts: TestDateOpts) {
 		println!("{date}");
 	}
 
-	if opts.time_no_secs_colon {
-		print_msg("Local time without seconds, separated by colons:");
-		let date: String = date::time_no_secs_colon();
+	if opts.time_no_secs_hyphen {
+		print_msg("Local time without seconds, separated a hyphen:");
+		let date: String = date::time_no_secs_hyphen();
 		println!("{date}");
 	}
 

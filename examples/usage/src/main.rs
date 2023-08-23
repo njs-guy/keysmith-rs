@@ -39,7 +39,7 @@ fn main() {
 		time_hyphen: true,
 		time_no_seps: true,
 		time_no_secs: true,
-		time_no_secs_colon: true,
+		time_no_secs_hyphen: true,
 		time_no_secs_no_seps: true,
 		custom: true,
 		date_no_seps: true,

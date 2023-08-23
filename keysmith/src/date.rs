@@ -101,15 +101,15 @@ pub fn time_no_seps() -> String {
 ///
 /// ex: 19-34
 pub fn time_no_secs() -> String {
-	gen_date("%H-%M")
+	gen_date("%H:%M")
 }
 
 /// Gets the current local time in 24 hour format without seconds
 /// separated by a colon.
 ///
 /// ex: 19:34
-pub fn time_no_secs_colon() -> String {
-	gen_date("%H:%M")
+pub fn time_no_secs_hyphen() -> String {
+	gen_date("%H-%M")
 }
 
 /// Gets the current local time in 24 hour format without seconds
@@ -131,4 +131,71 @@ pub fn datetime_custom(fmt: &str) -> String {
 	gen_date(fmt)
 }
 
-// TODO: Tests to make sure that the date stamps use the right format.
+// Tests
+
+mod tests {
+	// This warning to delete this import is lying lol.
+	// Deleting the import causes the entire test mod to break;
+	#[allow(unused_imports)]
+	use super::*;
+
+	#[test]
+	fn test_date() {
+		assert_eq!(date(), gen_date("%Y-%m-%d"));
+	}
+
+	#[test]
+	fn test_date_slashes() {
+		assert_eq!(date_slashes(), gen_date("%Y/%m/%d"));
+	}
+
+	#[test]
+	fn test_date_no_seps() {
+		assert_eq!(date_no_seps(), gen_date("%Y%m%d"));
+	}
+
+	#[test]
+	fn test_datetime() {
+		assert_eq!(datetime(), gen_date("%Y-%m-%dT%H:%M:%S"));
+	}
+
+	#[test]
+	fn test_datetime_pretty() {
+		assert_eq!(datetime_pretty(), gen_date("%Y/%m/%d %H:%M:%S"));
+	}
+
+	#[test]
+	fn test_datetime_no_seps() {
+		assert_eq!(datetime_no_seps(), gen_date("%Y%m%d%H%M%S"));
+	}
+
+	#[test]
+	fn test_time() {
+		assert_eq!(time(), gen_date("%H:%M:%S"));
+	}
+
+	#[test]
+	fn test_time_hyphen() {
+		assert_eq!(time_hyphen(), gen_date("%H-%M-%S"));
+	}
+
+	#[test]
+	fn test_time_no_seps() {
+		assert_eq!(time_no_seps(), gen_date("%H%M%S"));
+	}
+
+	#[test]
+	fn test_time_no_secs() {
+		assert_eq!(time_no_secs(), gen_date("%H:%M"));
+	}
+
+	#[test]
+	fn test_time_no_secs_hyphen() {
+		assert_eq!(time_no_secs_hyphen(), gen_date("%H-%M"));
+	}
+
+	#[test]
+	fn test_time_no_secs_no_seps() {
+		assert_eq!(time_no_secs_no_seps(), gen_date("%H%M"));
+	}
+}
