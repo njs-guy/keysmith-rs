@@ -197,6 +197,7 @@ pub fn special_chars_unsafe(length: u32) -> String {
 #[cfg(test)]
 mod tests {
 	use super::*;
+	use crate::test_utils::test_correct_chars;
 
 	// Tests that the generated key is the correct length.
 	#[test]
@@ -216,20 +217,6 @@ mod tests {
 		NumsAndLettersLower,
 		SpecialChars,
 		SpecialCharsUnsafe,
-	}
-
-	// Returns false if the key contains a character that
-	// is not in the charset.
-	fn test_correct_chars(key: String, charset: &str) -> bool {
-		let mut result = true;
-
-		for key_c in key.chars() {
-			if !&charset.contains(key_c) {
-				result = false;
-			}
-		}
-
-		result
 	}
 
 	fn test_key_from_opts(opts: GenCharOpts, fn_type: FunctionType) -> bool {

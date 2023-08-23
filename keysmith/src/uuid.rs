@@ -122,18 +122,7 @@ pub fn uuidn_no_seps() -> String {
 #[cfg(test)]
 mod tests {
 	use super::*;
-
-	fn test_correct_chars(key: String, charset: &str) -> bool {
-		let mut result = true;
-
-		for key_c in key.chars() {
-			if !&charset.contains(key_c) {
-				result = false;
-			}
-		}
-
-		result
-	}
+	use crate::test_utils::test_correct_chars;
 
 	fn split_uuid(key: &str) -> Vec<String> {
 		let mut result = Vec::new();

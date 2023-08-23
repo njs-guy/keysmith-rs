@@ -167,5 +167,6 @@
 pub mod char;
 pub mod date;
 pub mod key;
+mod test_utils;
 pub mod timestamp;
 pub mod uuid;

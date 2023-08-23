@@ -134,22 +134,7 @@ pub fn char_custom(charset: &str) -> char {
 #[cfg(test)]
 mod tests {
 	use super::*;
-
-	// TODO: reuse this function
-
-	// Returns false if the key contains a character that
-	// is not in the charset.
-	fn test_correct_chars(key: String, charset: &str) -> bool {
-		let mut result = true;
-
-		for key_c in key.chars() {
-			if !&charset.contains(key_c) {
-				result = false;
-			}
-		}
-
-		result
-	}
+	use crate::test_utils::test_correct_chars;
 
 	#[test]
 	fn test_get_char_from_set() {
