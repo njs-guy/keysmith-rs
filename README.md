@@ -1,6 +1,6 @@
 # Keysmith
 
-Create keys or ids for data with Rust.
+Create keys, uuid's, timestamps, and more with Rust.
 
 Here's some example keys:
 
@@ -27,7 +27,7 @@ be3b5529-931b-6b75-1678-a057bccf71c9
 
 Keysmith also supports many other data formats.
 - Keys strings from custom character sets
-- V4 UUID's using any letter as opposed to just a-f
+- "Nonstandard" V4 UUID's using any letter as opposed to just a-f
 - Timestamps (ex: 50546851)
 - Dates (ex: 2023-07-17), times (ex: 19:34:07), and datetimes (ex: 2023-07-17T19:34:07)
 - Individual characters
@@ -35,6 +35,8 @@ Keysmith also supports many other data formats.
 ## Usage
 
 For usage, see the [documentation](https://docs.rs/keysmith/latest/keysmith/).
+
+For installation, see [crates.io](https://crates.io/crates/keysmith).
 
 ## Changelog
 
@@ -49,7 +51,7 @@ You can find the changelog in [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
-Keysmith uses the Rust standard MIT/Apache 2.0 dual license for best
+Keysmith uses the Rust standard MIT/Apache-2.0 dual license for best
 compatibility. See
 [LICENSE-APACHE.txt](LICENSE-APACHE.txt) and [LICENSE-MIT.txt](LICENSE-MIT.txt)
 for the full licenses.

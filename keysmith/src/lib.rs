@@ -1,4 +1,4 @@
-//! Create keys or ids for data with Rust.
+//! Create keys, uuid's, timestamps, and more with Rust..
 //!
 //!
 //! Here's some example keys:
@@ -20,6 +20,13 @@
 //! 440146ab-a19a-8a36-2d4b-ba19a79570d4
 //! 0090da40-6ce2-59d3-629d-11b293c9e2d3
 //! ```
+//!
+//! Keysmith also supports many other data formats.
+//! - Keys strings from custom character sets
+//! - "Nonstandard" V4 UUID's using any letter as opposed to just a-f
+//! - Timestamps (ex: 50546851)
+//! - Dates (ex: 2023-07-17), times (ex: 19:34:07), and datetimes (ex: 2023-07-17T19:34:07)
+//! - Individual characters
 //!
 //! # Usage
 //!
