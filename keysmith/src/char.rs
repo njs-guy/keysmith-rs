@@ -143,9 +143,12 @@ mod tests {
 		let mut success = true;
 
 		for _i in 1..=10 {
-			let char = get_char_from_set(charset);
+			// Stop checking if the test has failed
+			if !success {
+				break;
+			}
 
-			// TODO: Only check this if success is true
+			let char = get_char_from_set(charset);
 			success = test_correct_chars(String::from(char), charset)
 		}
 
@@ -169,6 +172,11 @@ mod tests {
 		let mut success = true;
 
 		for _i in 1..=10 {
+			// Stop checking if the test has failed
+			if !success {
+				break;
+			}
+
 			let char = char(opts);
 			success = test_correct_chars(String::from(char), &charset)
 		}
